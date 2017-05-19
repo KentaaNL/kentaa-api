@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["support@kentaa.nl"]
 
   spec.summary       = "Ruby library for communicating with the Kentaa API"
-  spec.homepage      = "https://www.kentaa.nl"
+  spec.homepage      = "https://github.com/KentaaNL/kentaa-api"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
