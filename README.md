@@ -1,5 +1,9 @@
 # Kentaa API
 
+[![Gem Version](https://badge.fury.io/rb/kentaa-api.svg)](https://badge.fury.io/rb/kentaa-api)
+[![Build Status](https://travis-ci.org/KentaaNL/kentaa-api.svg?branch=master)](https://travis-ci.org/KentaaNL/kentaa-api)
+[![Code Climate](https://codeclimate.com/github/KentaaNL/kentaa-api/badges/gpa.svg)](https://codeclimate.com/github/KentaaNL/kentaa-api)
+
 This gem provides a Ruby library for communicating with the [Kentaa API](https://api.kentaa.nl/v1/doc).
 
 ## Installation
