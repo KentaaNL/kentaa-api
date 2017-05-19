@@ -1,0 +1,27 @@
+{
+  "site": {
+    "created_at": "2015-11-17T16:32:03+01:00",
+    "updated_at": "2015-11-17T16:32:27+01:00",
+    "title": "Aut est maxime nostrum.",
+    "description": "Maiores ut velit fugiat eos. Quae est nostrum rerum aut et nihil. Sequi eveniet occaecati et est corporis et enim.",
+    "target_amount": 5000,
+    "total_amount": "0.0",
+    "total_donations": 0,
+    "url": "https://demo1.kentaa.nl/",
+    "donate_url": "https://demo1.kentaa.nl/doneren",
+    "video_url": "https://www.youtube.com/watch?v=VLv1jKC39jGQk",
+    "owner_name": "John doe",
+    "owner_email": "johndoe@example.com",
+    "banners": [
+      {
+        "id": 14,
+        "created_at": "2015-11-17T16:32:11+01:00",
+        "updated_at": "2015-11-17T16:32:11+01:00",
+        "url": "https://d2a3ux41sjxpco.cloudfront.net/carousel/file/site_banners/banner/1/normal_93be693da7ec2dde1a85ea4aec3832a8dfc60330.JPG",
+        "text": "example",
+        "link": "http://www.example.com/",
+        "locale": "nl"
+      }
+    ]
+  }
+}

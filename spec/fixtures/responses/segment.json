@@ -1,0 +1,27 @@
+{
+  "segment": {
+    "id": 12,
+    "created_at": "2015-11-17T16:32:03+01:00",
+    "updated_at": "2015-11-17T16:32:27+01:00",
+    "subdomain": "segment-2",
+    "name": "Segment 2",
+    "title": "Aut est maxime nostrum.",
+    "description": "Maiores ut velit fugiat eos. Quae est nostrum rerum aut et nihil. Sequi eveniet occaecati et est corporis et enim.",
+    "target_amount": 2685,
+    "total_amount": "0.0",
+    "total_donations": 0,
+    "url": "https://segment-2.demo1.kentaa.nl/",
+    "donate_url": "https://segment-2.demo1.kentaa.nl/doneren",
+    "banners": [
+      {
+        "id": 14,
+        "created_at": "2015-11-17T16:32:11+01:00",
+        "updated_at": "2015-11-17T16:32:11+01:00",
+        "url": "https://d2a3ux41sjxpco.cloudfront.net/carousel/file/segment_banners/banner/14/normal_93be693da7ec2dde1a85ea4aec3832a8dfc60330.JPG",
+        "text": "example",
+        "link": "http://www.example.com/",
+        "locale": "nl"
+      }
+    ]
+  }
+}

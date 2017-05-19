@@ -1,0 +1,33 @@
+{
+  "newsletter_subscriptions": [
+    {
+      "id": 1,
+      "created_at": "2016-03-07T13:55:43+01:00",
+      "updated_at": "2016-03-07T13:55:43+01:00",
+      "email": "john.doe@kentaa.nl",
+      "locale": "nl",
+      "subscription_url": "https://demo1.kentaa.nl"
+    },
+    {
+      "id": 2,
+      "created_at": "2016-03-07T13:55:43+01:00",
+      "updated_at": "2016-03-07T13:55:43+01:00",
+      "email": "foo.bar@kentaa.nl",
+      "locale": "nl",
+      "subscription_url": "https://demo1.kentaa.nl"
+    },
+    {
+      "id": 3,
+      "created_at": "2016-03-07T13:55:43+01:00",
+      "updated_at": "2016-03-07T13:55:43+01:00",
+      "email": "quux@kentaa.nl",
+      "locale": "nl",
+      "subscription_url": "https://demo1.kentaa.nl"
+    }
+
+  ],
+  "total_entries": 3,
+  "total_pages": 1,
+  "per_page": 10,
+  "current_page": 1
+}

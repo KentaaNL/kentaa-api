@@ -1,0 +1,49 @@
+{
+  "team": {
+    "id": 1,
+    "segment_id": 2,
+    "project_id": 3,
+    "slug": "asperiores-beatae-voluptate-qui",
+    "created_at": "2015-08-26T14:51:35+02:00",
+    "updated_at": "2015-10-12T16:27:43+02:00",
+    "owner": {
+      "id": 2,
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@kentaa.nl"
+    },
+    "members": [
+      {
+        "id": 9,
+        "owner": {
+          "id": 8,
+          "first_name": "Thomas",
+          "last_name": "Klein",
+          "email": "thomas.klein@kentaa.nl"
+        },
+        "url": "https://demo1.kentaa.nl/actie/thomas-klein",
+        "donate_url": "https://demo1.kentaa.nl/actie/thomas-klein/doneren"
+      },
+      {
+        "id": 3,
+        "owner": {
+          "id": 2,
+          "first_name": "John",
+          "last_name": "Doe",
+          "email": "john.doe@kentaa.nl"
+        },
+        "url": "https://demo1.kentaa.nl/actie/john-doe",
+        "donate_url": "https://demo1.kentaa.nl/actie/john-doe/doneren"
+      }
+    ],
+    "name": "Asperiores beatae voluptate qui.",
+    "title": "Vero aspernatur dolores et excepturi.",
+    "description": "Cum odio est. Consequuntur occaecati sapiente molestiae quam recusandae possimus aut. Ratione cum harum beatae ad repellat minus.",
+    "target_amount": 2000,
+    "total_amount": "225.0",
+    "total_donations": 4,
+    "visible": true,
+    "url": "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui",
+    "donate_url": "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/doneren"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "slug": "dignissimos-provident",
+      "created_at": "2015-08-26T14:49:36+02:00",
+      "updated_at": "2015-10-12T16:27:43+02:00",
+      "title": "Dignissimos provident rerum enim alias magni asperna...",
+      "description": "Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.",
+      "target_amount": 250000,
+      "total_amount": "1250.0",
+      "total_donations": 18,
+      "visible": true,
+      "end_date": "2015-10-28T00:00:00+01:00",
+      "url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna",
+      "donate_url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna/doneren"
+    },
+    {
+      "id": 2,
+      "slug": "dignissimos-provident-2",
+      "created_at": "2015-08-26T14:49:36+02:00",
+      "updated_at": "2015-10-12T16:27:43+02:00",
+      "title": "Dignissimos provident rerum enim alias magni asperna...",
+      "description": "Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.",
+      "target_amount": 250000,
+      "total_amount": "1250.0",
+      "total_donations": 18,
+      "visible": true,
+      "end_date": "2015-10-28T00:00:00+01:00",
+      "url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna-2",
+      "donate_url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna-2/doneren"
+    }
+  ],
+  "links": {
+    "pages": {
+      "last": "https://api.kentaa.nl/v1/projects?page=3&per_page=2",
+      "next": "https://api.kentaa.nl/v1/projects?page=2&per_page=2"
+    }
+  },
+  "total_entries": 6,
+  "total_pages": 3,
+  "per_page": 2,
+  "current_page": 1
+}

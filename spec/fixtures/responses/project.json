@@ -1,0 +1,18 @@
+{
+  "project": {
+    "id": 1,
+    "segment_id": 2,
+    "slug": "dignissimos-provident",
+    "created_at": "2015-08-26T14:49:36+02:00",
+    "updated_at": "2015-10-12T16:27:43+02:00",
+    "title": "Dignissimos provident rerum enim alias magni asperna...",
+    "description": "Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.",
+    "target_amount": 250000,
+    "total_amount": "1250.0",
+    "total_donations": 18,
+    "visible": true,
+    "end_date": "2015-10-28T00:00:00+01:00",
+    "url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna",
+    "donate_url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna/doneren"
+  }
+}

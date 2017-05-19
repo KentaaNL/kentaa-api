@@ -1,0 +1,40 @@
+{
+  "action": {
+    "id": 1,
+    "segment_id": 2,
+    "project_id": 3,
+    "team_id": 4,
+    "slug": "john-doe",
+    "created_at": "2015-08-26T14:50:14.624+02:00",
+    "updated_at": "2015-10-12T16:27:43.509+02:00",
+    "owner": {
+      "id": 2,
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@kentaa.nl"
+    },
+    "title": "Lorem ipsum",
+    "description": "Dolorum animi qui nihil iure dolore velit. Rerum eius et quo.",
+    "target_amount": 1000,
+    "total_amount": "125.0",
+    "total_donations": 2,
+    "visible": true,
+    "url": "https://demo1.kentaa.nl/actie/john-doe",
+    "donate_url": "https://demo1.kentaa.nl/actie/john-doe/doneren",
+    "photos": [
+      {
+        "id": 2,
+        "created_at": "2015-08-26T14:50:16.166+02:00",
+        "updated_at": "2015-08-26T14:50:20.477+02:00",
+        "url": "https://d2a3ux41sjxpco.cloudfront.net/carousel/file/action_photo/64/normal_53ca327debf5667a5efa03f3e87ba1c5b9f806a1.JPG"
+      }
+    ],
+    "questions": [
+      {
+        "id": 2,
+        "question": "What is your age?",
+        "answer": "42"
+      }
+    ]
+  }
+}
