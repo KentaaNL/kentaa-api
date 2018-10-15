@@ -32,7 +32,7 @@ module Kentaa
         end
 
         def total_amount
-          BigDecimal.new(data[:total_amount])
+          BigDecimal(data[:total_amount])
         end
 
         def total_donations

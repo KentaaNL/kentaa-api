@@ -68,11 +68,11 @@ module Kentaa
         end
 
         def amount
-          BigDecimal.new(data[:amount])
+          BigDecimal(data[:amount])
         end
 
         def transaction_costs
-          BigDecimal.new(data[:transaction_costs]) if data[:transaction_costs]
+          BigDecimal(data[:transaction_costs]) if data[:transaction_costs]
         end
 
         def registration_fee?
@@ -80,11 +80,11 @@ module Kentaa
         end
 
         def registration_fee_amount
-          BigDecimal.new(data[:registration_fee_amount]) if data[:registration_fee_amount]
+          BigDecimal(data[:registration_fee_amount]) if data[:registration_fee_amount]
         end
 
         def total_amount
-          BigDecimal.new(data[:total_amount])
+          BigDecimal(data[:total_amount])
         end
 
         def invoicenumber
