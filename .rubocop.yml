@@ -26,9 +26,6 @@ Style/Documentation:
 Style/ExpandPathArguments:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 Style/SafeNavigation:
   Enabled: false
 

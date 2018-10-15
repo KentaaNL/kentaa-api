@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'net/http'
 require 'uri'
@@ -5,8 +7,8 @@ require 'uri'
 module Kentaa
   module Api
     class Http
-      LIVE_URL = "https://api.kentaa.nl/v1/".freeze
-      TEST_URL = "https://api.kentaa.staatklaar.nu/v1/".freeze
+      LIVE_URL = "https://api.kentaa.nl/v1/"
+      TEST_URL = "https://api.kentaa.staatklaar.nu/v1/"
 
       def initialize(api_key, options = {})
         @api_key = api_key

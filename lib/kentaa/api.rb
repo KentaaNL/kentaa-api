@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "api/requests/base"
 require_relative "api/requests/all"
 
