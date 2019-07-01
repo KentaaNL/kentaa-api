@@ -152,7 +152,7 @@ module Kentaa
         end
 
         def birthday
-          data[:birthday]
+          Time.parse(data[:birthday]) if data[:birthday]
         end
 
         def gender

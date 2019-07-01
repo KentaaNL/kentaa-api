@@ -45,8 +45,16 @@ module Kentaa
           data[:last_name]
         end
 
+        def avatar_url
+          data[:avatar_url]
+        end
+
         def name
           [first_name, infix, last_name].compact.join(" ")
+        end
+
+        def fundraiser_page?
+          data[:fundraiser_page]
         end
 
         def title

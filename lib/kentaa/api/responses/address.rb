@@ -14,6 +14,18 @@ module Kentaa
           data[:address2]
         end
 
+        def street
+          data[:street]
+        end
+
+        def house_number
+          data[:house_number]
+        end
+
+        def house_number_addition
+          data[:house_number_addition]
+        end
+
         def zipcode
           data[:zipcode]
         end

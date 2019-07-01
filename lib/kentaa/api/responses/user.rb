@@ -49,11 +49,11 @@ module Kentaa
         end
 
         def house_number_addition
-          data[:house_number]
+          data[:house_number_addition]
         end
 
         def zipcode
-          data[:house_number]
+          data[:zipcode]
         end
 
         def city
