@@ -8,12 +8,12 @@ module Kentaa
 
         def list(options = {})
           response = request.get("/donations", options)
-          Kentaa::Api::Responses::Donations.build(response)
+          Kentaa::Api::Responses::Donations.new(response)
         end
 
         def get(id)
           response = request.get("/donations/#{id}")
-          Kentaa::Api::Responses::Donation.build(response)
+          Kentaa::Api::Responses::Donation.new(response)
         end
       end
     end
