@@ -6,50 +6,38 @@ module Kentaa
   module Api
     module Responses
       class Base
-        attr_reader :response, :body, :data
+        attr_reader :data
 
-        def initialize(response)
-          if response.respond_to?(:body)
-            @response = response
-            @body = parse_body(response.body)
-            @data = body[attribute_key]
-          else
-            @body = response
-            @data = body
+        def initialize(data)
+          @data = data || {}
+        end
+
+        class << self
+          def build(response)
+            body = parse_body(response.body)
+            data = body[attribute_key]
+
+            object = new(data)
+            object.extend(Kentaa::Api::Responses::Response)
+            object.response = response
+            object.body = body
+            object
           end
-        end
 
-        def success?
-          (response_code == 200 || response_code == 201) && !@invalid
-        end
+          private
 
-        def error?
-          !success?
-        end
+          def parse_body(body)
+            JSON.parse(body, symbolize_names: true)
+          rescue JSON::ParserError => e
+            {
+              message: "Unable to parse JSON: #{e.message}"
+            }
+          end
 
-        def message
-          body[:message]
-        end
-
-        private
-
-        def response_code
-          response.code.to_i if response
-        end
-
-        def parse_body(body)
-          JSON.parse(body, symbolize_names: true)
-        rescue JSON::ParserError => e
-          @invalid = true
-
-          {
-            message: "Unable to parse JSON: #{e.message}"
-          }
-        end
-
-        def attribute_key
-          class_name = self.class.name.split("::").last
-          class_name.gsub(/([^\^])([A-Z])/, '\1_\2').downcase.to_sym
+          def attribute_key
+            class_name = name.split("::").last
+            class_name.gsub(/([^\^])([A-Z])/, '\1_\2').downcase.to_sym
+          end
         end
       end
     end

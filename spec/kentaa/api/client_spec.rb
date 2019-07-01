@@ -45,7 +45,7 @@ describe Kentaa::Api::Client do
 
   describe '#actions' do
     describe '#all' do
-      it 'returns a enumerator for retrieving all actions' do
+      it 'returns an enumerator for retrieving all actions' do
         data = File.read("spec/fixtures/responses/actions.json")
         stub_request(:get, "https://api.kentaa.nl/v1/actions?page=1").to_return(status: 200, body: data)
         data = File.read("spec/fixtures/responses/404.json")
@@ -94,7 +94,7 @@ describe Kentaa::Api::Client do
 
   describe '#donations' do
     describe '#all' do
-      it 'returns a enumerator for retrieving all donations' do
+      it 'returns an enumerator for retrieving all donations' do
         data = File.read("spec/fixtures/responses/donations.json")
         stub_request(:get, "https://api.kentaa.nl/v1/donations?page=1").to_return(status: 200, body: data)
         data = File.read("spec/fixtures/responses/404.json")
@@ -143,7 +143,7 @@ describe Kentaa::Api::Client do
 
   describe '#newsletter_subscriptions' do
     describe '#all' do
-      it 'returns a enumerator for retrieving all newsletter subscriptions' do
+      it 'returns an enumerator for retrieving all newsletter subscriptions' do
         data = File.read("spec/fixtures/responses/newsletter_subscriptions.json")
         stub_request(:get, "https://api.kentaa.nl/v1/newsletter-subscriptions?page=1").to_return(status: 200, body: data)
 
@@ -165,11 +165,32 @@ describe Kentaa::Api::Client do
         expect(newsletter_subscriptions.total_entries).to eq(3)
       end
     end
+
+    describe '#get' do
+      it 'returns a single newsletter subscription' do
+        data = File.read("spec/fixtures/responses/newsletter_subscription.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/newsletter-subscriptions/1").to_return(status: 200, body: data)
+
+        newsletter_subscription = client.newsletter_subscriptions.get(1)
+        expect(newsletter_subscription).to be_a(Kentaa::Api::Responses::NewsletterSubscription)
+        expect(newsletter_subscription.error?).to be false
+        expect(newsletter_subscription.email).to be
+      end
+
+      it 'returns an error when the newsletter subscription was not found' do
+        data = File.read("spec/fixtures/responses/404.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/newsletter-subscriptions/1").to_return(status: 404, body: data)
+
+        newsletter_subscription = client.newsletter_subscriptions.get(1)
+        expect(newsletter_subscription).to be_a(Kentaa::Api::Responses::NewsletterSubscription)
+        expect(newsletter_subscription.error?).to be true
+      end
+    end
   end
 
   describe '#projects' do
     describe '#all' do
-      it 'returns a enumerator for retrieving all projects' do
+      it 'returns an enumerator for retrieving all projects' do
         data = File.read("spec/fixtures/responses/projects.json")
         stub_request(:get, "https://api.kentaa.nl/v1/projects?page=1").to_return(status: 200, body: data)
         data = File.read("spec/fixtures/responses/404.json")
@@ -218,7 +239,7 @@ describe Kentaa::Api::Client do
 
   describe '#segments' do
     describe '#all' do
-      it 'returns a enumerator for retrieving all segments' do
+      it 'returns an enumerator for retrieving all segments' do
         data = File.read("spec/fixtures/responses/segments.json")
         stub_request(:get, "https://api.kentaa.nl/v1/segments?page=1").to_return(status: 200, body: data)
         data = File.read("spec/fixtures/responses/404.json")
@@ -281,7 +302,7 @@ describe Kentaa::Api::Client do
 
   describe '#teams' do
     describe '#all' do
-      it 'returns a enumerator for retrieving all teams' do
+      it 'returns an enumerator for retrieving all teams' do
         data = File.read("spec/fixtures/responses/teams.json")
         stub_request(:get, "https://api.kentaa.nl/v1/teams?page=1").to_return(status: 200, body: data)
         data = File.read("spec/fixtures/responses/404.json")

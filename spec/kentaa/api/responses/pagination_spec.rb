@@ -5,7 +5,9 @@ require "spec_helper"
 describe Kentaa::Api::Responses::Pagination do
   subject(:response) do
     data = JSON.parse(File.read("spec/fixtures/responses/actions.json"), symbolize_names: true)
-    Kentaa::Api::Responses::Actions.new(data)
+    response = Kentaa::Api::Responses::Actions.new(data[:actions])
+    response.body = data
+    response
   end
 
   describe '#links' do

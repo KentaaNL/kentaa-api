@@ -8,12 +8,12 @@ module Kentaa
 
         def list(options = {})
           response = request.get("/segments", options)
-          Kentaa::Api::Responses::Segments.new(response)
+          Kentaa::Api::Responses::Segments.build(response)
         end
 
         def get(id)
           response = request.get("/segments/#{id}")
-          Kentaa::Api::Responses::Segment.new(response)
+          Kentaa::Api::Responses::Segment.build(response)
         end
       end
     end

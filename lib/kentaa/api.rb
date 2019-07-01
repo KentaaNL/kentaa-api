@@ -15,6 +15,7 @@ require_relative "api/requests/users"
 require_relative "api/responses/base"
 require_relative "api/responses/pagination"
 require_relative "api/responses/resource"
+require_relative "api/responses/response"
 
 require_relative "api/responses/action"
 require_relative "api/responses/actions"

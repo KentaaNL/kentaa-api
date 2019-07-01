@@ -8,12 +8,12 @@ module Kentaa
 
         def list(options = {})
           response = request.get("/newsletter-subscriptions", options)
-          Kentaa::Api::Responses::NewsletterSubscriptions.new(response)
+          Kentaa::Api::Responses::NewsletterSubscriptions.build(response)
         end
 
         def get(id)
           response = request.get("/newsletter-subscriptions/#{id}")
-          Kentaa::Api::Responses::NewsletterSubscription.new(response)
+          Kentaa::Api::Responses::NewsletterSubscription.build(response)
         end
       end
     end

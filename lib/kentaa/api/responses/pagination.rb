@@ -4,6 +4,8 @@ module Kentaa
   module Api
     module Responses
       module Pagination
+        attr_accessor :body
+
         def links
           body[:links]
         end

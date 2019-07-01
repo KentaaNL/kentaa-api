@@ -8,12 +8,12 @@ module Kentaa
 
         def list(options = {})
           response = request.get("/teams", options)
-          Kentaa::Api::Responses::Teams.new(response)
+          Kentaa::Api::Responses::Teams.build(response)
         end
 
         def get(id)
           response = request.get("/teams/#{id}")
-          Kentaa::Api::Responses::Team.new(response)
+          Kentaa::Api::Responses::Team.build(response)
         end
       end
     end
