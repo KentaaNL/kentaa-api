@@ -127,7 +127,7 @@ describe Kentaa::Api::Client do
         donation = client.donations.get(1)
         expect(donation).to be_a(Kentaa::Api::Responses::Donation)
         expect(donation.error?).to be false
-        expect(donation.amount).to be
+        expect(donation.amount).not_to be nil
       end
 
       it 'returns an error when the donation was not found' do
@@ -136,7 +136,7 @@ describe Kentaa::Api::Client do
 
         donation = client.donations.get(1)
         expect(donation).to be_a(Kentaa::Api::Responses::Donation)
-        expect(donation.error?).to be true
+        expect(donation.error?).not_to be nil
       end
     end
   end
@@ -174,7 +174,7 @@ describe Kentaa::Api::Client do
         newsletter_subscription = client.newsletter_subscriptions.get(1)
         expect(newsletter_subscription).to be_a(Kentaa::Api::Responses::NewsletterSubscription)
         expect(newsletter_subscription.error?).to be false
-        expect(newsletter_subscription.email).to be
+        expect(newsletter_subscription.email).not_to be nil
       end
 
       it 'returns an error when the newsletter subscription was not found' do
@@ -272,7 +272,7 @@ describe Kentaa::Api::Client do
         segment = client.segments.get(1)
         expect(segment).to be_a(Kentaa::Api::Responses::Segment)
         expect(segment.error?).to be false
-        expect(segment.title).to be
+        expect(segment.title).not_to be nil
       end
 
       it 'returns an error when the segment was not found' do
@@ -295,7 +295,7 @@ describe Kentaa::Api::Client do
         site = client.sites.current
         expect(site).to be_a(Kentaa::Api::Responses::Site)
         expect(site.error?).to be false
-        expect(site.title).to be
+        expect(site.title).not_to be nil
       end
     end
   end
@@ -335,7 +335,7 @@ describe Kentaa::Api::Client do
         team = client.teams.get(1)
         expect(team).to be_a(Kentaa::Api::Responses::Team)
         expect(team.error?).to be false
-        expect(team.name).to be
+        expect(team.name).not_to be nil
       end
 
       it 'returns an error when the team was not found' do
