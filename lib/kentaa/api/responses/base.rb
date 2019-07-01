@@ -39,11 +39,11 @@ module Kentaa
 
         def parse_body(body)
           JSON.parse(body, symbolize_names: true)
-        rescue JSON::ParserError => ex
+        rescue JSON::ParserError => e
           @invalid = true
 
           {
-            message: "Unable to parse JSON: #{ex.message}"
+            message: "Unable to parse JSON: #{e.message}"
           }
         end
 
