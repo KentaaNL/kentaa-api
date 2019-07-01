@@ -4,8 +4,8 @@ require "spec_helper"
 
 describe Kentaa::Api::Responses::NewsletterSubscription do
   subject(:response) do
-    data = JSON.parse(File.read("spec/fixtures/responses/newsletter_subscriptions.json"), symbolize_names: true)
-    Kentaa::Api::Responses::NewsletterSubscription.new(data[:newsletter_subscriptions].first)
+    data = JSON.parse(File.read("spec/fixtures/responses/newsletter_subscription.json"), symbolize_names: true)
+    Kentaa::Api::Responses::NewsletterSubscription.new(data[:newsletter_subscription])
   end
 
   describe '#id' do
@@ -23,6 +23,18 @@ describe Kentaa::Api::Responses::NewsletterSubscription do
   describe '#updated_at' do
     it 'returns the updated_at timestamp' do
       expect(response.updated_at).to be_a(Time)
+    end
+  end
+
+  describe '#first_name' do
+    it 'returns the first name' do
+      expect(response.first_name).to eq("John")
+    end
+  end
+
+  describe '#last_name' do
+    it 'returns the email address' do
+      expect(response.last_name).to eq("Doe")
     end
   end
 

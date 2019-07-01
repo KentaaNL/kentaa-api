@@ -7,10 +7,6 @@ module Kentaa
         include Enumerable
         include Kentaa::Api::Responses::Pagination
 
-        def initialize(response)
-          super(response)
-        end
-
         def each(&block)
           projects.each(&block)
         end
@@ -21,8 +17,8 @@ module Kentaa
           @projects ||= begin
             projects = []
 
-            if data[:projects]
-              data[:projects].each do |project|
+            if data
+              data.each do |project|
                 projects << Kentaa::Api::Responses::Project.new(project)
               end
             end

@@ -5,7 +5,7 @@ require "spec_helper"
 describe Kentaa::Api::Responses::Site do
   subject(:response) do
     data = JSON.parse(File.read("spec/fixtures/responses/site.json"), symbolize_names: true)
-    Kentaa::Api::Responses::Site.new(data)
+    Kentaa::Api::Responses::Site.new(data[:site])
   end
 
   describe '#created_at' do

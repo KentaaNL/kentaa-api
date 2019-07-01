@@ -9,10 +9,6 @@ module Kentaa
       class Action < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response[:action] || response)
-        end
-
         def slug
           data[:slug]
         end
@@ -30,7 +26,27 @@ module Kentaa
         end
 
         def owner
-          @owner ||= Kentaa::Api::Responses::Owner.new(data[:owner])
+          @owner ||= Kentaa::Api::Responses::User.new(data[:owner])
+        end
+
+        def team_captain?
+          data[:team_captain]
+        end
+
+        def first_name
+          data[:first_name]
+        end
+
+        def infix
+          data[:infix]
+        end
+
+        def last_name
+          data[:last_name]
+        end
+
+        def name
+          [first_name, infix, last_name].compact.join(" ")
         end
 
         def title
@@ -53,12 +69,36 @@ module Kentaa
           data[:total_donations]
         end
 
+        def target_amount_achieved?
+          data[:target_amount_achieved]
+        end
+
         def visible?
           data[:visible]
         end
 
+        def countable?
+          data[:countable]
+        end
+
+        def closed?
+          data[:closed]
+        end
+
+        def ended?
+          data[:ended]
+        end
+
         def end_date
           Time.parse(data[:end_date]) if data[:end_date]
+        end
+
+        def activity
+          @activity ||= Kentaa::Api::Responses::Activity.new(data[:activity])
+        end
+
+        def previous_participations
+          data[:previous_participations]
         end
 
         def url
@@ -67,6 +107,14 @@ module Kentaa
 
         def donate_url
           data[:donate_url]
+        end
+
+        def registration_fee
+          @registration_fee ||= Kentaa::Api::Responses::RegistrationFee.new(data[:registration_fee])
+        end
+
+        def location
+          @location ||= Kentaa::Api::Responses::Location.new(data[:location])
         end
 
         def photos
@@ -109,6 +157,14 @@ module Kentaa
 
             questions
           end
+        end
+
+        def consent
+          @consent ||= Kentaa::Api::Responses::Consent.new(data[:consent]) if data[:consent]
+        end
+
+        def external_reference
+          data[:external_reference]
         end
       end
     end

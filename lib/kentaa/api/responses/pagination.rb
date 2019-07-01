@@ -5,7 +5,7 @@ module Kentaa
     module Responses
       module Pagination
         def links
-          data[:links]
+          body[:links]
         end
 
         def pages
@@ -13,19 +13,19 @@ module Kentaa
         end
 
         def total_entries
-          data[:total_entries]
+          body[:total_entries]
         end
 
         def total_pages
-          data[:total_pages]
+          body[:total_pages]
         end
 
         def per_page
-          data[:per_page]
+          body[:per_page]
         end
 
         def current_page
-          data[:current_page]
+          body[:current_page]
         end
 
         def next_page

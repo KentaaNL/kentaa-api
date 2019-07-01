@@ -5,7 +5,7 @@ module Kentaa
     module Requests
       class Sites < Base
         def current
-          response = http.get("/sites/current")
+          response = request.get("/sites/current")
           Kentaa::Api::Responses::Site.new(response)
         end
       end

@@ -7,10 +7,6 @@ module Kentaa
         include Enumerable
         include Kentaa::Api::Responses::Pagination
 
-        def initialize(response)
-          super(response)
-        end
-
         def each(&block)
           newsletter_subscriptions.each(&block)
         end
@@ -21,8 +17,8 @@ module Kentaa
           @newsletter_subscriptions ||= begin
             newsletter_subscriptions = []
 
-            if data[:newsletter_subscriptions]
-              data[:newsletter_subscriptions].each do |newsletter_subscription|
+            if data
+              data.each do |newsletter_subscription|
                 newsletter_subscriptions << Kentaa::Api::Responses::NewsletterSubscription.new(newsletter_subscription)
               end
             end

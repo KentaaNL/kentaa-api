@@ -7,12 +7,12 @@ module Kentaa
         include Kentaa::Api::Requests::All
 
         def list(options = {})
-          response = http.get("/segments", options)
+          response = request.get("/segments", options)
           Kentaa::Api::Responses::Segments.new(response)
         end
 
         def get(id)
-          response = http.get("/segments/#{id}")
+          response = request.get("/segments/#{id}")
           Kentaa::Api::Responses::Segment.new(response)
         end
       end

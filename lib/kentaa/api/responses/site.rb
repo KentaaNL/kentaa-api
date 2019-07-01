@@ -9,10 +9,6 @@ module Kentaa
       class Site < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response[:site] || response)
-        end
-
         def host
           data[:host]
         end
@@ -65,6 +61,10 @@ module Kentaa
           data[:owner_email]
         end
 
+        def default_currency
+          data[:default_currency]
+        end
+
         def banners
           @banners ||= begin
             banners = []
@@ -77,6 +77,10 @@ module Kentaa
 
             banners
           end
+        end
+
+        def external_reference
+          data[:external_reference]
         end
       end
     end

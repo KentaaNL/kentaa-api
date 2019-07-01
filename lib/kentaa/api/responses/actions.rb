@@ -7,10 +7,6 @@ module Kentaa
         include Enumerable
         include Kentaa::Api::Responses::Pagination
 
-        def initialize(response)
-          super(response)
-        end
-
         def each(&block)
           actions.each(&block)
         end
@@ -21,8 +17,8 @@ module Kentaa
           @actions ||= begin
             actions = []
 
-            if data[:actions]
-              data[:actions].each do |action|
+            if data
+              data.each do |action|
                 actions << Kentaa::Api::Responses::Action.new(action)
               end
             end

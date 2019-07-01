@@ -6,9 +6,10 @@ require 'uri'
 
 module Kentaa
   module Api
-    class Http
+    class Request
       LIVE_URL = "https://api.kentaa.nl/v1/"
       TEST_URL = "https://api.kentaa.staatklaar.nu/v1/"
+      DEV_URL  = "http://api.lvh.me:3000/v1"
 
       def initialize(api_key, options = {})
         @api_key = api_key
@@ -26,13 +27,7 @@ module Kentaa
           http.request(request)
         end
 
-        begin
-          JSON.parse(response.body, symbolize_names: true)
-        rescue JSON::ParserError => ex
-          {
-            message: "Unable to parse JSON: #{ex.message}"
-          }
-        end
+        response
       end
 
       private
@@ -40,6 +35,8 @@ module Kentaa
       def api_url
         if @options[:test]
           TEST_URL
+        elsif @options[:dev]
+          DEV_URL
         else
           LIVE_URL
         end

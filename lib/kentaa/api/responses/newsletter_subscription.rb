@@ -6,8 +6,20 @@ module Kentaa
       class NewsletterSubscription < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response)
+        def first_name
+          data[:first_name]
+        end
+
+        def infix
+          data[:infix]
+        end
+
+        def last_name
+          data[:last_name]
+        end
+
+        def name
+          [first_name, infix, last_name].compact.join(" ")
         end
 
         def segment_id
@@ -28,6 +40,10 @@ module Kentaa
 
         def subscription_url
           data[:subscription_url]
+        end
+
+        def consent
+          @consent ||= Kentaa::Api::Responses::Consent.new(data[:consent]) if data[:consent]
         end
       end
     end

@@ -9,10 +9,6 @@ module Kentaa
       class Segment < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response[:segment] || response)
-        end
-
         def subdomain
           data[:subdomain]
         end
@@ -65,6 +61,10 @@ module Kentaa
 
             banners
           end
+        end
+
+        def external_reference
+          data[:external_reference]
         end
       end
     end

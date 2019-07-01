@@ -6,10 +6,6 @@ module Kentaa
       class Address < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response)
-        end
-
         def address
           data[:address]
         end

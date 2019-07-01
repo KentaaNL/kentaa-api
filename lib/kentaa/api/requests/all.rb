@@ -10,7 +10,7 @@ module Kentaa
 
             loop do
               response = list(options.merge(page: page))
-              response.each { |item| yielder.yield item } unless response.error?
+              response.each { |item| yielder.yield item } if response.success?
 
               raise StopIteration unless response.next_page?
 

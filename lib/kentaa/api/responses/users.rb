@@ -3,27 +3,27 @@
 module Kentaa
   module Api
     module Responses
-      class Segments < Base
+      class Users < Base
         include Enumerable
         include Kentaa::Api::Responses::Pagination
 
         def each(&block)
-          segments.each(&block)
+          users.each(&block)
         end
 
         private
 
-        def segments
-          @segments ||= begin
-            segments = []
+        def users
+          @users ||= begin
+            users = []
 
             if data
-              data.each do |segment|
-                segments << Kentaa::Api::Responses::Segment.new(segment)
+              data.each do |user|
+                segments << Kentaa::Api::Responses::User.new(user)
               end
             end
 
-            segments
+            users
           end
         end
       end

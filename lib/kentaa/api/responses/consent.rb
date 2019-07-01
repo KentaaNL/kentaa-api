@@ -3,11 +3,17 @@
 module Kentaa
   module Api
     module Responses
-      class Photo < Base
-        include Kentaa::Api::Responses::Resource
-
+      class Consent < Base
         def url
           data[:url]
+        end
+
+        def text
+          data[:text]
+        end
+
+        def version
+          data[:version]
         end
       end
     end

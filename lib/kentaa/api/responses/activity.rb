@@ -3,11 +3,11 @@
 module Kentaa
   module Api
     module Responses
-      class Photo < Base
+      class Activity < Base
         include Kentaa::Api::Responses::Resource
 
-        def url
-          data[:url]
+        def name
+          data[:name]
         end
       end
     end

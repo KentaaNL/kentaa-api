@@ -66,6 +66,7 @@ describe Kentaa::Api::Client do
         expect(actions).to be_a(Kentaa::Api::Responses::Actions)
         expect(actions.error?).to be false
         expect(actions.count).to eq(2)
+        expect(actions.total_entries).to eq(34)
       end
     end
 
@@ -77,6 +78,7 @@ describe Kentaa::Api::Client do
         action = client.actions.get(1)
         expect(action).to be_a(Kentaa::Api::Responses::Action)
         expect(action.error?).to be false
+        expect(action.title).to eq("Lorem ipsum")
       end
 
       it 'returns an error when the action was not found' do
@@ -113,6 +115,7 @@ describe Kentaa::Api::Client do
         expect(donations).to be_a(Kentaa::Api::Responses::Donations)
         expect(donations.error?).to be false
         expect(donations.count).to eq(1)
+        expect(donations.total_entries).to eq(31)
       end
     end
 
@@ -159,6 +162,7 @@ describe Kentaa::Api::Client do
         expect(newsletter_subscriptions).to be_a(Kentaa::Api::Responses::NewsletterSubscriptions)
         expect(newsletter_subscriptions.error?).to be false
         expect(newsletter_subscriptions.count).to eq(3)
+        expect(newsletter_subscriptions.total_entries).to eq(3)
       end
     end
   end
@@ -186,6 +190,7 @@ describe Kentaa::Api::Client do
         expect(projects).to be_a(Kentaa::Api::Responses::Projects)
         expect(projects.error?).to be false
         expect(projects.count).to eq(2)
+        expect(projects.total_entries).to eq(6)
       end
     end
 
@@ -197,7 +202,7 @@ describe Kentaa::Api::Client do
         project = client.projects.get(1)
         expect(project).to be_a(Kentaa::Api::Responses::Project)
         expect(project.error?).to be false
-        expect(project.title).to be
+        expect(project.title).to eq("Dignissimos provident rerum enim alias magni asperna...")
       end
 
       it 'returns an error when the project was not found' do
@@ -234,6 +239,7 @@ describe Kentaa::Api::Client do
         expect(segments).to be_a(Kentaa::Api::Responses::Segments)
         expect(segments.error?).to be false
         expect(segments.count).to eq(1)
+        expect(segments.total_entries).to eq(3)
       end
     end
 
@@ -296,6 +302,7 @@ describe Kentaa::Api::Client do
         expect(teams).to be_a(Kentaa::Api::Responses::Teams)
         expect(teams.error?).to be false
         expect(teams.count).to eq(1)
+        expect(teams.total_entries).to eq(8)
       end
     end
 

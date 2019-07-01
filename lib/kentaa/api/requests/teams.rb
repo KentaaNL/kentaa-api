@@ -7,12 +7,12 @@ module Kentaa
         include Kentaa::Api::Requests::All
 
         def list(options = {})
-          response = http.get("/teams", options)
+          response = request.get("/teams", options)
           Kentaa::Api::Responses::Teams.new(response)
         end
 
         def get(id)
-          response = http.get("/teams/#{id}")
+          response = request.get("/teams/#{id}")
           Kentaa::Api::Responses::Team.new(response)
         end
       end

@@ -7,10 +7,6 @@ module Kentaa
         include Enumerable
         include Kentaa::Api::Responses::Pagination
 
-        def initialize(response)
-          super(response)
-        end
-
         def each(&block)
           donations.each(&block)
         end
@@ -21,8 +17,8 @@ module Kentaa
           @donations ||= begin
             donations = []
 
-            if data[:donations]
-              data[:donations].each do |donation|
+            if data
+              data.each do |donation|
                 donations << Kentaa::Api::Responses::Donation.new(donation)
               end
             end

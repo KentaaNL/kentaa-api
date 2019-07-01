@@ -5,7 +5,7 @@ require "spec_helper"
 describe Kentaa::Api::Responses::Donation do
   subject(:response) do
     data = JSON.parse(File.read("spec/fixtures/responses/donation.json"), symbolize_names: true)
-    Kentaa::Api::Responses::Donation.new(data)
+    Kentaa::Api::Responses::Donation.new(data[:donation])
   end
 
   describe '#id' do

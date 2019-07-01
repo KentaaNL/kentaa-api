@@ -5,7 +5,7 @@ require "spec_helper"
 describe Kentaa::Api::Responses::Team do
   subject(:response) do
     data = JSON.parse(File.read("spec/fixtures/responses/team.json"), symbolize_names: true)
-    Kentaa::Api::Responses::Team.new(data)
+    Kentaa::Api::Responses::Team.new(data[:team])
   end
 
   describe '#id' do
@@ -46,7 +46,7 @@ describe Kentaa::Api::Responses::Team do
 
   describe '#owner' do
     it 'returns the team owner' do
-      expect(response.owner).to be_a(Kentaa::Api::Responses::Owner)
+      expect(response.owner).to be_a(Kentaa::Api::Responses::User)
       expect(response.owner.first_name).to eq("John")
       expect(response.owner.last_name).to eq("Doe")
       expect(response.owner.email).to eq("john.doe@kentaa.nl")

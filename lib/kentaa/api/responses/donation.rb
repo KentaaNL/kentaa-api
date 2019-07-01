@@ -9,10 +9,6 @@ module Kentaa
       class Donation < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response[:donation] || response)
-        end
-
         def segment_id
           data[:segment_id]
         end
@@ -49,6 +45,10 @@ module Kentaa
           data[:company]
         end
 
+        def anonymous?
+          data[:anonymous]
+        end
+
         def email
           data[:email]
         end
@@ -69,6 +69,10 @@ module Kentaa
           data[:locale]
         end
 
+        def currency
+          data[:currency]
+        end
+
         def amount
           BigDecimal(data[:amount])
         end
@@ -87,6 +91,10 @@ module Kentaa
 
         def total_amount
           BigDecimal(data[:total_amount])
+        end
+
+        def countable?
+          data[:countable]
         end
 
         def invoicenumber
@@ -113,6 +121,10 @@ module Kentaa
           data[:payment_id]
         end
 
+        def payment_description
+          data[:payment_description]
+        end
+
         def target_url
           data[:target_url]
         end
@@ -137,6 +149,22 @@ module Kentaa
 
         def address
           @address ||= Kentaa::Api::Responses::Address.new(data[:address]) if data[:address]
+        end
+
+        def birthday
+          data[:birthday]
+        end
+
+        def gender
+          data[:gender]
+        end
+
+        def phone
+          data[:phone]
+        end
+
+        def consent
+          @consent ||= Kentaa::Api::Responses::Consent.new(data[:consent]) if data[:consent]
         end
       end
     end

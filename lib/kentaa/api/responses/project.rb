@@ -9,10 +9,6 @@ module Kentaa
       class Project < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response[:project] || response)
-        end
-
         def slug
           data[:slug]
         end
@@ -41,8 +37,24 @@ module Kentaa
           data[:total_donations]
         end
 
+        def target_amount_achieved?
+          data[:target_amount_achieved]
+        end
+
         def visible?
           data[:visible]
+        end
+
+        def countable?
+          data[:countable]
+        end
+
+        def closed?
+          data[:closed]
+        end
+
+        def ended?
+          data[:ended]
         end
 
         def end_date
@@ -55,6 +67,10 @@ module Kentaa
 
         def donate_url
           data[:donate_url]
+        end
+
+        def location
+          @location ||= Kentaa::Api::Responses::Location.new(data[:location])
         end
 
         def photos
@@ -97,6 +113,14 @@ module Kentaa
 
             questions
           end
+        end
+
+        def consent
+          @consent ||= Kentaa::Api::Responses::Consent.new(data[:consent]) if data[:consent]
+        end
+
+        def external_reference
+          data[:external_reference]
         end
       end
     end

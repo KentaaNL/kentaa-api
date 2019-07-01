@@ -4,10 +4,10 @@ module Kentaa
   module Api
     module Requests
       class Base
-        attr_reader :http
+        attr_reader :request
 
-        def initialize(http)
-          @http = http
+        def initialize(request)
+          @request = request
         end
       end
     end

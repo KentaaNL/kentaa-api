@@ -6,10 +6,6 @@ module Kentaa
       class Banner < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response)
-        end
-
         def url
           data[:url]
         end

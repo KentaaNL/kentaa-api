@@ -6,10 +6,6 @@ module Kentaa
       class Reward < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response)
-        end
-
         def type
           data[:type]
         end

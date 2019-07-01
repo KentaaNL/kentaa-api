@@ -9,10 +9,6 @@ module Kentaa
       class Team < Base
         include Kentaa::Api::Responses::Resource
 
-        def initialize(response)
-          super(response[:team] || response)
-        end
-
         def slug
           data[:slug]
         end
@@ -26,7 +22,7 @@ module Kentaa
         end
 
         def owner
-          @owner ||= Kentaa::Api::Responses::Owner.new(data[:owner])
+          @owner ||= Kentaa::Api::Responses::User.new(data[:owner])
         end
 
         def members
@@ -67,8 +63,24 @@ module Kentaa
           data[:total_donations]
         end
 
+        def target_amount_achieved?
+          data[:target_amount_achieved]
+        end
+
         def visible?
           data[:visible]
+        end
+
+        def countable?
+          data[:countable]
+        end
+
+        def closed?
+          data[:closed]
+        end
+
+        def ended?
+          data[:ended]
         end
 
         def end_date
@@ -123,6 +135,10 @@ module Kentaa
 
             questions
           end
+        end
+
+        def external_reference
+          data[:external_reference]
         end
       end
     end
