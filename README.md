@@ -96,6 +96,9 @@ See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/donations).
 ```ruby
 newsletter_subscriptions = client.newsletter_subscriptions.all    # get newsletter subscriptions (paginated)
 newsletter_subscriptions = client.newsletter_subscriptions.list   # get all newsletter subscriptions (non-paginated)
+
+
+newsletter_subscriptions = client.newsletter_subscriptions.get(1) # query newsletter subscription by ID
 ```
 
 See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/newsletter-subscriptions).
@@ -144,6 +147,18 @@ team = client.teams.get("team")    # query team by slug
 ```
 
 See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/teams).
+
+
+#### Users
+
+```ruby
+users = client.users.list          # get users (paginated)
+users = client.users.all           # get all users (non-paginated)
+
+user = client.users.get(1)         # query user by ID
+```
+
+See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/users).
 
 
 ## Development
