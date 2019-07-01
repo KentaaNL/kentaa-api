@@ -14,25 +14,15 @@ module Kentaa
 
         class << self
           def build(response)
-            body = parse_body(response.body)
-            data = body[attribute_key]
+            data = response.body[attribute_key]
 
             object = new(data)
-            object.extend(Kentaa::Api::Responses::Response)
+            object.extend(Kentaa::Api::Responses::Status)
             object.response = response
-            object.body = body
             object
           end
 
           private
-
-          def parse_body(body)
-            JSON.parse(body, symbolize_names: true)
-          rescue JSON::ParserError => e
-            {
-              message: "Unable to parse JSON: #{e.message}"
-            }
-          end
 
           def attribute_key
             class_name = name.split("::").last

@@ -15,7 +15,7 @@ require_relative "api/requests/users"
 require_relative "api/responses/base"
 require_relative "api/responses/pagination"
 require_relative "api/responses/resource"
-require_relative "api/responses/response"
+require_relative "api/responses/status"
 
 require_relative "api/responses/action"
 require_relative "api/responses/actions"
@@ -45,5 +45,6 @@ require_relative "api/responses/video"
 
 require_relative "api/client"
 require_relative "api/request"
+require_relative "api/response"
 
 require_relative "api/version"

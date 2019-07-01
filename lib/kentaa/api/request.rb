@@ -27,7 +27,7 @@ module Kentaa
           http.request(request)
         end
 
-        response
+        Kentaa::Api::Response.new(response)
       end
 
       private
