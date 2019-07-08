@@ -78,7 +78,7 @@ action = client.actions.get(1)            # query action by ID
 action = client.actions.get("john-doe")   # query action by slug
 ```
 
-See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/actions).
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/actions).
 
 #### Donations
 
@@ -89,7 +89,7 @@ donations = client.donations.all     # get all donations (non-paginated)
 donation = client.donations.get(1)   # query donation by ID
 ```
 
-See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/donations).
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donations).
 
 #### Newsletter subscriptions
 
@@ -101,7 +101,7 @@ newsletter_subscriptions = client.newsletter_subscriptions.list   # get all news
 newsletter_subscriptions = client.newsletter_subscriptions.get(1) # query newsletter subscription by ID
 ```
 
-See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/newsletter-subscriptions).
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/newsletter-subscriptions).
 
 #### Projects
 
@@ -113,7 +113,7 @@ project = client.projects.get(1)           # query project by ID
 project = client.projects.get("project")   # query project by slug
 ```
 
-See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/projects).
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/projects).
 
 #### Segments
 
@@ -124,7 +124,7 @@ segments = client.segments.all     # get all segments (non-paginated)
 segment = client.segments.get(1)   # query segment by ID
 ```
 
-See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/segments).
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/segments).
 
 #### Sites
 
@@ -134,7 +134,7 @@ The only method here is `current`, since there is only one site.
 site = client.sites.current    # get the current site
 ```
 
-See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/sites).
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/sites).
 
 #### Teams
 
@@ -146,7 +146,7 @@ team = client.teams.get(1)         # query team by ID
 team = client.teams.get("team")    # query team by slug
 ```
 
-See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/teams).
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/teams).
 
 
 #### Users
@@ -158,7 +158,7 @@ users = client.users.all           # get all users (non-paginated)
 user = client.users.get(1)         # query user by ID
 ```
 
-See also the [Kentaa API documention](https://api.kentaa.nl/v1/doc/users).
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/users).
 
 
 ## Development
