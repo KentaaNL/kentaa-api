@@ -9,6 +9,28 @@ module Kentaa
       class Donation < Base
         include Kentaa::Api::Responses::Resource
 
+        def object_key
+          "Donation_#{id}"
+        end
+
+        def entity
+          if action_id
+            Action.new(id: action_id)
+          elsif team_id
+            Team.new(id: team_id)
+          elsif project_id
+            Project.new(id: project_id)
+          elsif segment_id
+            Segment.new(id: segment_id)
+          else
+            Site.new(id: site_id)
+          end
+        end
+
+        def site_id
+          data[:site_id]
+        end
+
         def segment_id
           data[:segment_id]
         end

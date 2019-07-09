@@ -38,6 +38,10 @@ module Kentaa
       def users
         Kentaa::Api::Requests::Users.new(@request)
       end
+
+      def finder
+        Kentaa::Api::Finder.new(self)
+      end
     end
   end
 end

@@ -9,8 +9,24 @@ module Kentaa
       class Project < Base
         include Kentaa::Api::Responses::Resource
 
+        def object_key
+          "Project_#{id}"
+        end
+
+        def parent
+          if segment_id
+            Segment.new(id: segment_id)
+          else
+            Site.new(id: site_id)
+          end
+        end
+
         def slug
           data[:slug]
+        end
+
+        def site_id
+          data[:site_id]
         end
 
         def segment_id

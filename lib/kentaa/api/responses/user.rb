@@ -8,6 +8,14 @@ module Kentaa
       class User < Base
         include Kentaa::Api::Responses::Resource
 
+        def object_key
+          "User_#{id}"
+        end
+
+        def site_id
+          data[:site_id]
+        end
+
         def first_name
           data[:first_name]
         end

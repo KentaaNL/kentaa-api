@@ -45,6 +45,7 @@ require_relative "api/responses/video"
 
 require_relative "api/client"
 require_relative "api/config"
+require_relative "api/finder"
 require_relative "api/request"
 require_relative "api/response"
 

@@ -9,6 +9,14 @@ module Kentaa
       class Segment < Base
         include Kentaa::Api::Responses::Resource
 
+        def object_key
+          "Segment_#{id}"
+        end
+
+        def site_id
+          data[:site_id]
+        end
+
         def subdomain
           data[:subdomain]
         end

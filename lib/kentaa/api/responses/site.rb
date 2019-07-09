@@ -9,6 +9,10 @@ module Kentaa
       class Site < Base
         include Kentaa::Api::Responses::Resource
 
+        def object_key
+          "Site_#{id}"
+        end
+
         def host
           data[:host]
         end
