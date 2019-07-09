@@ -3,8 +3,8 @@
 module Kentaa
   module Api
     class Client
-      def initialize(api_key, options = {})
-        @request = Kentaa::Api::Request.new(api_key, options)
+      def initialize(config)
+        @request = Kentaa::Api::Request.new(config)
       end
 
       def actions

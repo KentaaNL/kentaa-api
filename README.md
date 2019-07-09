@@ -31,7 +31,8 @@ Create the client with your API key:
 ```ruby
 require 'kentaa/api'
 
-client = Kentaa::Api::Client.new('your_api_key')
+config = Kentaa::Api::Config.new('your_api_key')
+client = Kentaa::Api::Client.new(config)
 ```
 
 ### Retrieving data
