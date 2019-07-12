@@ -3,10 +3,10 @@
 module Kentaa
   module Api
     class Finder
-      attr_reader :client
+      attr_reader :config
 
-      def initialize(client)
-        @client = client
+      def initialize(config)
+        @config = config
       end
 
       def by_object_key(object_key)
@@ -14,15 +14,20 @@ module Kentaa
 
         case klass
         when "Action"
-          client.actions.get(id)
+          client = Kentaa::Api::Clients::Actions.new(config)
+          client.get(id)
         when "Project"
-          client.projects.get(id)
+          client = Kentaa::Api::Clients::Projects.new(config)
+          client.get(id)
         when "Segment"
-          client.segments.get(id)
+          client = Kentaa::Api::Clients::Segments.new(config)
+          client.get(id)
         when "Site"
-          client.sites.current
+          client = Kentaa::Api::Clients::Sites.new(config)
+          client.current
         when "Team"
-          client.teams.get(id)
+          client = Kentaa::Api::Clients::Teams.new(config)
+          client.get(id)
         end
       end
     end

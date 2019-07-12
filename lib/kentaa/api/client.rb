@@ -4,43 +4,39 @@ module Kentaa
   module Api
     class Client
       def initialize(config)
-        @request = Kentaa::Api::Request.new(config)
+        @config = config
       end
 
       def actions
-        Kentaa::Api::Requests::Actions.new(@request)
+        Kentaa::Api::Clients::Actions.new(@config)
       end
 
       def donations
-        Kentaa::Api::Requests::Donations.new(@request)
+        Kentaa::Api::Clients::Donations.new(@config)
       end
 
       def newsletter_subscriptions
-        Kentaa::Api::Requests::NewsletterSubscriptions.new(@request)
+        Kentaa::Api::Clients::NewsletterSubscriptions.new(@config)
       end
 
       def projects
-        Kentaa::Api::Requests::Projects.new(@request)
+        Kentaa::Api::Clients::Projects.new(@config)
       end
 
       def segments
-        Kentaa::Api::Requests::Segments.new(@request)
+        Kentaa::Api::Clients::Segments.new(@config)
       end
 
       def sites
-        Kentaa::Api::Requests::Sites.new(@request)
+        Kentaa::Api::Clients::Sites.new(@config)
       end
 
       def teams
-        Kentaa::Api::Requests::Teams.new(@request)
+        Kentaa::Api::Clients::Teams.new(@config)
       end
 
       def users
-        Kentaa::Api::Requests::Users.new(@request)
-      end
-
-      def finder
-        Kentaa::Api::Finder.new(self)
+        Kentaa::Api::Clients::Users.new(@config)
       end
     end
   end

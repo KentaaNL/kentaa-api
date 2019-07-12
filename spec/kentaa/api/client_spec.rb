@@ -65,7 +65,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/actions").to_return(status: 200, body: data)
 
         actions = client.actions.list
-        expect(actions).to be_a(Kentaa::Api::Responses::Actions)
+        expect(actions).to be_a(Kentaa::Api::Resources::Actions)
         expect(actions.error?).to be false
         expect(actions.count).to eq(2)
         expect(actions.total_entries).to eq(34)
@@ -78,7 +78,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/actions/1").to_return(status: 200, body: data)
 
         action = client.actions.get(1)
-        expect(action).to be_a(Kentaa::Api::Responses::Action)
+        expect(action).to be_a(Kentaa::Api::Resources::Action)
         expect(action.error?).to be false
         expect(action.title).to eq("Lorem ipsum")
       end
@@ -88,7 +88,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/actions/1").to_return(status: 404, body: data)
 
         action = client.actions.get(1)
-        expect(action).to be_a(Kentaa::Api::Responses::Action)
+        expect(action).to be_a(Kentaa::Api::Resources::Action)
         expect(action.error?).to be true
       end
     end
@@ -114,7 +114,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/donations").to_return(status: 200, body: data)
 
         donations = client.donations.list
-        expect(donations).to be_a(Kentaa::Api::Responses::Donations)
+        expect(donations).to be_a(Kentaa::Api::Resources::Donations)
         expect(donations.error?).to be false
         expect(donations.count).to eq(1)
         expect(donations.total_entries).to eq(31)
@@ -127,7 +127,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/donations/1").to_return(status: 200, body: data)
 
         donation = client.donations.get(1)
-        expect(donation).to be_a(Kentaa::Api::Responses::Donation)
+        expect(donation).to be_a(Kentaa::Api::Resources::Donation)
         expect(donation.error?).to be false
         expect(donation.amount).not_to be nil
       end
@@ -137,7 +137,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/donations/1").to_return(status: 404, body: data)
 
         donation = client.donations.get(1)
-        expect(donation).to be_a(Kentaa::Api::Responses::Donation)
+        expect(donation).to be_a(Kentaa::Api::Resources::Donation)
         expect(donation.error?).not_to be nil
       end
     end
@@ -161,7 +161,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/newsletter-subscriptions").to_return(status: 200, body: data)
 
         newsletter_subscriptions = client.newsletter_subscriptions.list
-        expect(newsletter_subscriptions).to be_a(Kentaa::Api::Responses::NewsletterSubscriptions)
+        expect(newsletter_subscriptions).to be_a(Kentaa::Api::Resources::NewsletterSubscriptions)
         expect(newsletter_subscriptions.error?).to be false
         expect(newsletter_subscriptions.count).to eq(3)
         expect(newsletter_subscriptions.total_entries).to eq(3)
@@ -174,7 +174,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/newsletter-subscriptions/1").to_return(status: 200, body: data)
 
         newsletter_subscription = client.newsletter_subscriptions.get(1)
-        expect(newsletter_subscription).to be_a(Kentaa::Api::Responses::NewsletterSubscription)
+        expect(newsletter_subscription).to be_a(Kentaa::Api::Resources::NewsletterSubscription)
         expect(newsletter_subscription.error?).to be false
         expect(newsletter_subscription.email).not_to be nil
       end
@@ -184,7 +184,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/newsletter-subscriptions/1").to_return(status: 404, body: data)
 
         newsletter_subscription = client.newsletter_subscriptions.get(1)
-        expect(newsletter_subscription).to be_a(Kentaa::Api::Responses::NewsletterSubscription)
+        expect(newsletter_subscription).to be_a(Kentaa::Api::Resources::NewsletterSubscription)
         expect(newsletter_subscription.error?).to be true
       end
     end
@@ -210,7 +210,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/projects").to_return(status: 200, body: data)
 
         projects = client.projects.list
-        expect(projects).to be_a(Kentaa::Api::Responses::Projects)
+        expect(projects).to be_a(Kentaa::Api::Resources::Projects)
         expect(projects.error?).to be false
         expect(projects.count).to eq(2)
         expect(projects.total_entries).to eq(6)
@@ -223,7 +223,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/projects/1").to_return(status: 200, body: data)
 
         project = client.projects.get(1)
-        expect(project).to be_a(Kentaa::Api::Responses::Project)
+        expect(project).to be_a(Kentaa::Api::Resources::Project)
         expect(project.error?).to be false
         expect(project.title).to eq("Dignissimos provident rerum enim alias magni asperna...")
       end
@@ -233,7 +233,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/projects/1").to_return(status: 404, body: data)
 
         project = client.projects.get(1)
-        expect(project).to be_a(Kentaa::Api::Responses::Project)
+        expect(project).to be_a(Kentaa::Api::Resources::Project)
         expect(project.error?).to be true
       end
     end
@@ -259,7 +259,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/segments").to_return(status: 200, body: data)
 
         segments = client.segments.list
-        expect(segments).to be_a(Kentaa::Api::Responses::Segments)
+        expect(segments).to be_a(Kentaa::Api::Resources::Segments)
         expect(segments.error?).to be false
         expect(segments.count).to eq(1)
         expect(segments.total_entries).to eq(3)
@@ -272,7 +272,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/segments/1").to_return(status: 200, body: data)
 
         segment = client.segments.get(1)
-        expect(segment).to be_a(Kentaa::Api::Responses::Segment)
+        expect(segment).to be_a(Kentaa::Api::Resources::Segment)
         expect(segment.error?).to be false
         expect(segment.title).not_to be nil
       end
@@ -282,7 +282,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/segments/1").to_return(status: 404, body: data)
 
         segment = client.segments.get(1)
-        expect(segment).to be_a(Kentaa::Api::Responses::Segment)
+        expect(segment).to be_a(Kentaa::Api::Resources::Segment)
         expect(segment.error?).to be true
       end
     end
@@ -295,7 +295,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/sites/current").to_return(status: 200, body: data)
 
         site = client.sites.current
-        expect(site).to be_a(Kentaa::Api::Responses::Site)
+        expect(site).to be_a(Kentaa::Api::Resources::Site)
         expect(site.error?).to be false
         expect(site.title).not_to be nil
       end
@@ -322,7 +322,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/teams").to_return(status: 200, body: data)
 
         teams = client.teams.list
-        expect(teams).to be_a(Kentaa::Api::Responses::Teams)
+        expect(teams).to be_a(Kentaa::Api::Resources::Teams)
         expect(teams.error?).to be false
         expect(teams.count).to eq(1)
         expect(teams.total_entries).to eq(8)
@@ -335,7 +335,7 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/teams/1").to_return(status: 200, body: data)
 
         team = client.teams.get(1)
-        expect(team).to be_a(Kentaa::Api::Responses::Team)
+        expect(team).to be_a(Kentaa::Api::Resources::Team)
         expect(team.error?).to be false
         expect(team.name).not_to be nil
       end
@@ -345,8 +345,57 @@ describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/teams/1").to_return(status: 404, body: data)
 
         team = client.teams.get(1)
-        expect(team).to be_a(Kentaa::Api::Responses::Team)
+        expect(team).to be_a(Kentaa::Api::Resources::Team)
         expect(team.error?).to be true
+      end
+    end
+  end
+
+  describe '#users' do
+    describe '#all' do
+      it 'returns an enumerator for retrieving all users' do
+        data = File.read("spec/fixtures/responses/users.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/users?page=1").to_return(status: 200, body: data)
+        data = File.read("spec/fixtures/responses/404.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/users?page=2").to_return(status: 200, body: data)
+
+        users = client.users.all
+        expect(users).to be_a(Enumerator)
+        expect(users.count).to eq(1)
+      end
+    end
+
+    describe '#list' do
+      it 'returns a list of users' do
+        data = File.read("spec/fixtures/responses/users.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/users").to_return(status: 200, body: data)
+
+        users = client.users.list
+        expect(users).to be_a(Kentaa::Api::Resources::Users)
+        expect(users.error?).to be false
+        expect(users.count).to eq(1)
+        expect(users.total_entries).to eq(31)
+      end
+    end
+
+    describe '#get' do
+      it 'returns a single user' do
+        data = File.read("spec/fixtures/responses/user.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/users/1").to_return(status: 200, body: data)
+
+        user = client.users.get(1)
+        expect(user).to be_a(Kentaa::Api::Resources::User)
+        expect(user.error?).to be false
+        expect(user.name).not_to be nil
+      end
+
+      it 'returns an error when the team was not found' do
+        data = File.read("spec/fixtures/responses/404.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/users/1").to_return(status: 404, body: data)
+
+        user = client.users.get(1)
+        expect(user).to be_a(Kentaa::Api::Resources::User)
+        expect(user.error?).to be true
       end
     end
   end

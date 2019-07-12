@@ -12,8 +12,20 @@ module Kentaa
         @body = parse_body(response.body)
       end
 
+      def success?
+        (code == 200 || code == 201) && !message
+      end
+
+      def error?
+        !success?
+      end
+
       def code
         response.code.to_i
+      end
+
+      def message
+        body[:message]
       end
 
       private

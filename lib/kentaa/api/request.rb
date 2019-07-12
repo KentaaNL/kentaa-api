@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'json'
 require 'net/http'
 require 'uri'
 
@@ -20,8 +19,15 @@ module Kentaa
         request = Net::HTTP::Get.new(uri)
         request["X-Api-Key"] = config.api_key
 
-        response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
-          http.request(request)
+        begin
+          response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
+            http.request(request)
+          end
+        # Try to catch some common exceptions Net::HTTP might raise.
+        rescue Errno::ETIMEDOUT, Errno::EINVAL, Errno::ECONNRESET, Errno::ECONNREFUSED, Errno::EHOSTUNREACH,
+               IOError, SocketError, Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::OpenTimeout,
+               Net::ProtocolError, Net::ReadTimeout, OpenSSL::SSL::SSLError => e
+          raise Kentaa::Api::Exception, e.message
         end
 
         Kentaa::Api::Response.new(response)

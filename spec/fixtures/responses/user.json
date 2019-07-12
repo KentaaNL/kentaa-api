@@ -1,0 +1,26 @@
+{
+  "user": {
+    "id": 2,
+    "site_id": 6,
+    "created_at": "2018-07-18T13:58:11Z",
+    "updated_at": "2018-08-17T03:00:03Z",
+    "name": "John Doe",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@kentaa.nl",
+    "address": "Jansbuitensingel 29",
+    "street": "Jansbuitensingel",
+    "house_number": "29",
+    "zipcode": "6811AD",
+    "city": "Arnhem",
+    "country": "NL",
+    "phone": "0262616240",
+    "gender": "male",
+    "locale": "nl",
+    "consent": {
+      "url": "https://demo.kentaa.nl/project/deelnames/meedoen/wie-ben-jij",
+      "text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
+      "version": "V2 22-06-2018 13:09"
+    }
+  }
+}

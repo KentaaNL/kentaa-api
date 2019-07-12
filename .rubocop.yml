@@ -40,6 +40,9 @@ Style/Documentation:
 Style/ExpandPathArguments:
   Enabled: false
 
+Style/IfUnlessModifier:
+  Enabled: false
+
 Style/SafeNavigation:
   Enabled: false
 

@@ -3,11 +3,9 @@
 module Kentaa
   module Api
     class Config
-      LIVE_URL = "https://api.kentaa.nl"
-      TEST_URL = "https://api.kentaa.staatklaar.nu"
-      DEV_URL  = "http://api.lvh.me:3000"
-
-      API_VERSION = "v1"
+      LIVE_URL = "https://api.kentaa.nl/v1"
+      TEST_URL = "https://api.kentaa.staatklaar.nu/v1"
+      DEV_URL  = "http://api.lvh.me:3000/v1"
 
       attr_accessor :api_key, :options
 
@@ -17,16 +15,24 @@ module Kentaa
       end
 
       def api_url
-        url =
-          if options[:test]
-            TEST_URL
-          elsif options[:dev]
-            DEV_URL
-          else
-            LIVE_URL
-          end
+        case environment
+        when :test
+          TEST_URL
+        when :development
+          DEV_URL
+        when :live
+          LIVE_URL
+        end
+      end
 
-        File.join(url, API_VERSION)
+      def environment
+        if options[:test]
+          :test
+        elsif options[:dev]
+          :development
+        else
+          :live
+        end
       end
     end
   end

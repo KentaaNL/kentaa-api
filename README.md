@@ -39,7 +39,7 @@ client = Kentaa::Api::Client.new(config)
 
 All endpoints use the same convention for retrieving data. The methods `list` and `all` are used for retrieving multiple resources. The method `get` is used for retrieving a single resource.
 
-The `list` method on the endpoint returns an [Enumerable](https://ruby-doc.org/core-2.3.4/Enumerable.html) object:
+The `list` method on the endpoint returns an [Enumerable](https://ruby-doc.org/core/Enumerable.html) object:
 
 ```ruby
 actions = client.actions.list
@@ -54,9 +54,9 @@ The results might be part of a paginated set. You can query the next page by doi
 actions = client.actions.list(page: actions.next_page) if actions.next_page?
 ```
 
-See also `Kentaa::Api::Responses::Pagination` for the available methods for pagination.
+See also `Kentaa::Api::Resources::Pagination` for the available methods for pagination.
 
-The `all` method on the endpoint returns an [Enumerator](https://ruby-doc.org/core-2.3.4/Enumerator.html) and will iterate automatically through all pages to retrieve the requested data.
+The `all` method on the endpoint returns an [Enumerator](https://ruby-doc.org/core/Enumerator.html) and will iterate automatically through all pages to retrieve the requested data.
 
 ```ruby
 actions = client.actions.all
