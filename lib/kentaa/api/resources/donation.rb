@@ -152,6 +152,18 @@ module Kentaa
           data[:payment_description]
         end
 
+        def account_iban
+          data[:account_iban]
+        end
+
+        def account_bic
+          data[:account_bic]
+        end
+
+        def account_name
+          data[:account_name]
+        end
+
         def target_url
           data[:target_url]
         end
