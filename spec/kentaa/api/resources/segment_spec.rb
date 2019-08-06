@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe Kentaa::Api::Resources::Segment do
+RSpec.describe Kentaa::Api::Resources::Segment do
   subject(:response) { Kentaa::Api::Resources::Segment.new(config, data[:segment]) }
 
   let(:config) { Kentaa::Api::Config.new("12345") }

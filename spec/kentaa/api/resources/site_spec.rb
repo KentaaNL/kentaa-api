@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe Kentaa::Api::Resources::Site do
+RSpec.describe Kentaa::Api::Resources::Site do
   subject(:response) { Kentaa::Api::Resources::Site.new(config, data[:site]) }
 
   let(:config) { Kentaa::Api::Config.new("12345") }

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe Kentaa::Api::Client do
+RSpec.describe Kentaa::Api::Client do
   subject(:client) { Kentaa::Api::Client.new(config) }
 
   let(:config) { Kentaa::Api::Config.new("12345") }

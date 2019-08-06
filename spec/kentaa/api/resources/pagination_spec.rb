@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe Kentaa::Api::Resources::Pagination do
+RSpec.describe Kentaa::Api::Resources::Pagination do
   subject(:response) do
     data = JSON.parse(File.read("spec/fixtures/responses/actions.json"), symbolize_names: true)
     response = Kentaa::Api::Resources::Actions.new(config, data[:actions])

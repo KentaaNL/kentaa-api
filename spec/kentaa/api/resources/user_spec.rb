@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe Kentaa::Api::Resources::User do
+RSpec.describe Kentaa::Api::Resources::User do
   subject(:response) do
     data = JSON.parse(File.read("spec/fixtures/responses/user.json"), symbolize_names: true)
     Kentaa::Api::Resources::User.new(config, data[:user])

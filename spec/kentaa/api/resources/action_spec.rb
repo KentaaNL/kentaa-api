@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe Kentaa::Api::Resources::Action do
+RSpec.describe Kentaa::Api::Resources::Action do
   subject(:response) do
     data = JSON.parse(File.read("spec/fixtures/responses/action.json"), symbolize_names: true)
     Kentaa::Api::Resources::Action.new(config, data[:action])
