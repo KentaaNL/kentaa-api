@@ -36,7 +36,7 @@ module Kentaa
         end
 
         def name
-          [first_name, infix, last_name].compact.join(" ")
+          [first_name, infix, last_name].reject { |s| s.to_s.empty? }.join(" ")
         end
 
         def site_id
