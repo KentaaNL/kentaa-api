@@ -11,8 +11,8 @@ module Kentaa
           Kentaa::Api::Resources::Segments.new(config, response)
         end
 
-        def get(id)
-          response = request.get("/segments/#{id}")
+        def get(id, options = {})
+          response = request.get("/segments/#{id}", options)
           Kentaa::Api::Resources::Segment.new(config, response)
         end
       end

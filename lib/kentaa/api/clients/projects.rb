@@ -11,8 +11,8 @@ module Kentaa
           Kentaa::Api::Resources::Projects.new(config, response)
         end
 
-        def get(id)
-          response = request.get("/projects/#{id}")
+        def get(id, options = {})
+          response = request.get("/projects/#{id}", options)
           Kentaa::Api::Resources::Project.new(config, response)
         end
       end

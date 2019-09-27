@@ -11,8 +11,8 @@ module Kentaa
           Kentaa::Api::Resources::Users.new(config, response)
         end
 
-        def get(id)
-          response = request.get("/users/#{id}")
+        def get(id, options = {})
+          response = request.get("/users/#{id}", options)
           Kentaa::Api::Resources::User.new(config, response)
         end
       end

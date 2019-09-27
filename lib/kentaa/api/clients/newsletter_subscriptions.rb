@@ -11,8 +11,8 @@ module Kentaa
           Kentaa::Api::Resources::NewsletterSubscriptions.new(config, response)
         end
 
-        def get(id)
-          response = request.get("/newsletter-subscriptions/#{id}")
+        def get(id, options = {})
+          response = request.get("/newsletter-subscriptions/#{id}", options)
           Kentaa::Api::Resources::NewsletterSubscription.new(config, response)
         end
       end

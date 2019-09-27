@@ -11,8 +11,8 @@ module Kentaa
           Kentaa::Api::Resources::Teams.new(config, response)
         end
 
-        def get(id)
-          response = request.get("/teams/#{id}")
+        def get(id, options = {})
+          response = request.get("/teams/#{id}", options)
           Kentaa::Api::Resources::Team.new(config, response)
         end
       end

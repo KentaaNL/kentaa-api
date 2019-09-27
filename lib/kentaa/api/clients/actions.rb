@@ -11,8 +11,8 @@ module Kentaa
           Kentaa::Api::Resources::Actions.new(config, response)
         end
 
-        def get(id)
-          response = request.get("/actions/#{id}")
+        def get(id, options = {})
+          response = request.get("/actions/#{id}", options)
           Kentaa::Api::Resources::Action.new(config, response)
         end
       end
