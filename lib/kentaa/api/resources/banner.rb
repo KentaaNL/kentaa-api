@@ -3,9 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Banner < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Banner < Resource
         def url
           data[:url]
         end

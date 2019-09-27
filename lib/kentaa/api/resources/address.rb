@@ -3,9 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Address < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Address < Resource
         def address
           data[:address]
         end

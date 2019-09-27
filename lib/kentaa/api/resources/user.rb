@@ -5,9 +5,7 @@ require 'time'
 module Kentaa
   module Api
     module Resources
-      class User < Base
-        include Kentaa::Api::Resources::Resource
-
+      class User < Resource
         def object_key
           "User_#{id}"
         end
@@ -89,7 +87,13 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/users/#{id}", options)
         end
       end
     end

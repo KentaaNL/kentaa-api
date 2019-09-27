@@ -6,22 +6,20 @@ require 'time'
 module Kentaa
   module Api
     module Resources
-      class Action < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Action < Resource
         def object_key
           "Action_#{id}"
         end
 
         def parent
           if team_id
-            Team.new(config, id: team_id)
+            Kentaa::Api::Resources::Team.new(config, id: team_id)
           elsif project_id
-            Project.new(config, id: project_id)
+            Kentaa::Api::Resources::Project.new(config, id: project_id)
           elsif segment_id
-            Segment.new(config, id: segment_id)
+            Kentaa::Api::Resources::Segment.new(config, id: segment_id)
           else
-            Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id)
           end
         end
 
@@ -46,7 +44,7 @@ module Kentaa
         end
 
         def owner
-          @owner ||= Kentaa::Api::Resources::User.new(config, data[:owner])
+          @owner ||= Kentaa::Api::Resources::User.new(config, data: data[:owner])
         end
 
         def team_captain?
@@ -122,7 +120,7 @@ module Kentaa
         end
 
         def activity
-          @activity ||= Kentaa::Api::Resources::Activity.new(config, data[:activity])
+          @activity ||= Kentaa::Api::Resources::Activity.new(config, data: data[:activity])
         end
 
         def previous_participations
@@ -138,11 +136,11 @@ module Kentaa
         end
 
         def registration_fee
-          @registration_fee ||= Kentaa::Api::Resources::RegistrationFee.new(config, data[:registration_fee])
+          @registration_fee ||= Kentaa::Api::Resources::RegistrationFee.new(config, data: data[:registration_fee])
         end
 
         def location
-          @location ||= Kentaa::Api::Resources::Location.new(config, data[:location])
+          @location ||= Kentaa::Api::Resources::Location.new(config, data: data[:location])
         end
 
         def photos
@@ -151,7 +149,7 @@ module Kentaa
 
             if data[:photos]
               data[:photos].each do |photo|
-                photos << Kentaa::Api::Resources::Photo.new(config, photo)
+                photos << Kentaa::Api::Resources::Photo.new(config, data: photo)
               end
             end
 
@@ -165,7 +163,7 @@ module Kentaa
 
             if data[:videos]
               data[:videos].each do |video|
-                videos << Kentaa::Api::Resources::Video.new(config, video)
+                videos << Kentaa::Api::Resources::Video.new(config, data: video)
               end
             end
 
@@ -179,7 +177,7 @@ module Kentaa
 
             if data[:questions]
               data[:questions].each do |question|
-                questions << Kentaa::Api::Resources::Question.new(config, question)
+                questions << Kentaa::Api::Resources::Question.new(config, data: question)
               end
             end
 
@@ -188,11 +186,17 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
         end
 
         def external_reference
           data[:external_reference]
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/actions/#{id}", options)
         end
       end
     end

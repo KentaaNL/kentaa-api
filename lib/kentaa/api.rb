@@ -13,9 +13,8 @@ require_relative "api/clients/teams"
 require_relative "api/clients/users"
 
 require_relative "api/resources/base"
-require_relative "api/resources/pagination"
+require_relative "api/resources/list"
 require_relative "api/resources/resource"
-require_relative "api/resources/status"
 
 require_relative "api/resources/action"
 require_relative "api/resources/actions"

@@ -3,9 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Question < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Question < Resource
         def question
           data[:question]
         end

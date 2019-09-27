@@ -7,13 +7,13 @@ module Kentaa
         include Kentaa::Api::Clients::All
 
         def list(options = {})
-          response = request.get("/users", options)
-          Kentaa::Api::Resources::Users.new(config, response)
+          users = Kentaa::Api::Resources::Users.new(config, options)
+          users.load
         end
 
         def get(id, options = {})
-          response = request.get("/users/#{id}", options)
-          Kentaa::Api::Resources::User.new(config, response)
+          user = Kentaa::Api::Resources::User.new(config, options.merge(id: id))
+          user.load
         end
       end
     end

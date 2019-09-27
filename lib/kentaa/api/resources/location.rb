@@ -3,7 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Location < Base
+      class Location < Resource
         def zip_code
           data[:zip_code]
         end

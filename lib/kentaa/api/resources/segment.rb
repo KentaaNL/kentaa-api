@@ -6,9 +6,7 @@ require 'time'
 module Kentaa
   module Api
     module Resources
-      class Segment < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Segment < Resource
         def object_key
           "Segment_#{id}"
         end
@@ -63,7 +61,7 @@ module Kentaa
 
             if data[:banners]
               data[:banners].each do |banner|
-                banners << Kentaa::Api::Resources::Banner.new(config, banner)
+                banners << Kentaa::Api::Resources::Banner.new(config, data: banner)
               end
             end
 
@@ -73,6 +71,12 @@ module Kentaa
 
         def external_reference
           data[:external_reference]
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/segments/#{id}", options)
         end
       end
     end

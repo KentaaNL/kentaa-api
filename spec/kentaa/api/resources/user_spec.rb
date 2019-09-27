@@ -3,12 +3,10 @@
 require "spec_helper"
 
 RSpec.describe Kentaa::Api::Resources::User do
-  subject(:response) do
-    data = JSON.parse(File.read("spec/fixtures/responses/user.json"), symbolize_names: true)
-    Kentaa::Api::Resources::User.new(config, data[:user])
-  end
+  subject(:response) { Kentaa::Api::Resources::User.new(config, data: data[:user]) }
 
   let(:config) { Kentaa::Api::Config.new("12345") }
+  let(:data) { JSON.parse(File.read("spec/fixtures/responses/user.json"), symbolize_names: true) }
 
   describe '#id' do
     it 'returns the resource id' do

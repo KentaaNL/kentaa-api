@@ -7,13 +7,13 @@ module Kentaa
         include Kentaa::Api::Clients::All
 
         def list(options = {})
-          response = request.get("/newsletter-subscriptions", options)
-          Kentaa::Api::Resources::NewsletterSubscriptions.new(config, response)
+          newsletter_subscriptions = Kentaa::Api::Resources::NewsletterSubscriptions.new(config, options)
+          newsletter_subscriptions.load
         end
 
         def get(id, options = {})
-          response = request.get("/newsletter-subscriptions/#{id}", options)
-          Kentaa::Api::Resources::NewsletterSubscription.new(config, response)
+          newsletter_subscription = Kentaa::Api::Resources::NewsletterSubscription.new(config, options.merge(id: id))
+          newsletter_subscription.load
         end
       end
     end

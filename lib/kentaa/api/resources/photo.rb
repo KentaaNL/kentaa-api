@@ -3,9 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Photo < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Photo < Resource
         def url
           data[:url]
         end

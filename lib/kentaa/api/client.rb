@@ -38,10 +38,6 @@ module Kentaa
       def users
         Kentaa::Api::Clients::Users.new(@config)
       end
-
-      def finder
-        Kentaa::Api::Finder.new(@config)
-      end
     end
   end
 end

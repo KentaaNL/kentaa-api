@@ -6,18 +6,16 @@ require 'time'
 module Kentaa
   module Api
     module Resources
-      class Project < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Project < Resource
         def object_key
           "Project_#{id}"
         end
 
         def parent
           if segment_id
-            Segment.new(config, id: segment_id)
+            Kentaa::Api::Resources::Segment.new(config, id: segment_id)
           else
-            Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id)
           end
         end
 
@@ -86,7 +84,7 @@ module Kentaa
         end
 
         def location
-          @location ||= Kentaa::Api::Resources::Location.new(config, data[:location])
+          @location ||= Kentaa::Api::Resources::Location.new(config, data: data[:location])
         end
 
         def photos
@@ -95,7 +93,7 @@ module Kentaa
 
             if data[:photos]
               data[:photos].each do |photo|
-                photos << Kentaa::Api::Resources::Photo.new(config, photo)
+                photos << Kentaa::Api::Resources::Photo.new(config, data: photo)
               end
             end
 
@@ -109,7 +107,7 @@ module Kentaa
 
             if data[:videos]
               data[:videos].each do |video|
-                videos << Kentaa::Api::Resources::Video.new(config, video)
+                videos << Kentaa::Api::Resources::Video.new(config, data: video)
               end
             end
 
@@ -123,7 +121,7 @@ module Kentaa
 
             if data[:questions]
               data[:questions].each do |question|
-                questions << Kentaa::Api::Resources::Question.new(config, question)
+                questions << Kentaa::Api::Resources::Question.new(config, data: question)
               end
             end
 
@@ -132,11 +130,17 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
         end
 
         def external_reference
           data[:external_reference]
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/projects/#{id}", options)
         end
       end
     end

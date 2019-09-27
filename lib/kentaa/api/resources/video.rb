@@ -3,9 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Video < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Video < Resource
         def url
           data[:url]
         end

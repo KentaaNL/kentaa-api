@@ -20,7 +20,7 @@ module Kentaa
         request["X-Api-Key"] = config.api_key
 
         begin
-          response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
+          result = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
             http.request(request)
           end
         # Try to catch some common exceptions Net::HTTP might raise.
@@ -30,7 +30,13 @@ module Kentaa
           raise Kentaa::Api::Exception, e.message
         end
 
-        Kentaa::Api::Response.new(response)
+        response = Kentaa::Api::Response.new(result)
+
+        if response.error?
+          raise Kentaa::Api::RequestError, response
+        end
+
+        response
       end
     end
   end

@@ -54,7 +54,7 @@ The results might be part of a paginated set. You can query the next page by doi
 actions = client.actions.list(page: actions.next_page) if actions.next_page?
 ```
 
-See also `Kentaa::Api::Resources::Pagination` for the available methods for pagination.
+See also `Kentaa::Api::Resources::List` for the available methods for pagination.
 
 The `all` method on the endpoint returns an [Enumerator](https://ruby-doc.org/core/Enumerator.html) and will iterate automatically through all pages to retrieve the requested data.
 

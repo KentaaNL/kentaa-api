@@ -3,12 +3,17 @@
 module Kentaa
   module Api
     module Resources
-      class Teams < Base
+      class Teams < List
         include Enumerable
-        include Kentaa::Api::Resources::Pagination
 
         def each(&block)
           teams.each(&block)
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/teams", options)
         end
 
         private
@@ -19,7 +24,7 @@ module Kentaa
 
             if data
               data.each do |team|
-                teams << Kentaa::Api::Resources::Team.new(config, team)
+                teams << Kentaa::Api::Resources::Team.new(config, data: team)
               end
             end
 

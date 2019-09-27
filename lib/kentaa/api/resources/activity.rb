@@ -3,9 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Activity < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Activity < Resource
         def name
           data[:name]
         end

@@ -3,12 +3,17 @@
 module Kentaa
   module Api
     module Resources
-      class Users < Base
+      class Users < List
         include Enumerable
-        include Kentaa::Api::Resources::Pagination
 
         def each(&block)
           users.each(&block)
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/users", options)
         end
 
         private
@@ -19,7 +24,7 @@ module Kentaa
 
             if data
               data.each do |user|
-                users << Kentaa::Api::Resources::User.new(config, user)
+                users << Kentaa::Api::Resources::User.new(config, data: user)
               end
             end
 

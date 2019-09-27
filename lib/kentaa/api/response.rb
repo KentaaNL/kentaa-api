@@ -13,14 +13,14 @@ module Kentaa
       end
 
       def success?
-        (code == 200 || code == 201) && !message
+        (http_code == 200 || http_code == 201) && !message
       end
 
       def error?
         !success?
       end
 
-      def code
+      def http_code
         response.code.to_i
       end
 

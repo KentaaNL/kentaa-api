@@ -2,15 +2,15 @@
 
 require "spec_helper"
 
-RSpec.describe Kentaa::Api::Resources::Pagination do
-  subject(:response) do
-    data = JSON.parse(File.read("spec/fixtures/responses/actions.json"), symbolize_names: true)
-    response = Kentaa::Api::Resources::Actions.new(config, data[:actions])
-    response.body = data
-    response
-  end
+RSpec.describe Kentaa::Api::Resources::List do
+  subject(:response) { Kentaa::Api::Resources::Actions.new(config) }
 
   let(:config) { Kentaa::Api::Config.new("12345") }
+
+  before do
+    data = File.read("spec/fixtures/responses/actions.json")
+    stub_request(:get, "https://api.kentaa.nl/v1/actions").to_return(status: 200, body: data)
+  end
 
   describe '#links' do
     it 'returns a hash with links' do

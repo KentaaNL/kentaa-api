@@ -3,9 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Reward < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Reward < Resource
         def type
           data[:type]
         end

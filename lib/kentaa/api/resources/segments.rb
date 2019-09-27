@@ -3,12 +3,17 @@
 module Kentaa
   module Api
     module Resources
-      class Segments < Base
+      class Segments < List
         include Enumerable
-        include Kentaa::Api::Resources::Pagination
 
         def each(&block)
           segments.each(&block)
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/segments", options)
         end
 
         private
@@ -19,7 +24,7 @@ module Kentaa
 
             if data
               data.each do |segment|
-                segments << Kentaa::Api::Resources::Segment.new(config, segment)
+                segments << Kentaa::Api::Resources::Segment.new(config, data: segment)
               end
             end
 

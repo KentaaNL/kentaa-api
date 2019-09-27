@@ -3,7 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class Consent < Base
+      class Consent < Resource
         def url
           data[:url]
         end

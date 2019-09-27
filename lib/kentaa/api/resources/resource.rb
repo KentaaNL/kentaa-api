@@ -5,9 +5,18 @@ require 'time'
 module Kentaa
   module Api
     module Resources
-      module Resource
-        def id
-          data[:id]
+      class Resource < Base
+        attr_accessor :id
+
+        def initialize(config, options = {})
+          super(config, options)
+
+          if options.key?(:data)
+            @data = options.delete(:data) || {}
+            @id = @data.fetch(:id) if @data.key?(:id)
+          elsif options.key?(:id)
+            @id = options.delete(:id)
+          end
         end
 
         def created_at

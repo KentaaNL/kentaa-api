@@ -3,9 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      module Pagination
-        attr_accessor :body
-
+      class List < Base
         def links
           body[:links]
         end
@@ -44,6 +42,14 @@ module Kentaa
 
         def previous_page?
           current_page && current_page > 1
+        end
+
+        def next
+          self.class.new(config, options.merge(page: next_page)) if next_page?
+        end
+
+        def previous
+          self.class.new(config, options.merge(page: previous_page)) if previous_page?
         end
       end
     end

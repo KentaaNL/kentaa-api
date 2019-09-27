@@ -3,12 +3,17 @@
 module Kentaa
   module Api
     module Resources
-      class Donations < Base
+      class Donations < List
         include Enumerable
-        include Kentaa::Api::Resources::Pagination
 
         def each(&block)
           donations.each(&block)
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/donations", options)
         end
 
         private
@@ -19,7 +24,7 @@ module Kentaa
 
             if data
               data.each do |donation|
-                donations << Kentaa::Api::Resources::Donation.new(config, donation)
+                donations << Kentaa::Api::Resources::Donation.new(config, data: donation)
               end
             end
 

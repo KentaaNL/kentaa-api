@@ -3,20 +3,18 @@
 module Kentaa
   module Api
     module Resources
-      class NewsletterSubscription < Base
-        include Kentaa::Api::Resources::Resource
-
+      class NewsletterSubscription < Resource
         def object_key
           "NewsletterSubscription_#{id}"
         end
 
         def entity
           if project_id
-            Project.new(config, id: project_id)
+            Kentaa::Api::Resources::Project.new(config, id: project_id)
           elsif segment_id
-            Segment.new(config, id: segment_id)
+            Kentaa::Api::Resources::Segment.new(config, id: segment_id)
           else
-            Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id)
           end
         end
 
@@ -61,7 +59,13 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/newsletter-subscriptions/#{id}", options)
         end
       end
     end

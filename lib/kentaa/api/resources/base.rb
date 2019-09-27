@@ -4,28 +4,52 @@ module Kentaa
   module Api
     module Resources
       class Base
-        attr_reader :config, :data
+        attr_reader :config, :options
 
-        def initialize(config, response)
+        def initialize(config, options = {})
           @config = config
+          @options = options
+        end
 
-          if response.respond_to?(:body)
-            extend Kentaa::Api::Resources::Status
+        def load
+          @response ||= load_resource(options)
 
-            @response = response
-            @data = response.body[attribute_key]
-          else
-            @data = response
-          end
+          self
+        end
 
-          @data ||= {}
+        def loaded?
+          !@response.nil?
         end
 
         private
 
         def attribute_key
-          class_name = self.class.name.split("::").last
+          class_name = self.class.name.split('::').last
           class_name.gsub(/([^\^])([A-Z])/, '\1_\2').downcase.to_sym
+        end
+
+        def load_resource(_options)
+          raise NotImplementedError
+        end
+
+        def data
+          @data ||= begin
+            load unless loaded?
+
+            @response.body[attribute_key] || {}
+          end
+        end
+
+        def body
+          @body ||= begin
+            load unless loaded?
+
+            @response.body
+          end
+        end
+
+        def request
+          @request ||= Kentaa::Api::Request.new(config)
         end
       end
     end

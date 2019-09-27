@@ -6,20 +6,18 @@ require 'time'
 module Kentaa
   module Api
     module Resources
-      class Team < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Team < Resource
         def object_key
           "Team_#{id}"
         end
 
         def parent
           if project_id
-            Project.new(config, id: project_id)
+            Kentaa::Api::Resources::Project.new(config, id: project_id)
           elsif segment_id
-            Segment.new(config, id: segment_id)
+            Kentaa::Api::Resources::Segment.new(config, id: segment_id)
           else
-            Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id)
           end
         end
 
@@ -40,7 +38,7 @@ module Kentaa
         end
 
         def owner
-          @owner ||= Kentaa::Api::Resources::User.new(config, data[:owner])
+          @owner ||= Kentaa::Api::Resources::User.new(config, data: data[:owner])
         end
 
         def members
@@ -49,7 +47,7 @@ module Kentaa
 
             if data[:members]
               data[:members].each do |member|
-                members << Kentaa::Api::Resources::Action.new(config, member)
+                members << Kentaa::Api::Resources::Action.new(config, data: member)
               end
             end
 
@@ -119,7 +117,7 @@ module Kentaa
 
             if data[:photos]
               data[:photos].each do |photo|
-                photos << Kentaa::Api::Resources::Photo.new(config, photo)
+                photos << Kentaa::Api::Resources::Photo.new(config, data: photo)
               end
             end
 
@@ -133,7 +131,7 @@ module Kentaa
 
             if data[:videos]
               data[:videos].each do |video|
-                videos << Kentaa::Api::Resources::Video.new(config, video)
+                videos << Kentaa::Api::Resources::Video.new(config, data: video)
               end
             end
 
@@ -147,7 +145,7 @@ module Kentaa
 
             if data[:questions]
               data[:questions].each do |question|
-                questions << Kentaa::Api::Resources::Question.new(config, question)
+                questions << Kentaa::Api::Resources::Question.new(config, data: question)
               end
             end
 
@@ -157,6 +155,12 @@ module Kentaa
 
         def external_reference
           data[:external_reference]
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/teams/#{id}", options)
         end
       end
     end

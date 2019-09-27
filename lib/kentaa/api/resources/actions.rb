@@ -3,12 +3,17 @@
 module Kentaa
   module Api
     module Resources
-      class Actions < Base
+      class Actions < List
         include Enumerable
-        include Kentaa::Api::Resources::Pagination
 
         def each(&block)
           actions.each(&block)
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/actions", options)
         end
 
         private
@@ -19,7 +24,7 @@ module Kentaa
 
             if data
               data.each do |action|
-                actions << Kentaa::Api::Resources::Action.new(config, action)
+                actions << Kentaa::Api::Resources::Action.new(config, data: action)
               end
             end
 

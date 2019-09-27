@@ -3,12 +3,17 @@
 module Kentaa
   module Api
     module Resources
-      class NewsletterSubscriptions < Base
+      class NewsletterSubscriptions < List
         include Enumerable
-        include Kentaa::Api::Resources::Pagination
 
         def each(&block)
           newsletter_subscriptions.each(&block)
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/newsletter-subscriptions", options)
         end
 
         private
@@ -19,7 +24,7 @@ module Kentaa
 
             if data
               data.each do |newsletter_subscription|
-                newsletter_subscriptions << Kentaa::Api::Resources::NewsletterSubscription.new(config, newsletter_subscription)
+                newsletter_subscriptions << Kentaa::Api::Resources::NewsletterSubscription.new(config, data: newsletter_subscription)
               end
             end
 

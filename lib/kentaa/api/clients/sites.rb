@@ -5,8 +5,8 @@ module Kentaa
     module Clients
       class Sites < Base
         def current(options = {})
-          response = request.get("/sites/current", options)
-          Kentaa::Api::Resources::Site.new(config, response)
+          site = Kentaa::Api::Resources::Site.new(config, options)
+          site.load
         end
       end
     end

@@ -3,12 +3,10 @@
 require "spec_helper"
 
 RSpec.describe Kentaa::Api::Resources::Team do
-  subject(:response) do
-    data = JSON.parse(File.read("spec/fixtures/responses/team.json"), symbolize_names: true)
-    Kentaa::Api::Resources::Team.new(config, data[:team])
-  end
+  subject(:response) { Kentaa::Api::Resources::Team.new(config, data: data[:team]) }
 
   let(:config) { Kentaa::Api::Config.new("12345") }
+  let(:data) { JSON.parse(File.read("spec/fixtures/responses/team.json"), symbolize_names: true) }
 
   describe '#id' do
     it 'returns the resource id' do

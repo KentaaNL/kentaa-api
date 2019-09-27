@@ -6,24 +6,22 @@ require 'time'
 module Kentaa
   module Api
     module Resources
-      class Donation < Base
-        include Kentaa::Api::Resources::Resource
-
+      class Donation < Resource
         def object_key
           "Donation_#{id}"
         end
 
         def entity
           if action_id
-            Action.new(config, id: action_id)
+            Kentaa::Api::Resources::Action.new(config, id: action_id)
           elsif team_id
-            Team.new(config, id: team_id)
+            Kentaa::Api::Resources::Team.new(config, id: team_id)
           elsif project_id
-            Project.new(config, id: project_id)
+            Kentaa::Api::Resources::Project.new(config, id: project_id)
           elsif segment_id
-            Segment.new(config, id: segment_id)
+            Kentaa::Api::Resources::Segment.new(config, id: segment_id)
           else
-            Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id)
           end
         end
 
@@ -169,7 +167,7 @@ module Kentaa
 
             if data[:questions]
               data[:questions].each do |question|
-                questions << Kentaa::Api::Resources::Question.new(config, question)
+                questions << Kentaa::Api::Resources::Question.new(config, data: question)
               end
             end
 
@@ -178,11 +176,11 @@ module Kentaa
         end
 
         def reward
-          @reward ||= Kentaa::Api::Resources::Reward.new(config, data[:reward]) if data[:reward]
+          @reward ||= Kentaa::Api::Resources::Reward.new(config, data: data[:reward]) if data[:reward]
         end
 
         def address
-          @address ||= Kentaa::Api::Resources::Address.new(config, data[:address]) if data[:address]
+          @address ||= Kentaa::Api::Resources::Address.new(config, data: data[:address]) if data[:address]
         end
 
         def birthday
@@ -198,7 +196,13 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
+        end
+
+        protected
+
+        def load_resource(options)
+          request.get("/donations/#{id}", options)
         end
       end
     end
