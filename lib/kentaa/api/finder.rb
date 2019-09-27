@@ -16,6 +16,12 @@ module Kentaa
         when "Action"
           client = Kentaa::Api::Clients::Actions.new(config)
           client.get(id)
+        when "Donation"
+          client = Kentaa::Api::Clients::Donations.new(config)
+          client.get(id)
+        when "NewsletterSubscription"
+          client = Kentaa::Api::Clients::NewsletterSubscriptions.new(config)
+          client.get(id)
         when "Project"
           client = Kentaa::Api::Clients::Projects.new(config)
           client.get(id)
@@ -27,6 +33,9 @@ module Kentaa
           client.current
         when "Team"
           client = Kentaa::Api::Clients::Teams.new(config)
+          client.get(id)
+        when "User"
+          client = Kentaa::Api::Clients::Users.new(config)
           client.get(id)
         end
       end

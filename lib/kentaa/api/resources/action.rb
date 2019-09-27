@@ -15,17 +15,13 @@ module Kentaa
 
         def parent
           if team_id
-            client = Kentaa::Api::Clients::Teams.new(config)
-            client.get(team_id)
+            Team.new(config, id: team_id)
           elsif project_id
-            client = Kentaa::Api::Clients::Projects.new(config)
-            client.get(project_id)
+            Project.new(config, id: project_id)
           elsif segment_id
-            client = Kentaa::Api::Clients::Segments.new(config)
-            client.get(segment_id)
+            Segment.new(config, id: segment_id)
           else
-            client = Kentaa::Api::Clients::Sites.new(config)
-            client.current
+            Site.new(config, id: site_id)
           end
         end
 
