@@ -15,7 +15,7 @@ module Kentaa
       end
 
       def http_code
-        response.code
+        response.http_code
       end
     end
   end
