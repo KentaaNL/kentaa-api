@@ -24,6 +24,10 @@ module Kentaa
         response.code.to_i
       end
 
+      def request_uri
+        response.uri
+      end
+
       def message
         body[:message]
       end
