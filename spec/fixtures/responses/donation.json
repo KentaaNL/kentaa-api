@@ -12,6 +12,7 @@
     "locale": "nl",
     "amount": "15.0",
     "transaction_costs": "0.4",
+    "start_donation": false,
     "registration_fee": true,
     "registration_fee_amount": "10.0",
     "total_amount": "25.4",
@@ -21,6 +22,7 @@
     "payment_status_at": "2016-03-30T14:46:25+02:00",
     "transaction_id": "B5C7B7BCAF1ADF6E2032C7CF56969876",
     "payment_id": "116D10DD544ECD1E2D77762C5C3E6D61",
+    "payment_description": "Donatie demo",
     "target_url": "https://demo1.kentaa.nl/",
     "questions": [
       {

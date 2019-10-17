@@ -101,6 +101,10 @@ module Kentaa
           BigDecimal(data[:transaction_costs]) if data[:transaction_costs]
         end
 
+        def start_donation?
+          data[:start_donation]
+        end
+
         def registration_fee?
           data[:registration_fee]
         end

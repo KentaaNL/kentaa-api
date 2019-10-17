@@ -92,6 +92,12 @@ RSpec.describe Kentaa::Api::Resources::Donation do
     end
   end
 
+  describe '#start_donation?' do
+    it 'returns false when this is not a start donation' do
+      expect(response.start_donation?).to be false
+    end
+  end
+
   describe '#registration_fee?' do
     it 'returns true when a registration fee was paid' do
       expect(response.registration_fee?).to be true
@@ -135,14 +141,20 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   end
 
   describe '#transaction_id' do
-    it 'returns the Buckaroo transaction ID' do
+    it 'returns the PSP transaction ID' do
       expect(response.transaction_id).to eq("B5C7B7BCAF1ADF6E2032C7CF56969876")
     end
   end
 
   describe '#payment_id' do
-    it 'returns the Buckaroo payment ID' do
+    it 'returns the PSP payment ID' do
       expect(response.payment_id).to eq("116D10DD544ECD1E2D77762C5C3E6D61")
+    end
+  end
+
+  describe '#payment_description' do
+    it 'returns the payment description' do
+      expect(response.payment_description).to eq("Donatie demo")
     end
   end
 
