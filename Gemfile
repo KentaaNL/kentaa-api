@@ -5,6 +5,6 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in kentaa-api.gemspec
 gemspec
 
-gem 'rubocop', '~> 0.75.0'
-gem 'rubocop-performance', '~> 1.5.0'
-gem 'rubocop-rspec', '~> 1.36.0'
+gem 'rubocop', '~> 0.80.1'
+gem 'rubocop-performance', '~> 1.5.2'
+gem 'rubocop-rspec', '~> 1.38.1'
