@@ -14,6 +14,20 @@
     "visible": true,
     "end_date": "2015-10-28T00:00:00+01:00",
     "url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna",
-    "donate_url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna/doneren"
+    "donate_url": "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna/doneren",
+    "contact": {
+      "name": "John Doe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@kentaa.nl",
+      "address": "Jansbuitensingel 29",
+      "street": "Jansbuitensingel",
+      "house_number": "29",
+      "zipcode": "6811AD",
+      "city": "Arnhem",
+      "country": "NL",
+      "phone": "0262616240",
+      "gender": "male"
+    }
   }
 }

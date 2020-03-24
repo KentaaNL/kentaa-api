@@ -133,6 +133,10 @@ module Kentaa
           @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
         end
 
+        def contact
+          @contact ||= Kentaa::Api::Resources::Contact.new(config, data: data[:contact]) if data[:contact]
+        end
+
         def external_reference
           data[:external_reference]
         end
