@@ -19,6 +19,13 @@ module Kentaa
           end
         end
 
+        def load
+          super
+          @id = data.fetch(:id) if data.key?(:id)
+
+          self
+        end
+
         def created_at
           Time.parse(data[:created_at]) if data[:created_at]
         end
