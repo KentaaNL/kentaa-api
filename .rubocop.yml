@@ -9,9 +9,6 @@ AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
 
-Gemspec/RequiredRubyVersion:
-  Enabled: false
-
 Layout/LineLength:
   Enabled: false
 
