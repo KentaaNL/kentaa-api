@@ -117,6 +117,10 @@ module Kentaa
           BigDecimal(data[:total_amount])
         end
 
+        def receivable_amount
+          BigDecimal(data[:receivable_amount])
+        end
+
         def countable?
           data[:countable]
         end

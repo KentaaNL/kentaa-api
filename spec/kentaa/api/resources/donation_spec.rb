@@ -116,6 +116,12 @@ RSpec.describe Kentaa::Api::Resources::Donation do
     end
   end
 
+  describe '#receivable_amount' do
+    it 'returns the receivable amount' do
+      expect(response.receivable_amount).to eq(24)
+    end
+  end
+
   describe '#invoicenumber' do
     it 'returns the invoice number' do
       expect(response.invoicenumber).to eq("T2016.0001.0000001")

@@ -16,6 +16,7 @@
     "registration_fee": true,
     "registration_fee_amount": "10.0",
     "total_amount": "25.4",
+    "receivable_amount": "24.0",
     "invoicenumber": "T2016.0001.0000001",
     "payment_method": "ideal",
     "payment_status": "paid",
