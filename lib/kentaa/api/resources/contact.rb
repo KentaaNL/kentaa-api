@@ -3,7 +3,13 @@
 module Kentaa
   module Api
     module Resources
-      class Contact < Resource
+      class Contact
+        attr_reader :data
+
+        def initialize(data)
+          @data = data
+        end
+
         def first_name
           data[:first_name]
         end

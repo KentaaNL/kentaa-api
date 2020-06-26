@@ -3,7 +3,17 @@
 module Kentaa
   module Api
     module Resources
-      class Activity < Resource
+      class Activity
+        attr_reader :data
+
+        def initialize(data)
+          @data = data
+        end
+
+        def id
+          data[:id]
+        end
+
         def name
           data[:name]
         end

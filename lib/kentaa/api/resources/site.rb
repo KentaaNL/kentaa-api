@@ -73,7 +73,7 @@ module Kentaa
 
             if data[:banners]
               data[:banners].each do |banner|
-                banners << Kentaa::Api::Resources::Banner.new(config, data: banner)
+                banners << Kentaa::Api::Resources::Banner.new(banner)
               end
             end
 
@@ -85,9 +85,9 @@ module Kentaa
           data[:external_reference]
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/sites/current", options)
         end
       end

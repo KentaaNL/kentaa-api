@@ -10,13 +10,11 @@ module Kentaa
           segments.each(&block)
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/segments", options)
         end
-
-        private
 
         def segments
           @segments ||= begin

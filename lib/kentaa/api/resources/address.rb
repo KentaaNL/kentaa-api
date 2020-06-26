@@ -3,7 +3,13 @@
 module Kentaa
   module Api
     module Resources
-      class Address < Resource
+      class Address
+        attr_reader :data
+
+        def initialize(data)
+          @data = data
+        end
+
         def address
           data[:address]
         end

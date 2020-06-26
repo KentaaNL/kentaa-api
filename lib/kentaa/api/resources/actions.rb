@@ -10,13 +10,11 @@ module Kentaa
           actions.each(&block)
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/actions", options)
         end
-
-        private
 
         def actions
           @actions ||= begin

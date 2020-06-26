@@ -87,13 +87,21 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/users/#{id}", options)
+        end
+
+        def create_resource(attributes)
+          request.post("/users", options, attributes)
+        end
+
+        def update_resource(attributes)
+          request.patch("/users/#{id}", options, attributes)
         end
       end
     end

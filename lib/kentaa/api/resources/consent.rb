@@ -3,7 +3,13 @@
 module Kentaa
   module Api
     module Resources
-      class Consent < Resource
+      class Consent
+        attr_reader :data
+
+        def initialize(data)
+          @data = data
+        end
+
         def url
           data[:url]
         end

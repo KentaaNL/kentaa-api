@@ -13,6 +13,7 @@ require_relative "api/clients/teams"
 require_relative "api/clients/users"
 
 require_relative "api/resources/base"
+require_relative "api/resources/error"
 require_relative "api/resources/list"
 require_relative "api/resources/resource"
 

@@ -175,7 +175,7 @@ module Kentaa
 
             if data[:questions]
               data[:questions].each do |question|
-                questions << Kentaa::Api::Resources::Question.new(config, data: question)
+                questions << Kentaa::Api::Resources::Question.new(question)
               end
             end
 
@@ -184,11 +184,11 @@ module Kentaa
         end
 
         def reward
-          @reward ||= Kentaa::Api::Resources::Reward.new(config, data: data[:reward]) if data[:reward]
+          @reward ||= Kentaa::Api::Resources::Reward.new(data[:reward]) if data[:reward]
         end
 
         def address
-          @address ||= Kentaa::Api::Resources::Address.new(config, data: data[:address]) if data[:address]
+          @address ||= Kentaa::Api::Resources::Address.new(data[:address]) if data[:address]
         end
 
         def birthday
@@ -204,12 +204,12 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/donations/#{id}", options)
         end
       end

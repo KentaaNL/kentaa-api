@@ -84,7 +84,7 @@ module Kentaa
         end
 
         def location
-          @location ||= Kentaa::Api::Resources::Location.new(config, data: data[:location])
+          @location ||= Kentaa::Api::Resources::Location.new(data[:location]) if data[:location]
         end
 
         def photos
@@ -93,7 +93,7 @@ module Kentaa
 
             if data[:photos]
               data[:photos].each do |photo|
-                photos << Kentaa::Api::Resources::Photo.new(config, data: photo)
+                photos << Kentaa::Api::Resources::Photo.new(photo)
               end
             end
 
@@ -107,7 +107,7 @@ module Kentaa
 
             if data[:videos]
               data[:videos].each do |video|
-                videos << Kentaa::Api::Resources::Video.new(config, data: video)
+                videos << Kentaa::Api::Resources::Video.new(video)
               end
             end
 
@@ -121,7 +121,7 @@ module Kentaa
 
             if data[:questions]
               data[:questions].each do |question|
-                questions << Kentaa::Api::Resources::Question.new(config, data: question)
+                questions << Kentaa::Api::Resources::Question.new(question)
               end
             end
 
@@ -130,20 +130,20 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end
 
         def contact
-          @contact ||= Kentaa::Api::Resources::Contact.new(config, data: data[:contact]) if data[:contact]
+          @contact ||= Kentaa::Api::Resources::Contact.new(data[:contact]) if data[:contact]
         end
 
         def external_reference
           data[:external_reference]
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/projects/#{id}", options)
         end
       end

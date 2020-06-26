@@ -59,12 +59,12 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/newsletter-subscriptions/#{id}", options)
         end
       end

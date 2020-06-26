@@ -15,6 +15,16 @@ module Kentaa
           user = Kentaa::Api::Resources::User.new(config, options.merge(id: id))
           user.load
         end
+
+        def create(attributes = {}, options = {})
+          user = Kentaa::Api::Resources::User.new(config, options)
+          user.save(attributes)
+        end
+
+        def update(id, attributes = {}, options = {})
+          user = Kentaa::Api::Resources::User.new(config, options.merge(id: id))
+          user.save(attributes)
+        end
       end
     end
   end

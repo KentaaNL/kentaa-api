@@ -10,13 +10,11 @@ module Kentaa
           users.each(&block)
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/users", options)
         end
-
-        private
 
         def users
           @users ||= begin

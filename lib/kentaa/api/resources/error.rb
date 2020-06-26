@@ -3,23 +3,19 @@
 module Kentaa
   module Api
     module Resources
-      class Question
+      class Error
         attr_reader :data
 
         def initialize(data)
           @data = data
         end
 
-        def id
-          data[:id]
+        def field
+          data[:field]
         end
 
-        def question
-          data[:question]
-        end
-
-        def answer
-          data[:answer]
+        def error
+          data[:error]
         end
       end
     end

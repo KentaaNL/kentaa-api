@@ -80,6 +80,28 @@ RSpec.describe Kentaa::Api::Client do
         expect { client.actions.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
       end
     end
+
+    describe '#create' do
+      it 'creates an action' do
+        data = File.read("spec/fixtures/responses/action.json")
+        stub_request(:post, "https://api.kentaa.nl/v1/actions").to_return(status: 201, body: data)
+
+        action = client.actions.create(title: "Lorem ipsum", description: "Dolorum animi qui nihil iure dolore velit. Rerum eius et quo.")
+        expect(action).to be_a(Kentaa::Api::Resources::Action)
+        expect(action.title).to eq("Lorem ipsum")
+      end
+    end
+
+    describe '#update' do
+      it 'updates an action' do
+        data = File.read("spec/fixtures/responses/action.json")
+        stub_request(:patch, "https://api.kentaa.nl/v1/actions/1").to_return(status: 200, body: data)
+
+        action = client.actions.update(1, title: "Lorem ipsum")
+        expect(action).to be_a(Kentaa::Api::Resources::Action)
+        expect(action.title).to eq("Lorem ipsum")
+      end
+    end
   end
 
   describe '#donations' do
@@ -359,6 +381,30 @@ RSpec.describe Kentaa::Api::Client do
         stub_request(:get, "https://api.kentaa.nl/v1/users/1").to_return(status: 404, body: data)
 
         expect { client.users.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+      end
+    end
+
+    describe '#create' do
+      it 'creates an user' do
+        data = File.read("spec/fixtures/responses/user.json")
+        stub_request(:post, "https://api.kentaa.nl/v1/users").to_return(status: 201, body: data)
+
+        user = client.users.create(first_name: "John", last_name: "Doe")
+        expect(user).to be_a(Kentaa::Api::Resources::User)
+        expect(user.first_name).to eq("John")
+        expect(user.last_name).to eq("Doe")
+      end
+    end
+
+    describe '#update' do
+      it 'updates an user' do
+        data = File.read("spec/fixtures/responses/user.json")
+        stub_request(:patch, "https://api.kentaa.nl/v1/users/1").to_return(status: 200, body: data)
+
+        user = client.users.update(1, first_name: "John")
+        expect(user).to be_a(Kentaa::Api::Resources::User)
+        expect(user.first_name).to eq("John")
+        expect(user.last_name).to eq("Doe")
       end
     end
   end

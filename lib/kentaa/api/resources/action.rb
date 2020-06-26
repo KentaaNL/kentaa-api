@@ -120,7 +120,7 @@ module Kentaa
         end
 
         def activity
-          @activity ||= Kentaa::Api::Resources::Activity.new(config, data: data[:activity])
+          @activity ||= Kentaa::Api::Resources::Activity.new(data[:activity])
         end
 
         def previous_participations
@@ -136,11 +136,11 @@ module Kentaa
         end
 
         def registration_fee
-          @registration_fee ||= Kentaa::Api::Resources::RegistrationFee.new(config, data: data[:registration_fee])
+          @registration_fee ||= Kentaa::Api::Resources::RegistrationFee.new(data[:registration_fee])
         end
 
         def location
-          @location ||= Kentaa::Api::Resources::Location.new(config, data: data[:location])
+          @location ||= Kentaa::Api::Resources::Location.new(data[:location])
         end
 
         def photos
@@ -149,7 +149,7 @@ module Kentaa
 
             if data[:photos]
               data[:photos].each do |photo|
-                photos << Kentaa::Api::Resources::Photo.new(config, data: photo)
+                photos << Kentaa::Api::Resources::Photo.new(photo)
               end
             end
 
@@ -163,7 +163,7 @@ module Kentaa
 
             if data[:videos]
               data[:videos].each do |video|
-                videos << Kentaa::Api::Resources::Video.new(config, data: video)
+                videos << Kentaa::Api::Resources::Video.new(video)
               end
             end
 
@@ -177,7 +177,7 @@ module Kentaa
 
             if data[:questions]
               data[:questions].each do |question|
-                questions << Kentaa::Api::Resources::Question.new(config, data: question)
+                questions << Kentaa::Api::Resources::Question.new(question)
               end
             end
 
@@ -186,17 +186,25 @@ module Kentaa
         end
 
         def consent
-          @consent ||= Kentaa::Api::Resources::Consent.new(config, data: data[:consent]) if data[:consent]
+          @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end
 
         def external_reference
           data[:external_reference]
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/actions/#{id}", options)
+        end
+
+        def create_resource(attributes)
+          request.post("/actions", options, attributes)
+        end
+
+        def update_resource(attributes)
+          request.patch("/actions/#{id}", options, attributes)
         end
       end
     end

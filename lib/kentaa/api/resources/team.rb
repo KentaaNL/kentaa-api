@@ -117,7 +117,7 @@ module Kentaa
 
             if data[:photos]
               data[:photos].each do |photo|
-                photos << Kentaa::Api::Resources::Photo.new(config, data: photo)
+                photos << Kentaa::Api::Resources::Photo.new(photo)
               end
             end
 
@@ -131,7 +131,7 @@ module Kentaa
 
             if data[:videos]
               data[:videos].each do |video|
-                videos << Kentaa::Api::Resources::Video.new(config, data: video)
+                videos << Kentaa::Api::Resources::Video.new(video)
               end
             end
 
@@ -145,7 +145,7 @@ module Kentaa
 
             if data[:questions]
               data[:questions].each do |question|
-                questions << Kentaa::Api::Resources::Question.new(config, data: question)
+                questions << Kentaa::Api::Resources::Question.new(question)
               end
             end
 
@@ -157,9 +157,9 @@ module Kentaa
           data[:external_reference]
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/teams/#{id}", options)
         end
       end

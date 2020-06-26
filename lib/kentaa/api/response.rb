@@ -32,6 +32,20 @@ module Kentaa
         body[:message]
       end
 
+      def errors
+        @errors ||= begin
+          errors = []
+
+          if body[:errors]
+            body[:errors].each do |error|
+              errors << Kentaa::Api::Resources::Error.new(error)
+            end
+          end
+
+          errors
+        end
+      end
+
       private
 
       def parse_body(body)

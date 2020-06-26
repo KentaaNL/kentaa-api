@@ -3,7 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class RegistrationFee < Resource
+      class RegistrationFee
         def amount
           data[:amount]
         end

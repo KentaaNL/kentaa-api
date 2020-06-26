@@ -12,7 +12,7 @@ module Kentaa
         end
 
         def load
-          @response ||= load_resource(options)
+          @response ||= load_resource
 
           self
         end
@@ -28,7 +28,7 @@ module Kentaa
           class_name.gsub(/([^\^])([A-Z])/, '\1_\2').downcase.to_sym
         end
 
-        def load_resource(_options)
+        def load_resource
           raise NotImplementedError
         end
 

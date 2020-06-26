@@ -10,13 +10,11 @@ module Kentaa
           teams.each(&block)
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/teams", options)
         end
-
-        private
 
         def teams
           @teams ||= begin

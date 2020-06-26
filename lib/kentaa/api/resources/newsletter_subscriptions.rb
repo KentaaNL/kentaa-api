@@ -10,13 +10,11 @@ module Kentaa
           newsletter_subscriptions.each(&block)
         end
 
-        protected
+        private
 
-        def load_resource(options)
+        def load_resource
           request.get("/newsletter-subscriptions", options)
         end
-
-        private
 
         def newsletter_subscriptions
           @newsletter_subscriptions ||= begin

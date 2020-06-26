@@ -3,7 +3,13 @@
 module Kentaa
   module Api
     module Resources
-      class Location < Resource
+      class Location
+        attr_reader :data
+
+        def initialize(data)
+          @data = data
+        end
+
         def zip_code
           data[:zip_code]
         end

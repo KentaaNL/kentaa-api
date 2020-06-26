@@ -14,6 +14,10 @@ module Kentaa
         super(response.message)
       end
 
+      def errors
+        response.errors
+      end
+
       def http_code
         response.http_code
       end

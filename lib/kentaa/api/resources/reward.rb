@@ -3,7 +3,17 @@
 module Kentaa
   module Api
     module Resources
-      class Reward < Resource
+      class Reward
+        attr_reader :data
+
+        def initialize(data)
+          @data = data
+        end
+
+        def id
+          data[:id]
+        end
+
         def type
           data[:type]
         end
