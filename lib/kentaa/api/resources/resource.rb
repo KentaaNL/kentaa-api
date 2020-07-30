@@ -37,6 +37,12 @@ module Kentaa
           self
         end
 
+        def delete
+          delete_resource
+
+          self
+        end
+
         def created_at
           Time.parse(data[:created_at]) if data[:created_at]
         end
@@ -52,6 +58,10 @@ module Kentaa
         end
 
         def update_resource
+          raise NotImplementedError
+        end
+
+        def delete_resource
           raise NotImplementedError
         end
       end

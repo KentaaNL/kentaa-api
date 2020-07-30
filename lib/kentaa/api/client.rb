@@ -15,6 +15,10 @@ module Kentaa
         Kentaa::Api::Clients::Donations.new(@config)
       end
 
+      def manual_donations
+        Kentaa::Api::Clients::ManualDonations.new(@config)
+      end
+
       def newsletter_subscriptions
         Kentaa::Api::Clients::NewsletterSubscriptions.new(@config)
       end

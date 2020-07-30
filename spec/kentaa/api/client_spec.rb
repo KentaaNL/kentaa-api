@@ -149,6 +149,84 @@ RSpec.describe Kentaa::Api::Client do
     end
   end
 
+  describe '#manual_donations' do
+    describe '#all' do
+      it 'returns an enumerator for retrieving all manual donations' do
+        data = File.read("spec/fixtures/responses/manual_donations.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/manual-donations?page=1").to_return(status: 200, body: data)
+        data = File.read("spec/fixtures/responses/empty.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/manual-donations?page=2").to_return(status: 200, body: data)
+
+        donations = client.manual_donations.all
+        expect(donations).to be_a(Enumerator)
+        expect(donations.count).to eq(1)
+      end
+    end
+
+    describe '#list' do
+      it 'returns a list of manual donations' do
+        data = File.read("spec/fixtures/responses/manual_donations.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/manual-donations").to_return(status: 200, body: data)
+
+        donations = client.manual_donations.list
+        expect(donations).to be_a(Kentaa::Api::Resources::ManualDonations)
+        expect(donations.count).to eq(1)
+        expect(donations.total_entries).to eq(4)
+      end
+    end
+
+    describe '#get' do
+      it 'returns a single manual donation' do
+        data = File.read("spec/fixtures/responses/manual_donation.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/manual-donations/1").to_return(status: 200, body: data)
+
+        donation = client.manual_donations.get(1)
+        expect(donation).to be_a(Kentaa::Api::Resources::ManualDonation)
+        expect(donation.amount).not_to be nil
+      end
+
+      it 'returns an error when the donation was not found' do
+        data = File.read("spec/fixtures/responses/404.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/manual-donations/1").to_return(status: 404, body: data)
+
+        expect { client.manual_donations.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+      end
+    end
+
+    describe '#create' do
+      it 'creates a manual donation' do
+        data = File.read("spec/fixtures/responses/manual_donation.json")
+        stub_request(:post, "https://api.kentaa.nl/v1/manual-donations").to_return(status: 201, body: data)
+
+        donation = client.manual_donations.create(first_name: "John", last_name: "Doe")
+        expect(donation).to be_a(Kentaa::Api::Resources::ManualDonation)
+        expect(donation.first_name).to eq("John")
+        expect(donation.last_name).to eq("Doe")
+      end
+    end
+
+    describe '#update' do
+      it 'updates a manual donation' do
+        data = File.read("spec/fixtures/responses/manual_donation.json")
+        stub_request(:patch, "https://api.kentaa.nl/v1/manual-donations/1").to_return(status: 200, body: data)
+
+        donation = client.manual_donations.update(1, first_name: "John", last_name: "Doe")
+        expect(donation).to be_a(Kentaa::Api::Resources::ManualDonation)
+        expect(donation.first_name).to eq("John")
+        expect(donation.last_name).to eq("Doe")
+      end
+    end
+
+    describe '#delete' do
+      it 'delete a manual donation' do
+        stub_request(:delete, "https://api.kentaa.nl/v1/manual-donations/1").to_return(status: 204)
+
+        donation = client.manual_donations.delete(1)
+        expect(donation).to be_a(Kentaa::Api::Resources::ManualDonation)
+      end
+    end
+  end
+
   describe '#newsletter_subscriptions' do
     describe '#all' do
       it 'returns an enumerator for retrieving all newsletter subscriptions' do

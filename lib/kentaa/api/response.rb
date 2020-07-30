@@ -9,11 +9,11 @@ module Kentaa
 
       def initialize(response)
         @response = response
-        @body = parse_body(response.body)
+        @body = response.body ? parse_body(response.body) : {}
       end
 
       def success?
-        (http_code == 200 || http_code == 201) && !message
+        (http_code == 200 || http_code == 201 || http_code == 204) && !message
       end
 
       def error?
