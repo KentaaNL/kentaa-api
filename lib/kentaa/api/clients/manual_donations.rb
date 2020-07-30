@@ -4,7 +4,10 @@ module Kentaa
   module Api
     module Clients
       class ManualDonations < Base
-        include Kentaa::Api::Clients::All
+        def all(options = {})
+          donations = Kentaa::Api::Resources::ManualDonations.new(config, options)
+          donations.all
+        end
 
         def list(options = {})
           donations = Kentaa::Api::Resources::ManualDonations.new(config, options)
@@ -17,18 +20,18 @@ module Kentaa
         end
 
         def create(attributes = {}, options = {})
-          action = Kentaa::Api::Resources::ManualDonation.new(config, options)
-          action.save(attributes)
+          donation = Kentaa::Api::Resources::ManualDonation.new(config, options)
+          donation.save(attributes)
         end
 
         def update(id, attributes = {}, options = {})
-          action = Kentaa::Api::Resources::ManualDonation.new(config, options.merge(id: id))
-          action.save(attributes)
+          donation = Kentaa::Api::Resources::ManualDonation.new(config, options.merge(id: id))
+          donation.save(attributes)
         end
 
         def delete(id, options = {})
-          action = Kentaa::Api::Resources::ManualDonation.new(config, options.merge(id: id))
-          action.delete
+          donation = Kentaa::Api::Resources::ManualDonation.new(config, options.merge(id: id))
+          donation.delete
         end
       end
     end

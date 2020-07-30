@@ -4,7 +4,10 @@ module Kentaa
   module Api
     module Clients
       class Segments < Base
-        include Kentaa::Api::Clients::All
+        def all(options = {})
+          segments = Kentaa::Api::Resources::Segments.new(config, options)
+          segments.all
+        end
 
         def list(options = {})
           segments = Kentaa::Api::Resources::Segments.new(config, options)

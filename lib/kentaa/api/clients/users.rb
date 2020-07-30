@@ -4,7 +4,10 @@ module Kentaa
   module Api
     module Clients
       class Users < Base
-        include Kentaa::Api::Clients::All
+        def all(options = {})
+          users = Kentaa::Api::Resources::Users.new(config, options)
+          users.all
+        end
 
         def list(options = {})
           users = Kentaa::Api::Resources::Users.new(config, options)
@@ -17,8 +20,8 @@ module Kentaa
         end
 
         def create(attributes = {}, options = {})
-          user = Kentaa::Api::Resources::User.new(config, options)
-          user.save(attributes)
+          user = Kentaa::Api::Resources::Users.new(config, options)
+          user.create(attributes)
         end
 
         def update(id, attributes = {}, options = {})

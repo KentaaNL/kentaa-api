@@ -10,6 +10,11 @@ module Kentaa
           users.each(&block)
         end
 
+        def create(attributes = {})
+          user = Kentaa::Api::Resources::User.new(config, options)
+          user.save(attributes)
+        end
+
         private
 
         def load_resource

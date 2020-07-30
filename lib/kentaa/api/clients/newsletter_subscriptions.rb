@@ -4,7 +4,10 @@ module Kentaa
   module Api
     module Clients
       class NewsletterSubscriptions < Base
-        include Kentaa::Api::Clients::All
+        def all(options = {})
+          newsletter_subscriptions = Kentaa::Api::Resources::NewsletterSubscriptions.new(config, options)
+          newsletter_subscriptions.all
+        end
 
         def list(options = {})
           newsletter_subscriptions = Kentaa::Api::Resources::NewsletterSubscriptions.new(config, options)

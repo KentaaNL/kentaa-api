@@ -4,7 +4,10 @@ module Kentaa
   module Api
     module Clients
       class Actions < Base
-        include Kentaa::Api::Clients::All
+        def all(options = {})
+          actions = Kentaa::Api::Resources::Actions.new(config, options)
+          actions.all
+        end
 
         def list(options = {})
           actions = Kentaa::Api::Resources::Actions.new(config, options)
@@ -17,8 +20,8 @@ module Kentaa
         end
 
         def create(attributes = {}, options = {})
-          action = Kentaa::Api::Resources::Action.new(config, options)
-          action.save(attributes)
+          action = Kentaa::Api::Resources::Actions.new(config, options)
+          action.create(attributes)
         end
 
         def update(id, attributes = {}, options = {})

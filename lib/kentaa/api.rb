@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "api/clients/base"
-require_relative "api/clients/all"
-
 require_relative "api/clients/actions"
 require_relative "api/clients/donations"
 require_relative "api/clients/manual_donations"

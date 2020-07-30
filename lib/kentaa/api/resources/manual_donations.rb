@@ -10,6 +10,11 @@ module Kentaa
           manual_donations.each(&block)
         end
 
+        def create(attributes = {})
+          donation = Kentaa::Api::Resources::ManualDonation.new(config, options)
+          donation.save(attributes)
+        end
+
         private
 
         def load_resource

@@ -4,7 +4,10 @@ module Kentaa
   module Api
     module Clients
       class Donations < Base
-        include Kentaa::Api::Clients::All
+        def all(options = {})
+          donations = Kentaa::Api::Resources::Donations.new(config, options)
+          donations.all
+        end
 
         def list(options = {})
           donations = Kentaa::Api::Resources::Donations.new(config, options)

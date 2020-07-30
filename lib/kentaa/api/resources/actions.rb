@@ -10,6 +10,11 @@ module Kentaa
           actions.each(&block)
         end
 
+        def create(attributes = {})
+          action = Kentaa::Api::Resources::Action.new(config, options)
+          action.save(attributes)
+        end
+
         private
 
         def load_resource

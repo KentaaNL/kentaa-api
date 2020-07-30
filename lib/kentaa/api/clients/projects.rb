@@ -4,7 +4,10 @@ module Kentaa
   module Api
     module Clients
       class Projects < Base
-        include Kentaa::Api::Clients::All
+        def all(options = {})
+          projects = Kentaa::Api::Resources::Projects.new(config, options)
+          projects.all
+        end
 
         def list(options = {})
           projects = Kentaa::Api::Resources::Projects.new(config, options)

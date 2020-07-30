@@ -37,7 +37,7 @@ client = Kentaa::Api::Client.new(config)
 
 ### Retrieving data
 
-All endpoints use the same convention for retrieving data. The methods `list` and `all` are used for retrieving multiple resources. The method `get` is used for retrieving a single resource.
+All endpoints use the same convention for retrieving data. The method `list` is for retrieving multiple resources. The method `get` is used for retrieving a single resource.
 
 The `list` method on the endpoint returns an [Enumerable](https://ruby-doc.org/core/Enumerable.html) object:
 
@@ -51,7 +51,7 @@ actions.first
 The results might be part of a paginated set. You can query the next page by doing:
 
 ```ruby
-actions = client.actions.list(page: actions.next_page) if actions.next_page?
+actions = actions.next if actions.next_page?
 ```
 
 See also `Kentaa::Api::Resources::List` for the available methods for pagination.
@@ -84,10 +84,10 @@ See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/actions).
 #### Donations
 
 ```ruby
-donations = client.donations.list    # get donations (paginated)
-donations = client.donations.all     # get all donations (non-paginated)
+donations = client.donations.list      # get donations (paginated)
+donations = client.donations.all       # get all donations (non-paginated)
 
-donation = client.donations.get(1)   # query donation by ID
+donation = client.donations.get(1)     # query donation by ID
 ```
 
 See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donations).
@@ -95,11 +95,11 @@ See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donations).
 #### Newsletter subscriptions
 
 ```ruby
-newsletter_subscriptions = client.newsletter_subscriptions.all    # get newsletter subscriptions (paginated)
-newsletter_subscriptions = client.newsletter_subscriptions.list   # get all newsletter subscriptions (non-paginated)
+newsletter_subscriptions = client.newsletter_subscriptions.list       # get newsletter subscriptions (paginated)
+newsletter_subscriptions = client.newsletter_subscriptions.all        # get all newsletter subscriptions (non-paginated)
 
 
-newsletter_subscriptions = client.newsletter_subscriptions.get(1) # query newsletter subscription by ID
+newsletter_subscriptions = client.newsletter_subscriptions.get(1)     # query newsletter subscription by ID
 ```
 
 See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/newsletter-subscriptions).
@@ -119,10 +119,10 @@ See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/projects).
 #### Segments
 
 ```ruby
-segments = client.segments.list    # get segments (paginated)
-segments = client.segments.all     # get all segments (non-paginated)
+segments = client.segments.list       # get segments (paginated)
+segments = client.segments.all        # get all segments (non-paginated)
 
-segment = client.segments.get(1)   # query segment by ID
+segment = client.segments.get(1)      # query segment by ID
 ```
 
 See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/segments).

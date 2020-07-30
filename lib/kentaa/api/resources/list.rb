@@ -51,6 +51,23 @@ module Kentaa
         def previous
           self.class.new(config, options.merge(page: previous_page)) if previous_page?
         end
+
+        def all
+          enumerator = Enumerator.new do |yielder|
+            page = 1
+
+            loop do
+              response = self.class.new(config, options.merge(page: page))
+              response.each { |item| yielder.yield item }
+
+              raise StopIteration unless response.next_page?
+
+              page = response.next_page
+            end
+          end
+
+          enumerator.lazy
+        end
       end
     end
   end

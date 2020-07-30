@@ -73,6 +73,14 @@ module Kentaa
           data[:external_reference]
         end
 
+        def donations
+          @donations ||= Kentaa::Api::Resources::Donations.new(config, segment_id: id)
+        end
+
+        def manual_donations
+          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, segment_id: id)
+        end
+
         private
 
         def load_resource
