@@ -10,6 +10,10 @@ module Kentaa
           "User_#{id}"
         end
 
+        def site
+          Kentaa::Api::Resources::Site.new(config, id: site_id)
+        end
+
         def site_id
           data[:site_id]
         end

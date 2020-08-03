@@ -14,6 +14,18 @@ RSpec.describe Kentaa::Api::Resources::NewsletterSubscription do
     end
   end
 
+  describe '#entity' do
+    it 'returns the entity resource' do
+      expect(response.entity).to be_a(Kentaa::Api::Resources::Site)
+    end
+  end
+
+  describe '#site' do
+    it 'returns the site resource' do
+      expect(response.site).to be_a(Kentaa::Api::Resources::Site)
+    end
+  end
+
   describe '#site_id' do
     it 'returns the site id' do
       expect(response.site_id).to eq(6)

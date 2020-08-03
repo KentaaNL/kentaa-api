@@ -19,6 +19,10 @@ module Kentaa
           end
         end
 
+        def site
+          Kentaa::Api::Resources::Site.new(config, id: site_id)
+        end
+
         def slug
           data[:slug]
         end

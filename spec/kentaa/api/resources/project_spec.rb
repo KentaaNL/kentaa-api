@@ -14,6 +14,18 @@ RSpec.describe Kentaa::Api::Resources::Project do
     end
   end
 
+  describe '#parent' do
+    it 'returns the parent resource' do
+      expect(response.parent).to be_a(Kentaa::Api::Resources::Segment)
+    end
+  end
+
+  describe '#site' do
+    it 'returns the site resource' do
+      expect(response.site).to be_a(Kentaa::Api::Resources::Site)
+    end
+  end
+
   describe '#site_id' do
     it 'returns the site id' do
       expect(response.site_id).to eq(6)
