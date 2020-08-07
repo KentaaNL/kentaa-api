@@ -52,7 +52,7 @@ module Kentaa
         end
 
         def team_captain?
-          data[:team_captain]
+          data.fetch(:team_captain, false)
         end
 
         def first_name
