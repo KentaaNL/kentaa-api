@@ -77,6 +77,10 @@ actions = client.actions.all              # get all actions (non-paginated)
 
 action = client.actions.get(1)            # query action by ID
 action = client.actions.get("john-doe")   # query action by slug
+
+action = client.actions.create(title: "Lorem ipsum", description: "Dolorum animi qui nihil iure dolore velit.")
+
+action = client.actions.update(1, title: "Lorem ipsum")
 ```
 
 See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/actions).
@@ -91,6 +95,23 @@ donation = client.donations.get(1)     # query donation by ID
 ```
 
 See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donations).
+
+#### Manual donations
+
+```ruby
+donations = client.manual_donations.list      # get manual donations (paginated)
+donations = client.manual_donations.all       # get all manual donations (non-paginated)
+
+donation = client.manual_donations.get(1)     # query manual donation by ID
+
+donation = client.manual_donations.create(first_name: "John", last_name: "Doe")
+
+donation = client.manual_donations.update(1, first_name: "John")
+
+client.manual_donations.delete(1)
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/manual-donations).
 
 #### Newsletter subscriptions
 
@@ -157,6 +178,10 @@ users = client.users.list          # get users (paginated)
 users = client.users.all           # get all users (non-paginated)
 
 user = client.users.get(1)         # query user by ID
+
+user = client.users.create(first_name: "John", last_name: "Doe")
+
+user = client.users.update(1, first_name: "John")
 ```
 
 See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/users).

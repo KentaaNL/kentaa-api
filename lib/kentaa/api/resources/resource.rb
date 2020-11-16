@@ -40,7 +40,7 @@ module Kentaa
         def delete
           delete_resource
 
-          self
+          nil
         end
 
         def created_at

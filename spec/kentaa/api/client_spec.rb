@@ -218,11 +218,11 @@ RSpec.describe Kentaa::Api::Client do
     end
 
     describe '#delete' do
-      it 'delete a manual donation' do
+      it 'deletes a manual donation' do
         stub_request(:delete, "https://api.kentaa.nl/v1/manual-donations/1").to_return(status: 204)
 
         donation = client.manual_donations.delete(1)
-        expect(donation).to be_a(Kentaa::Api::Resources::ManualDonation)
+        expect(donation).to be nil
       end
     end
   end
