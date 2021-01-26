@@ -89,6 +89,10 @@ module Kentaa
           @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, segment_id: id)
         end
 
+        def newsletter_subscriptions
+          @newsletter_subscriptions ||= Kentaa::Api::Resources::NewsletterSubscriptions.new(config, segment_id: id)
+        end
+
         private
 
         def load_resource

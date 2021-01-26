@@ -8,6 +8,12 @@ RSpec.describe Kentaa::Api::Resources::ManualDonation do
   let(:config) { Kentaa::Api::Config.new("12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/manual_donation.json"), symbolize_names: true) }
 
+  describe '#object_key' do
+    it 'returns the object key' do
+      expect(response.object_key).to eq("Donation_1")
+    end
+  end
+
   describe '#id' do
     it 'returns the resource id' do
       expect(response.id).to eq(1)

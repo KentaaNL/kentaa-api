@@ -8,6 +8,11 @@
     "last_name": "Doe",
     "email": "john.doe@kentaa.nl",
     "locale": "nl",
-    "subscription_url": "https://demo1.kentaa.nl"
+    "subscription_url": "https://demo1.kentaa.nl",
+    "consent": {
+      "url": "https://demo1.kentaa.nl",
+      "text": "Ja, ik wil de nieuwsbrief ontvangen",
+      "version": "V2 22-06-2018 13:09"
+    }
   }
 }

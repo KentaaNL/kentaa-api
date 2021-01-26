@@ -8,6 +8,12 @@ RSpec.describe Kentaa::Api::Resources::Project do
   let(:config) { Kentaa::Api::Config.new("12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/project.json"), symbolize_names: true) }
 
+  describe '#object_key' do
+    it 'returns the object key' do
+      expect(response.object_key).to eq("Project_1")
+    end
+  end
+
   describe '#id' do
     it 'returns the resource id' do
       expect(response.id).to eq(1)
@@ -110,6 +116,30 @@ RSpec.describe Kentaa::Api::Resources::Project do
     end
   end
 
+  describe '#photos' do
+    it 'returns the associated photos' do
+      expect(response.photos).to be_empty
+    end
+  end
+
+  describe '#videos' do
+    it 'returns the associated videos' do
+      expect(response.videos).to be_empty
+    end
+  end
+
+  describe '#questions' do
+    it 'returns the answered questions' do
+      expect(response.questions).to be_empty
+    end
+  end
+
+  describe '#consent' do
+    it 'returns the associated consent' do
+      expect(response.consent).to be nil
+    end
+  end
+
   describe '#contact' do
     it 'returns the associated contact' do
       expect(response.contact).to be_a(Kentaa::Api::Resources::Contact)
@@ -125,6 +155,30 @@ RSpec.describe Kentaa::Api::Resources::Project do
       expect(response.contact.country).to eq("NL")
       expect(response.contact.phone).to eq("0262616240")
       expect(response.contact.gender).to eq("male")
+    end
+  end
+
+  describe '#external_reference' do
+    it 'returns the external reference' do
+      expect(response.external_reference).to be nil
+    end
+  end
+
+  describe '#donations' do
+    it 'returns the donations resource' do
+      expect(response.donations).to be_a(Kentaa::Api::Resources::Donations)
+    end
+  end
+
+  describe '#manual_donations' do
+    it 'returns the manual donations resource' do
+      expect(response.manual_donations).to be_a(Kentaa::Api::Resources::ManualDonations)
+    end
+  end
+
+  describe '#newsletter_subscriptions' do
+    it 'returns the newsletter subscriptions resource' do
+      expect(response.newsletter_subscriptions).to be_a(Kentaa::Api::Resources::NewsletterSubscriptions)
     end
   end
 end

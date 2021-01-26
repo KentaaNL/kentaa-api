@@ -8,6 +8,12 @@ RSpec.describe Kentaa::Api::Resources::Action do
   let(:config) { Kentaa::Api::Config.new("12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/action.json"), symbolize_names: true) }
 
+  describe '#object_key' do
+    it 'returns the object key' do
+      expect(response.object_key).to eq("Action_1")
+    end
+  end
+
   describe '#id' do
     it 'returns the resource id' do
       expect(response.id).to eq(1)
@@ -119,6 +125,12 @@ RSpec.describe Kentaa::Api::Resources::Action do
     end
   end
 
+  describe '#external_reference' do
+    it 'returns the external reference' do
+      expect(response.external_reference).to be nil
+    end
+  end
+
   describe '#url' do
     it 'returns the page URL' do
       expect(response.url).to eq("https://demo1.kentaa.nl/actie/john-doe")
@@ -148,6 +160,15 @@ RSpec.describe Kentaa::Api::Resources::Action do
     it 'returns the answered questions' do
       expect(response.questions).not_to be_empty
       expect(response.questions.count).to eq(1)
+    end
+  end
+
+  describe '#consent' do
+    it 'returns the associated consent' do
+      expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
+      expect(response.consent.url).to eq("https://demo1.kentaa.nl/meedoen/wie-ben-jij")
+      expect(response.consent.text).to eq("Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.")
+      expect(response.consent.version).to eq("V2 22-06-2018 13:09")
     end
   end
 end

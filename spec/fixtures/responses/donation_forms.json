@@ -1,0 +1,28 @@
+{
+  "donation_forms": [
+    {
+      "id": 1,
+      "slug": "form",
+      "site_id": 1,
+      "created_at": "2020-04-16T13:58:37Z",
+      "updated_at": "2020-10-30T14:35:27Z",
+      "owner": {
+        "id": 2,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@kentaa.nl"
+      },
+      "title": "Lorem ipsum dolor sit amet",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "total_amount": "95.0",
+      "total_donations": 4,
+      "published": true,
+      "visible": true,
+      "url": "https://demo1.kentaa.nl/form"
+    }
+  ],
+  "total_entries": 5,
+  "total_pages": 1,
+  "per_page": 25,
+  "current_page": 1
+}

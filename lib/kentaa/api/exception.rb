@@ -10,8 +10,6 @@ module Kentaa
 
       def initialize(response)
         @response = response
-
-        super(response.message)
       end
 
       def errors
@@ -20,6 +18,10 @@ module Kentaa
 
       def http_code
         response.http_code
+      end
+
+      def to_s
+        "#{response.http_code}: #{response.message}"
       end
     end
   end

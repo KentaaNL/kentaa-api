@@ -8,6 +8,12 @@ RSpec.describe Kentaa::Api::Resources::NewsletterSubscription do
   let(:config) { Kentaa::Api::Config.new("12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/newsletter_subscription.json"), symbolize_names: true) }
 
+  describe '#object_key' do
+    it 'returns the object key' do
+      expect(response.object_key).to eq("NewsletterSubscription_1")
+    end
+  end
+
   describe '#id' do
     it 'returns the resource id' do
       expect(response.id).to eq(1)
@@ -71,6 +77,15 @@ RSpec.describe Kentaa::Api::Resources::NewsletterSubscription do
   describe '#subscription_url' do
     it 'returns the subscription URL' do
       expect(response.subscription_url).to eq("https://demo1.kentaa.nl")
+    end
+  end
+
+  describe '#consent' do
+    it 'returns the associated consent' do
+      expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
+      expect(response.consent.url).to eq("https://demo1.kentaa.nl")
+      expect(response.consent.text).to eq("Ja, ik wil de nieuwsbrief ontvangen")
+      expect(response.consent.version).to eq("V2 22-06-2018 13:09")
     end
   end
 end

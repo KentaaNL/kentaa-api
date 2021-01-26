@@ -12,28 +12,28 @@ RSpec.describe Kentaa::Api::Client do
       data = File.read("spec/fixtures/responses/400.json")
       stub_request(:get, "https://api.kentaa.nl/v1/actions?created_after=foobar").to_return(status: 400, body: data)
 
-      expect { client.actions.list(created_after: "foobar") }.to raise_error(Kentaa::Api::RequestError, "Invalid syntax for parameter created_after (expected ISO 8601 string).")
+      expect { client.actions.list(created_after: "foobar") }.to raise_error(Kentaa::Api::RequestError, "400: Invalid syntax for parameter created_after (expected ISO 8601 string).")
     end
 
     it 'handles 401s successfully' do
       data = File.read("spec/fixtures/responses/401.json")
       stub_request(:get, "https://api.kentaa.nl/v1/actions").to_return(status: 401, body: data)
 
-      expect { client.actions.list }.to raise_error(Kentaa::Api::RequestError, "Invalid API key provided.")
+      expect { client.actions.list }.to raise_error(Kentaa::Api::RequestError, "401: Invalid API key provided.")
     end
 
     it 'handles 404s successfully' do
       data = File.read("spec/fixtures/responses/404.json")
       stub_request(:get, "https://api.kentaa.nl/v1/actions").to_return(status: 404, body: data)
 
-      expect { client.actions.list }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+      expect { client.actions.list }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
     end
 
     it 'handles 500s successfully' do
       data = File.read("spec/fixtures/responses/500.html")
       stub_request(:get, "https://api.kentaa.nl/v1/actions").to_return(status: 500, body: data)
 
-      expect { client.actions.list }.to raise_error(Kentaa::Api::RequestError, /^Unable to parse JSON:/)
+      expect { client.actions.list }.to raise_error(Kentaa::Api::RequestError, /^500: Unable to parse JSON:/)
     end
   end
 
@@ -77,7 +77,7 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/actions/1").to_return(status: 404, body: data)
 
-        expect { client.actions.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+        expect { client.actions.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
 
@@ -86,9 +86,10 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/action.json")
         stub_request(:post, "https://api.kentaa.nl/v1/actions").to_return(status: 201, body: data)
 
-        action = client.actions.create(title: "Lorem ipsum", description: "Dolorum animi qui nihil iure dolore velit. Rerum eius et quo.")
+        action = client.actions.create(title: "Lorem ipsum", description: "Dolorum animi qui nihil iure dolore velit. Rerum eius et quo.", owner_id: 2)
         expect(action).to be_a(Kentaa::Api::Resources::Action)
         expect(action.title).to eq("Lorem ipsum")
+        expect(action.owner.id).to eq(2)
       end
     end
 
@@ -100,6 +101,49 @@ RSpec.describe Kentaa::Api::Client do
         action = client.actions.update(1, title: "Lorem ipsum")
         expect(action).to be_a(Kentaa::Api::Resources::Action)
         expect(action.title).to eq("Lorem ipsum")
+      end
+    end
+  end
+
+  describe '#donation_forms' do
+    describe '#all' do
+      it 'returns an enumerator for retrieving all donation forms' do
+        data = File.read("spec/fixtures/responses/donation_forms.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/donation-forms?page=1").to_return(status: 200, body: data)
+
+        donation_forms = client.donation_forms.all
+        expect(donation_forms).to be_a(Enumerator)
+        expect(donation_forms.count).to eq(1)
+      end
+    end
+
+    describe '#list' do
+      it 'returns a list of donation forms' do
+        data = File.read("spec/fixtures/responses/donation_forms.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/donation-forms").to_return(status: 200, body: data)
+
+        donation_forms = client.donation_forms.list
+        expect(donation_forms).to be_a(Kentaa::Api::Resources::DonationForms)
+        expect(donation_forms.count).to eq(1)
+        expect(donation_forms.total_entries).to eq(5)
+      end
+    end
+
+    describe '#get' do
+      it 'returns a single donation form' do
+        data = File.read("spec/fixtures/responses/donation_form.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/donation-forms/1").to_return(status: 200, body: data)
+
+        donation_form = client.donation_forms.get(1)
+        expect(donation_form).to be_a(Kentaa::Api::Resources::DonationForm)
+        expect(donation_form.title).to eq("Lorem ipsum dolor sit amet")
+      end
+
+      it 'returns an error when the donation form was not found' do
+        data = File.read("spec/fixtures/responses/404.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/donation-forms/1").to_return(status: 404, body: data)
+
+        expect { client.donation_forms.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
   end
@@ -144,7 +188,7 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/donations/1").to_return(status: 404, body: data)
 
-        expect { client.donations.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+        expect { client.donations.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
   end
@@ -154,8 +198,6 @@ RSpec.describe Kentaa::Api::Client do
       it 'returns an enumerator for retrieving all manual donations' do
         data = File.read("spec/fixtures/responses/manual_donations.json")
         stub_request(:get, "https://api.kentaa.nl/v1/manual-donations?page=1").to_return(status: 200, body: data)
-        data = File.read("spec/fixtures/responses/empty.json")
-        stub_request(:get, "https://api.kentaa.nl/v1/manual-donations?page=2").to_return(status: 200, body: data)
 
         donations = client.manual_donations.all
         expect(donations).to be_a(Enumerator)
@@ -189,7 +231,7 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/manual-donations/1").to_return(status: 404, body: data)
 
-        expect { client.manual_donations.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+        expect { client.manual_donations.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
 
@@ -265,7 +307,7 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/newsletter-subscriptions/1").to_return(status: 404, body: data)
 
-        expect { client.newsletter_subscriptions.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+        expect { client.newsletter_subscriptions.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
   end
@@ -310,7 +352,7 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/projects/1").to_return(status: 404, body: data)
 
-        expect { client.projects.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+        expect { client.projects.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
   end
@@ -355,7 +397,7 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/segments/1").to_return(status: 404, body: data)
 
-        expect { client.segments.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+        expect { client.segments.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
   end
@@ -413,7 +455,7 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/teams/1").to_return(status: 404, body: data)
 
-        expect { client.teams.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+        expect { client.teams.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
   end
@@ -458,7 +500,7 @@ RSpec.describe Kentaa::Api::Client do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/users/1").to_return(status: 404, body: data)
 
-        expect { client.users.get(1) }.to raise_error(Kentaa::Api::RequestError, "Requested resource was not found.")
+        expect { client.users.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
       end
     end
 
