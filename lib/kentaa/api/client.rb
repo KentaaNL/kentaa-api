@@ -11,6 +11,10 @@ module Kentaa
         Kentaa::Api::Clients::Actions.new(@config)
       end
 
+      def donation_forms
+        Kentaa::Api::Clients::DonationForms.new(@config)
+      end
+
       def donations
         Kentaa::Api::Clients::Donations.new(@config)
       end

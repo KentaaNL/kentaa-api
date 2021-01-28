@@ -6,6 +6,26 @@
 
 This gem provides a Ruby library for communicating with the [Kentaa API](https://api.kentaa.nl/v1/doc).
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Actions](#actions)
+  - [Donation forms](#donation-forms)
+  - [Donations](#donations)
+  - [Manual donations](#manual-donations)
+  - [Newsletter subscriptions](#newsletter-subscriptions)
+  - [Projects](#projects)
+  - [Segments](#segments)
+  - [Sites](#sites)
+  - [Teams](#teams)
+  - [Users](#users)
+  - [Pagination](#pagination)
+- [Error handling](#error-handling)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -24,9 +44,7 @@ Or install it yourself as:
 
 ## Usage
 
-### Initialization
-
-Create the client with your API key:
+Create a Kentaa API configuration and client using your API key:
 
 ```ruby
 require 'kentaa/api'
@@ -35,157 +53,337 @@ config = Kentaa::Api::Config.new('your_api_key')
 client = Kentaa::Api::Client.new(config)
 ```
 
-### Retrieving data
+The configuration is created for the production environment by default. If you want to use the testing environment, then add `test: true`:
 
-All endpoints use the same convention for retrieving data. The method `list` is for retrieving multiple resources. The method `get` is used for retrieving a single resource.
+```ruby
+config = Kentaa::Api::Config.new('your_api_key', test: true)
+```
 
-The `list` method on the endpoint returns an [Enumerable](https://ruby-doc.org/core/Enumerable.html) object:
+### Actions
+
+```ruby
+# List Actions
+actions = client.actions.list  # paginated
+actions = client.actions.all   # non-paginated
+
+actions.each do |action|
+  action.title  # => "Lorem ipsum"
+  action.url  # => "https://demo1.kentaa.nl/actie/john-doe"
+end
+
+# Get Action by ID or slug
+action = client.actions.get(1)
+action = client.actions.get("john-doe")
+
+action.title  # => "Lorem ipsum"
+action.url  # => "https://demo1.kentaa.nl/actie/john-doe"
+
+# Create a new Action
+action = client.actions.create(
+  title: "Lorem ipsum",
+  description: "Dolorum animi qui nihil iure dolore velit.",
+  owner_id: 1
+)
+
+action.id  # => 1
+action.title  # => "Lorem ipsum"
+action.description  # => "Dolorum animi qui nihil iure dolore velit."
+action.owner  # => Kentaa::Api::Resources::User
+
+# Update an Action
+action = client.actions.update(1, title: "Foobar")
+
+action.title  # => "Foobar"
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/actions) and [Kentaa::Api::Resources::Action](lib/kentaa/api/resources/action.rb) for all available properties.
+
+### Donation forms
+
+```ruby
+# List Donation forms
+donation_forms = client.donation_forms.list  # paginated
+donation_forms = client.donation_forms.all   # non-paginated
+
+donation_forms.each do |form|
+  form.title  # => "Lorem ipsum dolor sit amet"
+  form.url  # => "https://demo1.kentaa.nl/form"
+end
+
+# Get Donation form
+form = client.donation_forms.get(1)
+
+form.title  # => "Lorem ipsum dolor sit amet"
+form.owner  # => Kentaa::Api::Resources::User
+form.url  # => "https://demo1.kentaa.nl/form"
+form.total_amount  # => BigDecimal("95.0")
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donation-forms) and [Kentaa::Api::Resources::DonationForm](lib/kentaa/api/resources/donation_form.rb) for all available properties.
+
+### Donations
+
+```ruby
+# List Donations
+donations = client.donations.list  # paginated
+donations = client.donations.all   # non-paginated
+
+donations.each do |donations|
+  donation.first_name  # => "John"
+  donation.last_name  # => "Doe"
+end
+
+# Get Donation
+donation = client.donations.get(1)
+
+donation.first_name  # => "John"
+donation.last_name  # => "Doe"
+donation.amount  # => BigDecimal("15.0")
+donation.entity  # => Kentaa::Api::Resources::Site
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donations) and [Kentaa::Api::Resources::Donation](lib/kentaa/api/resources/donation.rb) for all available properties.
+
+### Manual donations
+
+```ruby
+# List Manual donations
+donations = client.manual_donations.list  # paginated
+donations = client.manual_donations.all   # non-paginated
+
+donations.each do |donations|
+  donation.first_name  # => "John"
+  donation.last_name  # => "Doe"
+end
+
+# Get Manual donation
+donation = client.manual_donations.get(1)
+
+donation.first_name  # => "John"
+donation.last_name  # => "Doe"
+donation.amount  # => BigDecimal("15.0")
+donation.entity  # => Kentaa::Api::Resources::Site
+
+# Create a Manual donation
+donation = client.manual_donations.create(
+  first_name: "John",
+  last_name: "Doe",
+  amount: "15.0"
+)
+
+donation.id  # => 1
+donation.first_name  # => "John"
+donation.last_name  # => "Doe"
+donation.amount  # => BigDecimal("15.0")
+donation.entity  # => Kentaa::Api::Resources::Site
+
+# Update a Manual donation
+donation = client.manual_donations.update(1, first_name: "Jane")
+
+donation.first_name  # => "Jane"
+
+# Delete a Manual donation
+client.manual_donations.delete(1)
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/manual-donations) and [Kentaa::Api::Resources::ManualDonation](lib/kentaa/api/resources/manual_donation.rb) for all available properties.
+
+### Newsletter subscriptions
+
+```ruby
+# List Newsletter subscriptions
+newsletter_subscriptions = client.newsletter_subscriptions.list  # paginated
+newsletter_subscriptions = client.newsletter_subscriptions.all   # non-paginated
+
+newsletter_subscriptions.each do |subscription|
+  subscription.email  # => "john.doe@kentaa.nl"
+  subscription.subscription_url  # => "https://demo1.kentaa.nl"
+end
+
+# Get Newsletter subscription
+subscription = client.newsletter_subscriptions.get(1)
+
+subscription.email  # => "john.doe@kentaa.nl"
+subscription.subscription_url  # => "https://demo1.kentaa.nl"
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/newsletter-subscriptions) and [Kentaa::Api::Resources::NewsletterSubscription](lib/kentaa/api/resources/newsletter_subscription.rb) for all available properties.
+
+### Projects
+
+```ruby
+# List Projects
+projects = client.projects.list  # paginated
+projects = client.projects.all   # non-paginated
+
+projects.each do |project|
+  project.title  # => "Dignissimos provident rerum enim alias magni asperna..."
+  project.target_amount  # => 250000
+end
+
+# Get Project by ID or slug
+project = client.projects.get(1)
+project = client.projects.get("project")
+
+project.title  # => "Dignissimos provident rerum enim alias magni asperna..."
+project.target_amount  # => 250000
+project.url  # => "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna"
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/projects) and [Kentaa::Api::Resources::Project](lib/kentaa/api/resources/project.rb) for all available properties.
+
+### Segments
+
+```ruby
+# List Segments
+segments = client.segments.list  # paginated
+segments = client.segments.all   # non-paginated
+
+segments.each do |segment|
+  segment.name  # => "Segment 2"
+  segment.url  # => "https://segment-2.demo1.kentaa.nl/"
+end
+
+# Get Segment
+segment = client.segments.get(1)
+
+segment.name  # => "Segment 2"
+segment.title  # => "Aut est maxime nostrum."
+segment.url  # => "https://segment-2.demo1.kentaa.nl/"
+segment.target_amount  # => 2685
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/segments) and [Kentaa::Api::Resources::Segment](lib/kentaa/api/resources/segment.rb) for all available properties.
+
+### Sites
+
+The only method here is `current`, since there is only one site per API key.
+
+```ruby
+# Get current Site
+site = client.sites.current
+
+site.title  # => "Aut est maxime nostrum."
+site.description  # => "Maiores ut velit fugiat eos. Quae est nostrum rerum aut et nihil. Sequi eveniet occaecati et est corporis et enim."
+site.url  # => "https://demo1.kentaa.nl/"
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/sites) and [Kentaa::Api::Resources::Site](lib/kentaa/api/resources/site.rb) for all available properties.
+
+### Teams
+
+```ruby
+# List Teams
+teams = client.teams.list  # paginated
+teams = client.teams.all   # non-paginated
+
+teams.each do |team|
+  team.name  # => "Asperiores beatae voluptate qui."
+  team.url  # => "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui"
+end
+
+# Get Team by ID or slug
+team = client.teams.get(1)
+team = client.teams.get("team")
+
+team.name  # => "Asperiores beatae voluptate qui."
+team.url  # => "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui"
+team.total_amount  # => BigDecimal("225.0")
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/teams) and [Kentaa::Api::Resources::Team](lib/kentaa/api/resources/team.rb) for all available properties.
+
+### Users
+
+```ruby
+# List Users
+users = client.users.list  # paginated
+users = client.users.all   # non-paginated
+
+users.each do |user|
+  user.first_name  # => "John"
+  user.last_name  # => "Doe"
+end
+
+# Get User
+user = client.users.get(1)
+
+user.first_name  # => "John"
+user.last_name  # => "Doe"
+
+# Create an User
+user = client.users.create(
+  first_name: "John",
+  last_name: "Doe"
+)
+
+user.id  # => 1
+user.first_name  # => "John"
+user.last_name  # => "Doe"
+
+# Update an User
+user = client.users.update(1, first_name: "Jane")
+
+user.first_name  # => "Jane"
+```
+
+See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/users) and [Kentaa::Api::Resources::User](lib/kentaa/api/resources/user.rb) for all available properties.
+
+### Pagination
+
+The `list` method on the endpoint returns an [Enumerable](https://ruby-doc.org/core/Enumerable.html) object with paginated results.
+Default page size is 25, but you can can customize this by setting the `per_page` parameter:
+
+```ruby
+actions = client.actions.list(per_page: 100)
+
+actions.each do |action|
+  action.title  # => "Lorem ipsum"
+  action.url  # => "https://demo1.kentaa.nl/actie/john-doe"
+end
+```
+
+You can iterate through the pages using the `.next` method and checking the result:
 
 ```ruby
 actions = client.actions.list
 
-actions.each { |a| puts a.title }
-actions.first
+loop do  
+  actions.each do |action|
+    # Do something with actions
+  end
+
+  actions = actions.next
+  break if actions.nil?
+end
 ```
 
-The results might be part of a paginated set. You can query the next page by doing:
-
-```ruby
-actions = actions.next if actions.next_page?
-```
-
-See also `Kentaa::Api::Resources::List` for the available methods for pagination.
-
-The `all` method on the endpoint returns an [Enumerator](https://ruby-doc.org/core/Enumerator.html) and will iterate automatically through all pages to retrieve the requested data.
+The `all` method on the endpoint returns a lazy [Enumerator](https://ruby-doc.org/core/Enumerator.html) and will automatically iterate through all pages and retrieve the requested data.
 
 ```ruby
 actions = client.actions.all
 
-actions.each { |a| puts a.title }
-actions.first(100)
+actions.each do |action|
+  action.title  # => "Lorem ipsum"
+  action.url  # => "https://demo1.kentaa.nl/actie/john-doe"
+end
 ```
 
-### Requests
+See [Kentaa::Api::Resources::List](lib/kentaa/api/resources/list.rb) for all available pagination methods.
 
-Below a summary of the supported requests per endpoint.
+## Error handling
 
-#### Actions
+All responses that are not HTTP status 20x will result in a [Kentaa::Api::RequestError](lib/kentaa/api/exception.rb).
 
 ```ruby
-actions = client.actions.list             # get actions (paginated)
-actions = client.actions.all              # get all actions (non-paginated)
-
-action = client.actions.get(1)            # query action by ID
-action = client.actions.get("john-doe")   # query action by slug
-
-action = client.actions.create(title: "Lorem ipsum", description: "Dolorum animi qui nihil iure dolore velit.")
-
-action = client.actions.update(1, title: "Lorem ipsum")
+begin
+  client.actions.get("invalid")
+rescue Kentaa::Api::RequestError => e
+  e.message  # => "404: Requested resource was not found."
+  e.http_code  # => 404
+  e.errors  # => Array[Kentaa::Api::Resources::Error]
+end
 ```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/actions).
-
-#### Donations
-
-```ruby
-donations = client.donations.list      # get donations (paginated)
-donations = client.donations.all       # get all donations (non-paginated)
-
-donation = client.donations.get(1)     # query donation by ID
-```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donations).
-
-#### Manual donations
-
-```ruby
-donations = client.manual_donations.list      # get manual donations (paginated)
-donations = client.manual_donations.all       # get all manual donations (non-paginated)
-
-donation = client.manual_donations.get(1)     # query manual donation by ID
-
-donation = client.manual_donations.create(first_name: "John", last_name: "Doe")
-
-donation = client.manual_donations.update(1, first_name: "John")
-
-client.manual_donations.delete(1)
-```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/manual-donations).
-
-#### Newsletter subscriptions
-
-```ruby
-newsletter_subscriptions = client.newsletter_subscriptions.list       # get newsletter subscriptions (paginated)
-newsletter_subscriptions = client.newsletter_subscriptions.all        # get all newsletter subscriptions (non-paginated)
-
-
-newsletter_subscriptions = client.newsletter_subscriptions.get(1)     # query newsletter subscription by ID
-```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/newsletter-subscriptions).
-
-#### Projects
-
-```ruby
-projects = client.projects.list            # get projects (paginated)
-projects = client.projects.all             # get all projects (non-paginated)
-
-project = client.projects.get(1)           # query project by ID
-project = client.projects.get("project")   # query project by slug
-```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/projects).
-
-#### Segments
-
-```ruby
-segments = client.segments.list       # get segments (paginated)
-segments = client.segments.all        # get all segments (non-paginated)
-
-segment = client.segments.get(1)      # query segment by ID
-```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/segments).
-
-#### Sites
-
-The only method here is `current`, since there is only one site.
-
-```ruby
-site = client.sites.current    # get the current site
-```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/sites).
-
-#### Teams
-
-```ruby
-teams = client.teams.list          # get teams (paginated)
-teams = client.teams.all           # get all teams (non-paginated)
-
-team = client.teams.get(1)         # query team by ID
-team = client.teams.get("team")    # query team by slug
-```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/teams).
-
-
-#### Users
-
-```ruby
-users = client.users.list          # get users (paginated)
-users = client.users.all           # get all users (non-paginated)
-
-user = client.users.get(1)         # query user by ID
-
-user = client.users.create(first_name: "John", last_name: "Doe")
-
-user = client.users.update(1, first_name: "John")
-```
-
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/users).
-
 
 ## Development
 

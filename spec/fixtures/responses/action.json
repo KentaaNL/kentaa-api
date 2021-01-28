@@ -36,6 +36,11 @@
         "question": "What is your age?",
         "answer": "42"
       }
-    ]
+    ],
+    "consent": {
+      "url": "https://demo1.kentaa.nl/meedoen/wie-ben-jij",
+      "text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
+      "version": "V2 22-06-2018 13:09"
+    }
   }
 }

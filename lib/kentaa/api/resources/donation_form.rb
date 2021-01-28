@@ -6,17 +6,29 @@ require 'time'
 module Kentaa
   module Api
     module Resources
-      class Site < Resource
+      class DonationForm < Resource
         def object_key
-          "Site_#{id}"
+          "DonationForm_#{id}"
         end
 
-        def host
-          data[:host]
+        def parent
+          site
         end
 
-        def name
-          data[:name]
+        def site
+          Kentaa::Api::Resources::Site.new(config, id: site_id)
+        end
+
+        def slug
+          data[:slug]
+        end
+
+        def site_id
+          data[:site_id]
+        end
+
+        def owner
+          @owner ||= Kentaa::Api::Resources::User.new(config, data: data[:owner])
         end
 
         def title
@@ -27,10 +39,6 @@ module Kentaa
           data[:description]
         end
 
-        def target_amount
-          data[:target_amount]
-        end
-
         def total_amount
           BigDecimal(data[:total_amount])
         end
@@ -39,32 +47,20 @@ module Kentaa
           data[:total_donations]
         end
 
-        def end_date
-          Time.parse(data[:end_date]) if data[:end_date]
+        def published?
+          data[:published]
+        end
+
+        def visible?
+          data[:visible]
+        end
+
+        def external_reference
+          data[:external_reference]
         end
 
         def url
           data[:url]
-        end
-
-        def donate_url
-          data[:donate_url]
-        end
-
-        def video_url
-          data[:video_url]
-        end
-
-        def owner_name
-          data[:owner_name]
-        end
-
-        def owner_email
-          data[:owner_email]
-        end
-
-        def default_currency
-          data[:default_currency]
         end
 
         def banners
@@ -81,26 +77,22 @@ module Kentaa
           end
         end
 
-        def external_reference
-          data[:external_reference]
-        end
-
         def donations
-          @donations ||= Kentaa::Api::Resources::Donations.new(config)
+          @donations ||= Kentaa::Api::Resources::Donations.new(config, donation_form_id: id)
         end
 
         def manual_donations
-          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config)
+          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, donation_form_id: id)
         end
 
         def newsletter_subscriptions
-          @newsletter_subscriptions ||= Kentaa::Api::Resources::NewsletterSubscriptions.new(config)
+          @newsletter_subscriptions ||= Kentaa::Api::Resources::NewsletterSubscriptions.new(config, donation_form_id: id)
         end
 
         private
 
         def load_resource
-          request.get("/sites/current", options)
+          request.get("/donation-forms/#{id}", options)
         end
       end
     end

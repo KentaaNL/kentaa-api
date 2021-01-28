@@ -44,6 +44,11 @@
       "zipcode": "6811AA",
       "city": "Arnhem",
       "country": "NL"
+    },
+    "consent": {
+      "url": "https://demo1.kentaa.nl/doneren",
+      "text": "Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.",
+      "version": "V2 22-06-2018 13:09"
     }
   }
 }

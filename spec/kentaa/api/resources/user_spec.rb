@@ -8,6 +8,12 @@ RSpec.describe Kentaa::Api::Resources::User do
   let(:config) { Kentaa::Api::Config.new("12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/user.json"), symbolize_names: true) }
 
+  describe '#object_key' do
+    it 'returns the object key' do
+      expect(response.object_key).to eq("User_2")
+    end
+  end
+
   describe '#id' do
     it 'returns the resource id' do
       expect(response.id).to eq(2)
@@ -143,6 +149,15 @@ RSpec.describe Kentaa::Api::Resources::User do
   describe '#locale' do
     it 'returns the locale' do
       expect(response.locale).to eq("nl")
+    end
+  end
+
+  describe '#consent' do
+    it 'returns the associated consent' do
+      expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
+      expect(response.consent.url).to eq("https://demo1.kentaa.nl/project/deelnames/meedoen/wie-ben-jij")
+      expect(response.consent.text).to eq("Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.")
+      expect(response.consent.version).to eq("V2 22-06-2018 13:09")
     end
   end
 end

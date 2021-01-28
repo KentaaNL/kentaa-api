@@ -8,6 +8,12 @@ RSpec.describe Kentaa::Api::Resources::Team do
   let(:config) { Kentaa::Api::Config.new("12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/team.json"), symbolize_names: true) }
 
+  describe '#object_key' do
+    it 'returns the object key' do
+      expect(response.object_key).to eq("Team_1")
+    end
+  end
+
   describe '#id' do
     it 'returns the resource id' do
       expect(response.id).to eq(1)
@@ -135,6 +141,30 @@ RSpec.describe Kentaa::Api::Resources::Team do
   describe '#donate_url' do
     it 'returns the donate URL' do
       expect(response.donate_url).to eq("https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/doneren")
+    end
+  end
+
+  describe '#photos' do
+    it 'returns the associated photos' do
+      expect(response.photos).to be_empty
+    end
+  end
+
+  describe '#videos' do
+    it 'returns the associated videos' do
+      expect(response.videos).to be_empty
+    end
+  end
+
+  describe '#questions' do
+    it 'returns the answered questions' do
+      expect(response.questions).to be_empty
+    end
+  end
+
+  describe '#external_reference' do
+    it 'returns the external reference' do
+      expect(response.external_reference).to be nil
     end
   end
 end

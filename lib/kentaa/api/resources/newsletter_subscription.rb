@@ -13,6 +13,8 @@ module Kentaa
             Kentaa::Api::Resources::Project.new(config, id: project_id)
           elsif segment_id
             Kentaa::Api::Resources::Segment.new(config, id: segment_id)
+          elsif donation_form_id
+            Kentaa::Api::Resources::DonationForm.new(config, id: donation_form_id)
           else
             Kentaa::Api::Resources::Site.new(config, id: site_id)
           end
@@ -40,6 +42,10 @@ module Kentaa
 
         def site_id
           data[:site_id]
+        end
+
+        def donation_form_id
+          data[:donation_form_id]
         end
 
         def segment_id

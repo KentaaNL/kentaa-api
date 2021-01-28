@@ -8,6 +8,12 @@ RSpec.describe Kentaa::Api::Resources::Site do
   let(:config) { Kentaa::Api::Config.new("12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/site.json"), symbolize_names: true) }
 
+  describe '#object_key' do
+    it 'returns the object key' do
+      expect(response.object_key).to eq("Site_6")
+    end
+  end
+
   describe '#id' do
     it 'returns the resource id' do
       expect(response.id).to eq(6)
@@ -96,6 +102,30 @@ RSpec.describe Kentaa::Api::Resources::Site do
     it 'returns the associated banners' do
       expect(response.banners).not_to be_empty
       expect(response.banners.count).to eq(1)
+    end
+  end
+
+  describe '#external_reference' do
+    it 'returns the external reference' do
+      expect(response.external_reference).to be nil
+    end
+  end
+
+  describe '#donations' do
+    it 'returns the donations resource' do
+      expect(response.donations).to be_a(Kentaa::Api::Resources::Donations)
+    end
+  end
+
+  describe '#manual_donations' do
+    it 'returns the manual donations resource' do
+      expect(response.manual_donations).to be_a(Kentaa::Api::Resources::ManualDonations)
+    end
+  end
+
+  describe '#newsletter_subscriptions' do
+    it 'returns the newsletter subscriptions resource' do
+      expect(response.newsletter_subscriptions).to be_a(Kentaa::Api::Resources::NewsletterSubscriptions)
     end
   end
 end

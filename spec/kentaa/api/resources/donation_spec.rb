@@ -8,6 +8,12 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   let(:config) { Kentaa::Api::Config.new("12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/donation.json"), symbolize_names: true) }
 
+  describe '#object_key' do
+    it 'returns the object key' do
+      expect(response.object_key).to eq("Donation_1")
+    end
+  end
+
   describe '#id' do
     it 'returns the resource id' do
       expect(response.id).to eq(1)
@@ -199,6 +205,15 @@ RSpec.describe Kentaa::Api::Resources::Donation do
       expect(response.address.zipcode).to eq("6811AA")
       expect(response.address.city).to eq("Arnhem")
       expect(response.address.country).to eq("NL")
+    end
+  end
+
+  describe '#consent' do
+    it 'returns the associated consent' do
+      expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
+      expect(response.consent.url).to eq("https://demo1.kentaa.nl/doneren")
+      expect(response.consent.text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
+      expect(response.consent.version).to eq("V2 22-06-2018 13:09")
     end
   end
 end
