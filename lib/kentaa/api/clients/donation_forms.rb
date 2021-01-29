@@ -5,18 +5,18 @@ module Kentaa
     module Clients
       class DonationForms < Base
         def all(options = {})
-          donations = Kentaa::Api::Resources::DonationForms.new(config, options)
-          donations.all
+          donation_forms = Kentaa::Api::Resources::DonationForms.new(config, options)
+          donation_forms.all
         end
 
         def list(options = {})
-          donations = Kentaa::Api::Resources::DonationForms.new(config, options)
-          donations.load
+          donation_forms = Kentaa::Api::Resources::DonationForms.new(config, options)
+          donation_forms.load
         end
 
         def get(id, options = {})
-          donation = Kentaa::Api::Resources::DonationForm.new(config, options.merge(id: id))
-          donation.load
+          donation_form = Kentaa::Api::Resources::DonationForm.new(config, options.merge(id: id))
+          donation_form.load
         end
       end
     end

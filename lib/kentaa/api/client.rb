@@ -31,6 +31,10 @@ module Kentaa
         Kentaa::Api::Clients::Projects.new(@config)
       end
 
+      def recurring_donors
+        Kentaa::Api::Clients::RecurringDonors.new(@config)
+      end
+
       def segments
         Kentaa::Api::Clients::Segments.new(@config)
       end
