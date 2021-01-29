@@ -357,6 +357,49 @@ RSpec.describe Kentaa::Api::Client do
     end
   end
 
+  describe '#recurring_donors' do
+    describe '#all' do
+      it 'returns an enumerator for retrieving all recurring donors' do
+        data = File.read("spec/fixtures/responses/recurring_donors.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/recurring-donors?page=1").to_return(status: 200, body: data)
+
+        recurring_donors = client.recurring_donors.all
+        expect(recurring_donors).to be_a(Enumerator)
+        expect(recurring_donors.count).to eq(1)
+      end
+    end
+
+    describe '#list' do
+      it 'returns a list of recurring donors' do
+        data = File.read("spec/fixtures/responses/recurring_donors.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/recurring-donors").to_return(status: 200, body: data)
+
+        recurring_donors = client.recurring_donors.list
+        expect(recurring_donors).to be_a(Kentaa::Api::Resources::RecurringDonors)
+        expect(recurring_donors.count).to eq(1)
+        expect(recurring_donors.total_entries).to eq(1)
+      end
+    end
+
+    describe '#get' do
+      it 'returns a single recurring donor' do
+        data = File.read("spec/fixtures/responses/recurring_donor.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/recurring-donors/1").to_return(status: 200, body: data)
+
+        recurring_donor = client.recurring_donors.get(1)
+        expect(recurring_donor).to be_a(Kentaa::Api::Resources::RecurringDonor)
+        expect(recurring_donor.name).to eq("John Doe")
+      end
+
+      it 'returns an error when the recurring donor was not found' do
+        data = File.read("spec/fixtures/responses/404.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/recurring-donors/1").to_return(status: 404, body: data)
+
+        expect { client.recurring_donors.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
+      end
+    end
+  end
+
   describe '#segments' do
     describe '#all' do
       it 'returns an enumerator for retrieving all segments' do

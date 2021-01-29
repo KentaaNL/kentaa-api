@@ -74,6 +74,18 @@ RSpec.describe Kentaa::Api::Resources::Donation do
     end
   end
 
+  describe '#company' do
+    it 'returns the company name' do
+      expect(response.company).to be nil
+    end
+  end
+
+  describe '#anonymous?' do
+    it 'returns true when anonymous' do
+      expect(response.anonymous?).to be false
+    end
+  end
+
   describe '#email' do
     it 'returns the email address' do
       expect(response.email).to eq("john.doe@kentaa.nl")
@@ -95,6 +107,12 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   describe '#locale' do
     it 'returns the locale' do
       expect(response.locale).to eq("nl")
+    end
+  end
+
+  describe '#currency' do
+    it 'returns the donation currency' do
+      expect(response.currency).to eq("EUR")
     end
   end
 
