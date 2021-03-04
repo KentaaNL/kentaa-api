@@ -16,6 +16,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
   - [Manual donations](#manual-donations)
   - [Newsletter subscriptions](#newsletter-subscriptions)
   - [Projects](#projects)
+  - [Recurring donors](#recurring-donors)
   - [Segments](#segments)
   - [Sites](#sites)
   - [Teams](#teams)
