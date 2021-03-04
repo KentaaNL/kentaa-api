@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/KentaaNL/kentaa-api.svg?branch=master)](https://travis-ci.org/KentaaNL/kentaa-api)
 [![Code Climate](https://codeclimate.com/github/KentaaNL/kentaa-api/badges/gpa.svg)](https://codeclimate.com/github/KentaaNL/kentaa-api)
 
-This gem provides a Ruby library for communicating with the [Kentaa API](https://api.kentaa.nl/v1/doc).
+This gem provides a Ruby library for communicating with the [Kentaa API](https://developer.kentaa.nl/kentaa-api/).
 
 ## Table of Contents
 
@@ -96,7 +96,7 @@ action = client.actions.update(1, title: "Foobar")
 action.title  # => "Foobar"
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/actions) and [Kentaa::Api::Resources::Action](lib/kentaa/api/resources/action.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#actions) and [Kentaa::Api::Resources::Action](lib/kentaa/api/resources/action.rb) for all available properties.
 
 ### Donation forms
 
@@ -119,7 +119,7 @@ form.url  # => "https://demo1.kentaa.nl/form"
 form.total_amount  # => BigDecimal("95.0")
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donation-forms) and [Kentaa::Api::Resources::DonationForm](lib/kentaa/api/resources/donation_form.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#donation-forms) and [Kentaa::Api::Resources::DonationForm](lib/kentaa/api/resources/donation_form.rb) for all available properties.
 
 ### Donations
 
@@ -142,7 +142,7 @@ donation.amount  # => BigDecimal("15.0")
 donation.entity  # => Kentaa::Api::Resources::Site
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/donations) and [Kentaa::Api::Resources::Donation](lib/kentaa/api/resources/donation.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#donations) and [Kentaa::Api::Resources::Donation](lib/kentaa/api/resources/donation.rb) for all available properties.
 
 ### Manual donations
 
@@ -186,7 +186,7 @@ donation.first_name  # => "Jane"
 client.manual_donations.delete(1)
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/manual-donations) and [Kentaa::Api::Resources::ManualDonation](lib/kentaa/api/resources/manual_donation.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#manual-donations) and [Kentaa::Api::Resources::ManualDonation](lib/kentaa/api/resources/manual_donation.rb) for all available properties.
 
 ### Newsletter subscriptions
 
@@ -207,7 +207,7 @@ subscription.email  # => "john.doe@kentaa.nl"
 subscription.subscription_url  # => "https://demo1.kentaa.nl"
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/newsletter-subscriptions) and [Kentaa::Api::Resources::NewsletterSubscription](lib/kentaa/api/resources/newsletter_subscription.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#newsletter-subscriptions) and [Kentaa::Api::Resources::NewsletterSubscription](lib/kentaa/api/resources/newsletter_subscription.rb) for all available properties.
 
 ### Projects
 
@@ -230,7 +230,30 @@ project.target_amount  # => 250000
 project.url  # => "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna"
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/projects) and [Kentaa::Api::Resources::Project](lib/kentaa/api/resources/project.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#projects) and [Kentaa::Api::Resources::Project](lib/kentaa/api/resources/project.rb) for all available properties.
+
+### Recurring donors
+
+```ruby
+# List Recurring donors
+recurring_donors = client.recurring_donors.list  # paginated
+recurring_donors = client.recurring_donors.all   # non-paginated
+
+recurring_donors.each do |recurring_donor|
+  recurring_donor.first_name  # => "John"
+  recurring_donor.last_name  # => "Doe"
+end
+
+# Get Recurring donor
+recurring_donor = client.recurring_donors.get(1)
+
+recurring_donor.first_name  # => "John"
+recurring_donor.last_name  # => "Doe"
+recurring_donor.amount  # => BigDecimal("15.0")
+recurring_donor.entity  # => Kentaa::Api::Resources::DonationForm
+```
+
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#recurring-donors) and [Kentaa::Api::Resources::RecurringDonor](lib/kentaa/api/resources/recurring_donor.rb) for all available properties.
 
 ### Segments
 
@@ -253,7 +276,7 @@ segment.url  # => "https://segment-2.demo1.kentaa.nl/"
 segment.target_amount  # => 2685
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/segments) and [Kentaa::Api::Resources::Segment](lib/kentaa/api/resources/segment.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#segments) and [Kentaa::Api::Resources::Segment](lib/kentaa/api/resources/segment.rb) for all available properties.
 
 ### Sites
 
@@ -268,7 +291,7 @@ site.description  # => "Maiores ut velit fugiat eos. Quae est nostrum rerum aut 
 site.url  # => "https://demo1.kentaa.nl/"
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/sites) and [Kentaa::Api::Resources::Site](lib/kentaa/api/resources/site.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#sites) and [Kentaa::Api::Resources::Site](lib/kentaa/api/resources/site.rb) for all available properties.
 
 ### Teams
 
@@ -291,7 +314,7 @@ team.url  # => "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui"
 team.total_amount  # => BigDecimal("225.0")
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/teams) and [Kentaa::Api::Resources::Team](lib/kentaa/api/resources/team.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#teams) and [Kentaa::Api::Resources::Team](lib/kentaa/api/resources/team.rb) for all available properties.
 
 ### Users
 
@@ -325,9 +348,16 @@ user.last_name  # => "Doe"
 user = client.users.update(1, first_name: "Jane")
 
 user.first_name  # => "Jane"
+
+# Authenticate an User
+user = client.users.auth(email: "john.doe@kenta.nl", password: "secret")
+
+user.id  # => 1
+user.first_name  # => "John"
+user.last_name  # => "Doe"
 ```
 
-See also the [Kentaa API docs](https://api.kentaa.nl/v1/doc/users) and [Kentaa::Api::Resources::User](lib/kentaa/api/resources/user.rb) for all available properties.
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#users) and [Kentaa::Api::Resources::User](lib/kentaa/api/resources/user.rb) for all available properties.
 
 ### Pagination
 
