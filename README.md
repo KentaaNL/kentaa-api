@@ -351,7 +351,7 @@ user = client.users.update(1, first_name: "Jane")
 user.first_name  # => "Jane"
 
 # Authenticate an User
-user = client.users.auth(email: "john.doe@kenta.nl", password: "secret")
+user = client.users.auth(email: "john.doe@kentaa.nl", password: "secret")
 
 user.id  # => 1
 user.first_name  # => "John"
