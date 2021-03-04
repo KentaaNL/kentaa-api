@@ -28,6 +28,11 @@ module Kentaa
           user = Kentaa::Api::Resources::User.new(config, options.merge(id: id))
           user.save(attributes)
         end
+
+        def auth(attributes = {}, options = {})
+          user = Kentaa::Api::Resources::Users.new(config, options)
+          user.auth(attributes)
+        end
       end
     end
   end

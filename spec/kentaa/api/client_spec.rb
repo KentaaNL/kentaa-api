@@ -570,5 +570,24 @@ RSpec.describe Kentaa::Api::Client do
         expect(user.last_name).to eq("Doe")
       end
     end
+
+    describe '#auth' do
+      it 'authenticates an user succesfully' do
+        data = File.read("spec/fixtures/responses/user.json")
+        stub_request(:post, "https://api.kentaa.nl/v1/users/auth").to_return(status: 200, body: data)
+
+        user = client.users.auth(email: "john.doe@kentaa.nl", password: "secret")
+        expect(user).to be_a(Kentaa::Api::Resources::User)
+        expect(user.first_name).to eq("John")
+        expect(user.last_name).to eq("Doe")
+      end
+
+      it 'returns an error when the authentication was unsuccessful' do
+        data = File.read("spec/fixtures/responses/403.json")
+        stub_request(:post, "https://api.kentaa.nl/v1/users/auth").to_return(status: 403, body: data)
+
+        expect { client.users.auth(email: "john.doe@kentaa.nl", password: "invalid") }.to raise_error(Kentaa::Api::RequestError, "403: Invalid email or password.")
+      end
+    end
   end
 end

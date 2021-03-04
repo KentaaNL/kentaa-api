@@ -15,6 +15,11 @@ module Kentaa
           user.save(attributes)
         end
 
+        def auth(attributes = {})
+          user = Kentaa::Api::Resources::User.new(config, options)
+          user.auth(attributes)
+        end
+
         private
 
         def load_resource

@@ -20,8 +20,8 @@ module Kentaa
         end
 
         def create(attributes = {}, options = {})
-          donation = Kentaa::Api::Resources::ManualDonation.new(config, options)
-          donation.save(attributes)
+          donation = Kentaa::Api::Resources::ManualDonations.new(config, options)
+          donation.create(attributes)
         end
 
         def update(id, attributes = {}, options = {})
