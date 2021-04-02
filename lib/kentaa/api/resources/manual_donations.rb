@@ -11,7 +11,7 @@ module Kentaa
         end
 
         def create(attributes = {})
-          donation = Kentaa::Api::Resources::ManualDonation.new(config, options)
+          donation = Kentaa::Api::Resources::ManualDonation.new(config, options: options)
           donation.save(attributes)
         end
 
@@ -27,7 +27,7 @@ module Kentaa
 
             if data
               data.each do |manual_donation|
-                manual_donations << Kentaa::Api::Resources::ManualDonation.new(config, data: manual_donation)
+                manual_donations << Kentaa::Api::Resources::ManualDonation.new(config, data: manual_donation, options: options)
               end
             end
 

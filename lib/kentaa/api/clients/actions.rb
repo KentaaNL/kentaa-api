@@ -15,7 +15,7 @@ module Kentaa
         end
 
         def get(id, options = {})
-          action = Kentaa::Api::Resources::Action.new(config, options.merge(id: id))
+          action = Kentaa::Api::Resources::Action.new(config, id: id, options: options)
           action.load
         end
 
@@ -25,7 +25,7 @@ module Kentaa
         end
 
         def update(id, attributes = {}, options = {})
-          action = Kentaa::Api::Resources::Action.new(config, options.merge(id: id))
+          action = Kentaa::Api::Resources::Action.new(config, id: id, options: options)
           action.save(attributes)
         end
       end

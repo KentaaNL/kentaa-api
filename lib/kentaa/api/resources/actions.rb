@@ -11,7 +11,7 @@ module Kentaa
         end
 
         def create(attributes = {})
-          action = Kentaa::Api::Resources::Action.new(config, options)
+          action = Kentaa::Api::Resources::Action.new(config, options: options)
           action.save(attributes)
         end
 
@@ -27,7 +27,7 @@ module Kentaa
 
             if data
               data.each do |action|
-                actions << Kentaa::Api::Resources::Action.new(config, data: action)
+                actions << Kentaa::Api::Resources::Action.new(config, data: action, options: options)
               end
             end
 

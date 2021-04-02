@@ -22,7 +22,7 @@ module Kentaa
 
             if data
               data.each do |team|
-                teams << Kentaa::Api::Resources::Team.new(config, data: team)
+                teams << Kentaa::Api::Resources::Team.new(config, data: team, options: options)
               end
             end
 

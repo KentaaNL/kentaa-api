@@ -55,4 +55,28 @@ RSpec.describe Kentaa::Api::Config do
       end
     end
   end
+
+  describe '#debug?' do
+    context 'when default' do
+      it 'returns false' do
+        expect(config.debug?).to be false
+      end
+    end
+
+    context 'when debug mode enabled' do
+      let(:options) { { debug: true } }
+
+      it 'returns true' do
+        expect(config.debug?).to be true
+      end
+    end
+
+    context 'when debug mode disabled' do
+      let(:options) { { debug: false } }
+
+      it 'returns false' do
+        expect(config.debug?).to be false
+      end
+    end
+  end
 end

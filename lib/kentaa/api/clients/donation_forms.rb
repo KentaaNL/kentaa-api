@@ -15,7 +15,7 @@ module Kentaa
         end
 
         def get(id, options = {})
-          donation_form = Kentaa::Api::Resources::DonationForm.new(config, options.merge(id: id))
+          donation_form = Kentaa::Api::Resources::DonationForm.new(config, id: id, options: options)
           donation_form.load
         end
       end

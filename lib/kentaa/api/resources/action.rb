@@ -13,18 +13,18 @@ module Kentaa
 
         def parent
           if team_id
-            Kentaa::Api::Resources::Team.new(config, id: team_id)
+            Kentaa::Api::Resources::Team.new(config, id: team_id, options: options)
           elsif project_id
-            Kentaa::Api::Resources::Project.new(config, id: project_id)
+            Kentaa::Api::Resources::Project.new(config, id: project_id, options: options)
           elsif segment_id
-            Kentaa::Api::Resources::Segment.new(config, id: segment_id)
+            Kentaa::Api::Resources::Segment.new(config, id: segment_id, options: options)
           else
-            Kentaa::Api::Resources::Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
           end
         end
 
         def site
-          Kentaa::Api::Resources::Site.new(config, id: site_id)
+          Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
         def slug
@@ -48,7 +48,7 @@ module Kentaa
         end
 
         def owner
-          @owner ||= Kentaa::Api::Resources::User.new(config, data: data[:owner])
+          @owner ||= Kentaa::Api::Resources::User.new(config, data: data[:owner], options: options)
         end
 
         def team_captain?

@@ -16,7 +16,7 @@ module Kentaa
         end
 
         def site
-          Kentaa::Api::Resources::Site.new(config, id: site_id)
+          Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
         def slug
@@ -28,7 +28,7 @@ module Kentaa
         end
 
         def owner
-          @owner ||= Kentaa::Api::Resources::User.new(config, data: data[:owner])
+          @owner ||= Kentaa::Api::Resources::User.new(config, data: data[:owner], options: options)
         end
 
         def title

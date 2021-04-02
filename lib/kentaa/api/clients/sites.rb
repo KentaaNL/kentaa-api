@@ -5,7 +5,7 @@ module Kentaa
     module Clients
       class Sites < Base
         def current(options = {})
-          site = Kentaa::Api::Resources::Site.new(config, options)
+          site = Kentaa::Api::Resources::Site.new(config, options: options)
           site.load
         end
       end

@@ -10,18 +10,18 @@ module Kentaa
 
         def entity
           if project_id
-            Kentaa::Api::Resources::Project.new(config, id: project_id)
+            Kentaa::Api::Resources::Project.new(config, id: project_id, options: options)
           elsif segment_id
-            Kentaa::Api::Resources::Segment.new(config, id: segment_id)
+            Kentaa::Api::Resources::Segment.new(config, id: segment_id, options: options)
           elsif donation_form_id
-            Kentaa::Api::Resources::DonationForm.new(config, id: donation_form_id)
+            Kentaa::Api::Resources::DonationForm.new(config, id: donation_form_id, options: options)
           else
-            Kentaa::Api::Resources::Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
           end
         end
 
         def site
-          Kentaa::Api::Resources::Site.new(config, id: site_id)
+          Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
         def first_name

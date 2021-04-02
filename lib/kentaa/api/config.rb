@@ -34,6 +34,10 @@ module Kentaa
           :live
         end
       end
+
+      def debug?
+        options.fetch(:debug, false)
+      end
     end
   end
 end

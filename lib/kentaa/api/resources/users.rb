@@ -11,12 +11,12 @@ module Kentaa
         end
 
         def create(attributes = {})
-          user = Kentaa::Api::Resources::User.new(config, options)
+          user = Kentaa::Api::Resources::User.new(config, options: options)
           user.save(attributes)
         end
 
         def auth(attributes = {})
-          user = Kentaa::Api::Resources::User.new(config, options)
+          user = Kentaa::Api::Resources::User.new(config, options: options)
           user.auth(attributes)
         end
 
@@ -32,7 +32,7 @@ module Kentaa
 
             if data
               data.each do |user|
-                users << Kentaa::Api::Resources::User.new(config, data: user)
+                users << Kentaa::Api::Resources::User.new(config, data: user, options: options)
               end
             end
 

@@ -13,14 +13,14 @@ module Kentaa
 
         def entity
           if donation_form_id
-            Kentaa::Api::Resources::DonationForm.new(config, id: donation_form_id)
+            Kentaa::Api::Resources::DonationForm.new(config, id: donation_form_id, options: options)
           else
-            Kentaa::Api::Resources::Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
           end
         end
 
         def site
-          Kentaa::Api::Resources::Site.new(config, id: site_id)
+          Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
         def site_id

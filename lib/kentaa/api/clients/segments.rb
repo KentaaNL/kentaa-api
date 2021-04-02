@@ -15,7 +15,7 @@ module Kentaa
         end
 
         def get(id, options = {})
-          segment = Kentaa::Api::Resources::Segment.new(config, options.merge(id: id))
+          segment = Kentaa::Api::Resources::Segment.new(config, id: id, options: options)
           segment.load
         end
       end

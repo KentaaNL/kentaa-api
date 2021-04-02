@@ -22,7 +22,7 @@ module Kentaa
 
             if data
               data.each do |donation|
-                donations << Kentaa::Api::Resources::Donation.new(config, data: donation)
+                donations << Kentaa::Api::Resources::Donation.new(config, data: donation, options: options)
               end
             end
 

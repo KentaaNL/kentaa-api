@@ -15,7 +15,7 @@ module Kentaa
         end
 
         def get(id, options = {})
-          team = Kentaa::Api::Resources::Team.new(config, options.merge(id: id))
+          team = Kentaa::Api::Resources::Team.new(config, id: id, options: options)
           team.load
         end
       end

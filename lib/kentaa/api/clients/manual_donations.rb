@@ -15,7 +15,7 @@ module Kentaa
         end
 
         def get(id, options = {})
-          donation = Kentaa::Api::Resources::ManualDonation.new(config, options.merge(id: id))
+          donation = Kentaa::Api::Resources::ManualDonation.new(config, id: id, options: options)
           donation.load
         end
 
@@ -25,12 +25,12 @@ module Kentaa
         end
 
         def update(id, attributes = {}, options = {})
-          donation = Kentaa::Api::Resources::ManualDonation.new(config, options.merge(id: id))
+          donation = Kentaa::Api::Resources::ManualDonation.new(config, id: id, options: options)
           donation.save(attributes)
         end
 
         def delete(id, options = {})
-          donation = Kentaa::Api::Resources::ManualDonation.new(config, options.merge(id: id))
+          donation = Kentaa::Api::Resources::ManualDonation.new(config, id: id, options: options)
           donation.delete
         end
       end

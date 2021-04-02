@@ -8,14 +8,14 @@ module Kentaa
       class Resource < Base
         attr_accessor :id
 
-        def initialize(config, options = {})
+        def initialize(config, id: nil, data: nil, options: {})
           super(config, options)
 
-          if options.key?(:data)
-            @data = options.delete(:data) || {}
+          if data
+            @data = data || {}
             @id = @data.fetch(:id) if @data.key?(:id)
-          elsif options.key?(:id)
-            @id = options.delete(:id)
+          elsif id
+            @id = id
           end
         end
 

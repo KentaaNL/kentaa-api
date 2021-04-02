@@ -22,7 +22,7 @@ module Kentaa
 
             if data
               data.each do |newsletter_subscription|
-                newsletter_subscriptions << Kentaa::Api::Resources::NewsletterSubscription.new(config, data: newsletter_subscription)
+                newsletter_subscriptions << Kentaa::Api::Resources::NewsletterSubscription.new(config, data: newsletter_subscription, options: options)
               end
             end
 

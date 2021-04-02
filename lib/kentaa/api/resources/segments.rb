@@ -22,7 +22,7 @@ module Kentaa
 
             if data
               data.each do |segment|
-                segments << Kentaa::Api::Resources::Segment.new(config, data: segment)
+                segments << Kentaa::Api::Resources::Segment.new(config, data: segment, options: options)
               end
             end
 

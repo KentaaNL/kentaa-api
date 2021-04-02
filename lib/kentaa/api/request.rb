@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'logger'
 require 'net/http'
 require 'uri'
 
@@ -34,6 +35,8 @@ module Kentaa
         uri = URI.parse(File.join(config.api_url, path))
         uri.query = URI.encode_www_form(params) unless params.empty?
 
+        logger.debug("[Kentaa-API] Request: #{http_method.upcase} #{uri}") if config.debug?
+
         case http_method
         when :get
           request = Net::HTTP::Get.new(uri)
@@ -67,11 +70,17 @@ module Kentaa
           raise Kentaa::Api::Exception, e.message
         end
 
+        logger.debug("[Kentaa-API] Response: #{response.http_code}, body: #{response.body}") if config.debug?
+
         if response.error?
           raise Kentaa::Api::RequestError, response
         end
 
         response
+      end
+
+      def logger
+        @logger ||= Logger.new(STDOUT)
       end
     end
   end

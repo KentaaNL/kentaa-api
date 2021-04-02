@@ -13,14 +13,14 @@ module Kentaa
 
         def parent
           if segment_id
-            Kentaa::Api::Resources::Segment.new(config, id: segment_id)
+            Kentaa::Api::Resources::Segment.new(config, id: segment_id, options: options)
           else
-            Kentaa::Api::Resources::Site.new(config, id: site_id)
+            Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
           end
         end
 
         def site
-          Kentaa::Api::Resources::Site.new(config, id: site_id)
+          Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
         def slug

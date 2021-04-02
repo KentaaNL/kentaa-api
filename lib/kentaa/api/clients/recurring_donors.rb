@@ -15,7 +15,7 @@ module Kentaa
         end
 
         def get(id, options = {})
-          recurring_donor = Kentaa::Api::Resources::RecurringDonor.new(config, options.merge(id: id))
+          recurring_donor = Kentaa::Api::Resources::RecurringDonor.new(config, id: id, options: options)
           recurring_donor.load
         end
       end
