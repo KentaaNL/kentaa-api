@@ -2,12 +2,16 @@
 
 require:
   - rubocop-performance
+  - rubocop-rake
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.3
+  NewCops: enable
+  TargetRubyVersion: 2.4
   DisplayCopNames: true
   DisplayStyleGuide: true
+  Exclude:
+    - 'vendor/**/*'
 
 Layout/LineLength:
   Enabled: false

@@ -10,6 +10,7 @@ module Kentaa
 
       def initialize(response)
         @response = response
+        super()
       end
 
       def errors
