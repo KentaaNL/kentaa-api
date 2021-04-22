@@ -32,6 +32,18 @@ RSpec.describe Kentaa::Api::Resources::Site do
     end
   end
 
+  describe '#host' do
+    it 'returns the host name' do
+      expect(response.host).to eq("demo1.kentaa.nl")
+    end
+  end
+
+  describe '#name' do
+    it 'returns the site name' do
+      expect(response.name).to eq("Demo")
+    end
+  end
+
   describe '#title' do
     it 'returns the title' do
       expect(response.title).to eq("Aut est maxime nostrum.")
@@ -59,6 +71,12 @@ RSpec.describe Kentaa::Api::Resources::Site do
   describe '#total_donations' do
     it 'returns the total donations' do
       expect(response.total_donations).to eq(0)
+    end
+  end
+
+  describe '#default_currency' do
+    it 'returns the default currency' do
+      expect(response.default_currency).to eq("EUR")
     end
   end
 
