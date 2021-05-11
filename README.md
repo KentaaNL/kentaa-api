@@ -45,19 +45,18 @@ Or install it yourself as:
 
 ## Usage
 
-Create a Kentaa API configuration and client using your API key:
+Create a Kentaa API client using your API key:
 
 ```ruby
 require 'kentaa/api'
 
-config = Kentaa::Api::Config.new('your_api_key')
-client = Kentaa::Api::Client.new(config)
+client = Kentaa::Api::Client.new(api_key: 'your_api_key')
 ```
 
-The configuration is created for the production environment by default. If you want to use the testing environment, then add `test: true`:
+The client is created for the production environment by default. If you want to use the testing environment, then add `test: true`:
 
 ```ruby
-config = Kentaa::Api::Config.new('your_api_key', test: true)
+client = Kentaa::Api::Client.new(api_key: 'your_api_key', test: true)
 ```
 
 ### Actions

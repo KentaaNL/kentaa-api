@@ -7,11 +7,14 @@ module Kentaa
       TEST_URL = "https://api.kentaa.staatklaar.nu/v1"
       DEV_URL  = "http://api.lvh.me:3000/v1"
 
-      attr_accessor :api_key, :options
+      attr_accessor :options
 
-      def initialize(api_key, options = {})
-        @api_key = api_key
+      def initialize(options = {})
         @options = options
+      end
+
+      def api_key
+        options.fetch(:api_key)
       end
 
       def api_url

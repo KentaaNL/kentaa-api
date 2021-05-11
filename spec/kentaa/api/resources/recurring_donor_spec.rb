@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Kentaa::Api::Resources::RecurringDonor do
   subject(:response) { Kentaa::Api::Resources::RecurringDonor.new(config, data: data[:recurring_donor]) }
 
-  let(:config) { Kentaa::Api::Config.new("12345") }
+  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/recurring_donor.json"), symbolize_names: true) }
 
   describe '#object_key' do

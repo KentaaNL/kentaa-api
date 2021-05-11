@@ -3,9 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Kentaa::Api::Client do
-  subject(:client) { Kentaa::Api::Client.new(config) }
-
-  let(:config) { Kentaa::Api::Config.new("12345") }
+  subject(:client) { Kentaa::Api::Client.new(api_key: "12345") }
 
   describe 'error handling' do
     it 'handles 400s successfully' do

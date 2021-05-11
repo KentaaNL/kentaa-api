@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Kentaa::Api::Resources::Site do
   subject(:response) { Kentaa::Api::Resources::Site.new(config, data: data[:site]) }
 
-  let(:config) { Kentaa::Api::Config.new("12345") }
+  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/site.json"), symbolize_names: true) }
 
   describe '#object_key' do

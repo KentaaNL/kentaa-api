@@ -3,10 +3,15 @@
 require "spec_helper"
 
 RSpec.describe Kentaa::Api::Config do
-  subject(:config) { Kentaa::Api::Config.new(api_key, options) }
+  subject(:config) { Kentaa::Api::Config.new(options) }
 
-  let(:api_key) { "12345" }
-  let(:options) { {} }
+  let(:options) { { api_key: "12345" } }
+
+  describe '#api_key' do
+    it 'returns the provided API key' do
+      expect(config.api_key).to eq("12345")
+    end
+  end
 
   describe '#environment' do
     context 'when default' do

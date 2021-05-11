@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Kentaa::Api::Resources::DonationForm do
   subject(:response) { Kentaa::Api::Resources::DonationForm.new(config, data: data[:donation_form]) }
 
-  let(:config) { Kentaa::Api::Config.new("12345") }
+  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
   let(:data) { JSON.parse(File.read("spec/fixtures/responses/donation_form.json"), symbolize_names: true) }
 
   describe '#object_key' do
