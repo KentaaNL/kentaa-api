@@ -205,6 +205,10 @@ module Kentaa
           @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, action_id: id)
         end
 
+        def performances
+          @performances ||= Kentaa::Api::Resources::Performances.new(config, action_id: id)
+        end
+
         private
 
         def load_resource

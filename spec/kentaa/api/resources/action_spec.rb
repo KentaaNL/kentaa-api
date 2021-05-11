@@ -171,4 +171,22 @@ RSpec.describe Kentaa::Api::Resources::Action do
       expect(response.consent.version).to eq("V2 22-06-2018 13:09")
     end
   end
+
+  describe '#donations' do
+    it 'returns the donations resource' do
+      expect(response.donations).to be_a(Kentaa::Api::Resources::Donations)
+    end
+  end
+
+  describe '#manual_donations' do
+    it 'returns the manual donations resource' do
+      expect(response.manual_donations).to be_a(Kentaa::Api::Resources::ManualDonations)
+    end
+  end
+
+  describe '#performances' do
+    it 'returns the performances resource' do
+      expect(response.performances).to be_a(Kentaa::Api::Resources::Performances)
+    end
+  end
 end
