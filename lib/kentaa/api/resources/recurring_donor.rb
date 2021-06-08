@@ -96,7 +96,7 @@ module Kentaa
         end
 
         def donations
-          @donations ||= Kentaa::Api::Resources::Donations.new(config, recurring_donor_id: id)
+          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: "/recurring-donors/#{id}/donations")
         end
 
         private

@@ -7,17 +7,12 @@ module Kentaa
   module Api
     module Resources
       class Performance < Resource
-        def initialize(config, id: nil, data: nil, options: {})
-          @action_id = options.delete(:action_id)
-          super(config, id: id, data: data, options: options)
-        end
-
         def object_key
           "ActionPerformance_#{id}"
         end
 
         def action_id
-          @action_id || data[:action_id]
+          data[:action_id]
         end
 
         def action
@@ -47,19 +42,19 @@ module Kentaa
         private
 
         def load_resource
-          request.get("/actions/#{action_id}/performances/#{id}", options)
+          request.get("#{endpoint_path}/#{id}", options)
         end
 
         def create_resource(attributes)
-          request.post("/actions/#{action_id}/performances", options, attributes)
+          request.post(endpoint_path, options, attributes)
         end
 
         def update_resource(attributes)
-          request.patch("/actions/#{action_id}/performances/#{id}", options, attributes)
+          request.patch("#{endpoint_path}/#{id}", options, attributes)
         end
 
         def delete_resource
-          request.delete("/actions/#{action_id}/performances/#{id}", options)
+          request.delete("#{endpoint_path}/#{id}", options)
         end
       end
     end

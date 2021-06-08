@@ -4,40 +4,13 @@ module Kentaa
   module Api
     module Resources
       class Users < List
-        include Enumerable
-
-        def each(&block)
-          users.each(&block)
+        def initialize(config, options = {})
+          super(config, options.merge(resource_class: Kentaa::Api::Resources::User, endpoint_path: "/users"))
         end
 
-        def create(attributes = {})
-          user = Kentaa::Api::Resources::User.new(config, options: options)
-          user.save(attributes)
-        end
-
-        def auth(attributes = {})
-          user = Kentaa::Api::Resources::User.new(config, options: options)
-          user.auth(attributes)
-        end
-
-        private
-
-        def load_resource
-          request.get("/users", options)
-        end
-
-        def users
-          @users ||= begin
-            users = []
-
-            if data
-              data.each do |user|
-                users << Kentaa::Api::Resources::User.new(config, data: user, options: options)
-              end
-            end
-
-            users
-          end
+        def auth(attributes, options = {})
+          resource = resource_class.new(config, options: options)
+          resource.load { request.post("#{endpoint_path}/auth", options, attributes) }
         end
       end
     end

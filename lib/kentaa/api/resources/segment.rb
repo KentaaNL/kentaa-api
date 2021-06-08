@@ -81,16 +81,28 @@ module Kentaa
           data[:external_reference]
         end
 
+        def actions
+          @actions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Action, endpoint_path: "/segments/#{id}/actions")
+        end
+
+        def teams
+          @teams ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Team, endpoint_path: "/segments/#{id}/teams")
+        end
+
+        def projects
+          @projects ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Project, endpoint_path: "/segments/#{id}/projects")
+        end
+
         def donations
-          @donations ||= Kentaa::Api::Resources::Donations.new(config, segment_id: id)
+          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: "/segments/#{id}/donations")
         end
 
         def manual_donations
-          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, segment_id: id)
+          @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/segments/#{id}/manual-donations")
         end
 
         def newsletter_subscriptions
-          @newsletter_subscriptions ||= Kentaa::Api::Resources::NewsletterSubscriptions.new(config, segment_id: id)
+          @newsletter_subscriptions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::NewsletterSubscription, endpoint_path: "/segments/#{id}/newsletter-subscriptions")
         end
 
         private

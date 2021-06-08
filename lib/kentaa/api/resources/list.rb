@@ -4,6 +4,20 @@ module Kentaa
   module Api
     module Resources
       class List < Base
+        include Enumerable
+
+        def [](index)
+          resources[index]
+        end
+
+        def size
+          resources.size
+        end
+
+        def each(&block)
+          resources.each(&block)
+        end
+
         def links
           body[:links]
         end
@@ -45,11 +59,11 @@ module Kentaa
         end
 
         def next
-          self.class.new(config, options.merge(page: next_page)) if next_page?
+          self.class.new(config, options.merge(resource_class: resource_class, endpoint_path: endpoint_path, page: next_page)) if next_page?
         end
 
         def previous
-          self.class.new(config, options.merge(page: previous_page)) if previous_page?
+          self.class.new(config, options.merge(resource_class: resource_class, endpoint_path: endpoint_path, page: previous_page)) if previous_page?
         end
 
         def all
@@ -57,7 +71,7 @@ module Kentaa
             page = 1
 
             loop do
-              response = self.class.new(config, options.merge(page: page))
+              response = self.class.new(config, options.merge(resource_class: resource_class, endpoint_path: endpoint_path, page: page))
               response.each { |item| yielder.yield item }
 
               raise StopIteration unless response.next_page?
@@ -67,6 +81,50 @@ module Kentaa
           end
 
           enumerator.lazy
+        end
+
+        def get(id, options = {})
+          resource = resource_class.new(config, id: id, options: options.merge(endpoint_path: endpoint_path))
+          resource.load
+        end
+
+        def create(attributes, options = {})
+          resource = resource_class.new(config, options: options.merge(endpoint_path: endpoint_path))
+          resource.save(attributes)
+        end
+
+        def update(id, attributes, options = {})
+          resource = resource_class.new(config, id: id, options: options.merge(endpoint_path: endpoint_path))
+          resource.save(attributes)
+        end
+
+        def delete(id, options = {})
+          resource = resource_class.new(config, id: id, options: options.merge(endpoint_path: endpoint_path))
+          resource.delete
+        end
+
+        private
+
+        def resources
+          @resources ||= begin
+            resources = []
+
+            if data
+              data.each do |resource|
+                resources << resource_class.new(config, data: resource, options: options)
+              end
+            end
+
+            resources
+          end
+        end
+
+        def attribute_key
+          Util.pluralize(resource_class.attribute_key)
+        end
+
+        def load_resource
+          request.get(endpoint_path, options)
         end
       end
     end

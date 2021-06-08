@@ -145,16 +145,24 @@ module Kentaa
           data[:external_reference]
         end
 
+        def actions
+          @actions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Action, endpoint_path: "/projects/#{id}/actions")
+        end
+
+        def teams
+          @teams ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Team, endpoint_path: "/projects/#{id}/teams")
+        end
+
         def donations
-          @donations ||= Kentaa::Api::Resources::Donations.new(config, project_id: id)
+          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: "/projects/#{id}/donations")
         end
 
         def manual_donations
-          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, project_id: id)
+          @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/projects/#{id}/manual-donations")
         end
 
         def newsletter_subscriptions
-          @newsletter_subscriptions ||= Kentaa::Api::Resources::NewsletterSubscriptions.new(config, project_id: id)
+          @newsletter_subscriptions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::NewsletterSubscription, endpoint_path: "/projects/#{id}/newsletter-subscriptions")
         end
 
         private

@@ -120,20 +120,26 @@ RSpec.describe Kentaa::Api::Resources::DonationForm do
   end
 
   describe '#donations' do
-    it 'returns the donations resource' do
-      expect(response.donations).to be_a(Kentaa::Api::Resources::Donations)
+    it 'returns the donation resources as a List' do
+      expect(response.donations).to be_a(Kentaa::Api::Resources::List)
     end
   end
 
   describe '#manual_donations' do
-    it 'returns the manual donations resource' do
-      expect(response.manual_donations).to be_a(Kentaa::Api::Resources::ManualDonations)
+    it 'returns the manual donation resources as a List' do
+      expect(response.manual_donations).to be_a(Kentaa::Api::Resources::List)
     end
   end
 
   describe '#newsletter_subscriptions' do
-    it 'returns the newsletter subscriptions resource' do
-      expect(response.newsletter_subscriptions).to be_a(Kentaa::Api::Resources::NewsletterSubscriptions)
+    it 'returns the newsletter subscription resources as a List' do
+      expect(response.newsletter_subscriptions).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
+
+  describe '#recurring_donors' do
+    it 'returns the recurring donor resources as a List' do
+      expect(response.recurring_donors).to be_a(Kentaa::Api::Resources::List)
     end
   end
 end

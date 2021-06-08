@@ -162,11 +162,11 @@ module Kentaa
         end
 
         def donations
-          @donations ||= Kentaa::Api::Resources::Donations.new(config, team_id: id)
+          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: "/teams/#{id}/donations")
         end
 
         def manual_donations
-          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, team_id: id)
+          @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/teams/#{id}/manual-donations")
         end
 
         private

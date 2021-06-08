@@ -86,15 +86,15 @@ module Kentaa
         end
 
         def donations
-          @donations ||= Kentaa::Api::Resources::Donations.new(config)
+          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: "/donations")
         end
 
         def manual_donations
-          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config)
+          @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/manual-donations")
         end
 
         def newsletter_subscriptions
-          @newsletter_subscriptions ||= Kentaa::Api::Resources::NewsletterSubscriptions.new(config)
+          @newsletter_subscriptions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::NewsletterSubscription, endpoint_path: "/newsletter-subscriptions")
         end
 
         private

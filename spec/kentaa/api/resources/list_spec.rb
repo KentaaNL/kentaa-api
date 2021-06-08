@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Kentaa::Api::Resources::List do
-  subject(:response) { Kentaa::Api::Resources::Actions.new(config) }
+  subject(:response) { Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Action, endpoint_path: "/actions") }
 
   let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
 

@@ -173,20 +173,20 @@ RSpec.describe Kentaa::Api::Resources::Action do
   end
 
   describe '#donations' do
-    it 'returns the donations resource' do
-      expect(response.donations).to be_a(Kentaa::Api::Resources::Donations)
+    it 'returns the donation resources as a List' do
+      expect(response.donations).to be_a(Kentaa::Api::Resources::List)
     end
   end
 
   describe '#manual_donations' do
-    it 'returns the manual donations resource' do
-      expect(response.manual_donations).to be_a(Kentaa::Api::Resources::ManualDonations)
+    it 'returns the manual donation resources as a List' do
+      expect(response.manual_donations).to be_a(Kentaa::Api::Resources::List)
     end
   end
 
   describe '#performances' do
-    it 'returns the performances resource' do
-      expect(response.performances).to be_a(Kentaa::Api::Resources::Performances)
+    it 'returns the performance resources as a List' do
+      expect(response.performances).to be_a(Kentaa::Api::Resources::List)
     end
   end
 end

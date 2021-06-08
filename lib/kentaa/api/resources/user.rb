@@ -94,12 +94,6 @@ module Kentaa
           @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end
 
-        def auth(attributes)
-          @response = request.post("/users/auth", options, attributes)
-
-          self
-        end
-
         private
 
         def load_resource

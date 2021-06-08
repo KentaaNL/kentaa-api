@@ -78,15 +78,19 @@ module Kentaa
         end
 
         def donations
-          @donations ||= Kentaa::Api::Resources::Donations.new(config, donation_form_id: id)
+          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: "/donation-forms/#{id}/donations")
         end
 
         def manual_donations
-          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, donation_form_id: id)
+          @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/donation-forms/#{id}/manual-donations")
         end
 
         def newsletter_subscriptions
-          @newsletter_subscriptions ||= Kentaa::Api::Resources::NewsletterSubscriptions.new(config, donation_form_id: id)
+          @newsletter_subscriptions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::NewsletterSubscription, endpoint_path: "/donation-forms/#{id}/newsletter-subscriptions")
+        end
+
+        def recurring_donors
+          @recurring_donors ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::RecurringDonor, endpoint_path: "/donation-forms/#{id}/recurring-donors")
         end
 
         private

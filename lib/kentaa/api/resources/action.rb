@@ -198,15 +198,15 @@ module Kentaa
         end
 
         def donations
-          @donations ||= Kentaa::Api::Resources::Donations.new(config, action_id: id)
+          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: "/actions/#{id}/donations")
         end
 
         def manual_donations
-          @manual_donations ||= Kentaa::Api::Resources::ManualDonations.new(config, action_id: id)
+          @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/actions/#{id}/manual-donations")
         end
 
         def performances
-          @performances ||= Kentaa::Api::Resources::Performances.new(config, action_id: id)
+          @performances ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Performance, endpoint_path: "/actions/#{id}/performances")
         end
 
         private

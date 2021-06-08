@@ -148,8 +148,8 @@ RSpec.describe Kentaa::Api::Resources::RecurringDonor do
   end
 
   describe '#donations' do
-    it 'returns the donations resource' do
-      expect(response.donations).to be_a(Kentaa::Api::Resources::Donations)
+    it 'returns the donation resources as a List' do
+      expect(response.donations).to be_a(Kentaa::Api::Resources::List)
     end
   end
 end
