@@ -63,7 +63,7 @@ client = Kentaa::Api::Client.new(api_key: 'your_api_key', test: true)
 
 ```ruby
 # List Actions
-actions = client.actions.list  # paginated
+actions = client.actions       # paginated
 actions = client.actions.all   # non-paginated
 
 actions.each do |action|
@@ -102,7 +102,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#actions) 
 
 ```ruby
 # List Donation forms
-donation_forms = client.donation_forms.list  # paginated
+donation_forms = client.donation_forms       # paginated
 donation_forms = client.donation_forms.all   # non-paginated
 
 donation_forms.each do |form|
@@ -125,7 +125,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#donation-
 
 ```ruby
 # List Donations
-donations = client.donations.list  # paginated
+donations = client.donations       # paginated
 donations = client.donations.all   # non-paginated
 
 donations.each do |donations|
@@ -148,7 +148,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#donations
 
 ```ruby
 # List Manual donations
-donations = client.manual_donations.list  # paginated
+donations = client.manual_donations       # paginated
 donations = client.manual_donations.all   # non-paginated
 
 donations.each do |donations|
@@ -192,7 +192,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#manual-do
 
 ```ruby
 # List Newsletter subscriptions
-newsletter_subscriptions = client.newsletter_subscriptions.list  # paginated
+newsletter_subscriptions = client.newsletter_subscriptions       # paginated
 newsletter_subscriptions = client.newsletter_subscriptions.all   # non-paginated
 
 newsletter_subscriptions.each do |subscription|
@@ -213,7 +213,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#newslette
 
 ```ruby
 # List Projects
-projects = client.projects.list  # paginated
+projects = client.projects       # paginated
 projects = client.projects.all   # non-paginated
 
 projects.each do |project|
@@ -236,7 +236,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#projects)
 
 ```ruby
 # List Recurring donors
-recurring_donors = client.recurring_donors.list  # paginated
+recurring_donors = client.recurring_donors       # paginated
 recurring_donors = client.recurring_donors.all   # non-paginated
 
 recurring_donors.each do |recurring_donor|
@@ -259,7 +259,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#recurring
 
 ```ruby
 # List Segments
-segments = client.segments.list  # paginated
+segments = client.segments       # paginated
 segments = client.segments.all   # non-paginated
 
 segments.each do |segment|
@@ -297,7 +297,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#sites) an
 
 ```ruby
 # List Teams
-teams = client.teams.list  # paginated
+teams = client.teams       # paginated
 teams = client.teams.all   # non-paginated
 
 teams.each do |team|
@@ -320,7 +320,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#teams) an
 
 ```ruby
 # List Users
-users = client.users.list  # paginated
+users = client.users       # paginated
 users = client.users.all   # non-paginated
 
 users.each do |user|
@@ -361,11 +361,10 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#users) an
 
 ### Pagination
 
-The `list` method on the endpoint returns an [Enumerable](https://ruby-doc.org/core/Enumerable.html) object with paginated results.
-Default page size is 25, but you can can customize this by setting the `per_page` parameter:
+Endpoints that return a [Kentaa::Api::Resources::List](lib/kentaa/api/resources/list.rb) also implement [Enumerable](https://ruby-doc.org/core/Enumerable.html) object and will return paginated results. The default page size is 25, but you can can customize this by setting the `per_page` parameter:
 
 ```ruby
-actions = client.actions.list(per_page: 100)
+actions = client.actions(per_page: 100)
 
 actions.each do |action|
   action.title  # => "Lorem ipsum"
@@ -376,7 +375,7 @@ end
 You can iterate through the pages using the `.next` method and checking the result:
 
 ```ruby
-actions = client.actions.list
+actions = client.actions
 
 loop do  
   actions.each do |action|
