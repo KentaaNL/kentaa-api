@@ -215,9 +215,9 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#newslette
 Performances are available on an [Kentaa::Api::Resources::Action](lib/kentaa/api/resources/action.rb), so you first need to retrieve an Action.
 
 ```ruby
-# List Performances
 action = client.actions.get(1)
 
+# List Performances
 performances = action.performances       # paginated
 performances = action.performances.all   # non-paginated
 
