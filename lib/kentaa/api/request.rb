@@ -35,8 +35,6 @@ module Kentaa
         uri = URI.parse(File.join(config.api_url, path))
         uri.query = URI.encode_www_form(params) unless params.empty?
 
-        logger.debug("[Kentaa-API] Request: #{http_method.upcase} #{uri}") if config.debug?
-
         case http_method
         when :get
           request = Net::HTTP::Get.new(uri)
@@ -51,6 +49,8 @@ module Kentaa
         else
           raise Kentaa::Api::Exception, "Invalid HTTP method: #{http_method}"
         end
+
+        logger.debug("[Kentaa-API] Request: #{http_method.upcase} #{uri}") if config.debug?
 
         request["Accept"] = "application/json"
         request["Content-Type"] = "application/json"
