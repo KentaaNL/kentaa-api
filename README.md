@@ -15,6 +15,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
   - [Donations](#donations)
   - [Manual donations](#manual-donations)
   - [Newsletter subscriptions](#newsletter-subscriptions)
+  - [Performances](#performances)
   - [Projects](#projects)
   - [Recurring donors](#recurring-donors)
   - [Segments](#segments)
@@ -209,6 +210,50 @@ subscription.subscription_url  # => "https://demo1.kentaa.nl"
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#newsletter-subscriptions) and [Kentaa::Api::Resources::NewsletterSubscription](lib/kentaa/api/resources/newsletter_subscription.rb) for all available properties.
 
+### Performances
+
+Performances are available on an [Kentaa::Api::Resources::Action](lib/kentaa/api/resources/action.rb), so you first need to retrieve an Action.
+
+```ruby
+# List Performances
+action = client.actions.get(1)
+
+performances = action.performances       # paginated
+performances = action.performances.all   # non-paginated
+
+performances.each do |performance|
+  performance.title  # => "First tour"
+  performance.distance  # => BigDecimal("65.25")
+end
+
+# Get Performance
+donation = action.performances.get(1)
+
+performance.title  # => "First tour"
+performance.distance  # => BigDecimal("65.25")
+
+# Create a Performance
+performance = action.performances.create(
+  title: "First tour",
+  performance_type: "biking",
+  performance_at: Time.now,
+  distance: "65.25"
+)
+
+performance.title  # => "First tour"
+performance.distance  # => BigDecimal("65.25")
+
+# Update a Performance
+performance = action.performance.update(1, title: "Big tour")
+
+performance.title  # => "Big tour"
+
+# Delete a Performance
+action.performance.delete(1)
+```
+
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#performances) and [Kentaa::Api::Resources::Performance](lib/kentaa/api/resources/performance.rb) for all available properties.
+
 ### Projects
 
 ```ruby
@@ -361,7 +406,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#users) an
 
 ### Pagination
 
-Endpoints that return a [Kentaa::Api::Resources::List](lib/kentaa/api/resources/list.rb) also implement [Enumerable](https://ruby-doc.org/core/Enumerable.html) object and will return paginated results. The default page size is 25, but you can can customize this by setting the `per_page` parameter:
+All List actions return paginated results in an [Enumerable](https://ruby-doc.org/core/Enumerable.html) object. The default page size is 25, but you can can customize this by setting the `per_page` parameter.
 
 ```ruby
 actions = client.actions(per_page: 100)
@@ -372,7 +417,7 @@ actions.each do |action|
 end
 ```
 
-You can iterate through the pages using the `.next` method and checking the result:
+You can iterate through the pages using the `.next` method and checking the result. For example:
 
 ```ruby
 actions = client.actions
