@@ -160,4 +160,10 @@ RSpec.describe Kentaa::Api::Resources::User do
       expect(response.consent.version).to eq("V2 22-06-2018 13:09")
     end
   end
+
+  describe '#actions' do
+    it 'returns the action resources as a List' do
+      expect(response.actions).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
 end

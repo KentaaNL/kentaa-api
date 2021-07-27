@@ -94,6 +94,10 @@ module Kentaa
           @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end
 
+        def actions
+          @actions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Action, endpoint_path: "/users/#{id}/actions")
+        end
+
         private
 
         def load_resource
