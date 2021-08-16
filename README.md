@@ -244,12 +244,12 @@ performance.title  # => "First tour"
 performance.distance  # => BigDecimal("65.25")
 
 # Update a Performance
-performance = action.performance.update(1, title: "Big tour")
+performance = action.performances.update(1, title: "Big tour")
 
 performance.title  # => "Big tour"
 
 # Delete a Performance
-action.performance.delete(1)
+action.performances.delete(1)
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#performances) and [Kentaa::Api::Resources::Performance](lib/kentaa/api/resources/performance.rb) for all available properties.
