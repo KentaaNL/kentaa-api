@@ -161,6 +161,21 @@ RSpec.describe Kentaa::Api::Resources::User do
     end
   end
 
+  describe '#consents' do
+    it 'returns the associated consents' do
+      expect(response.consents).not_to be_empty
+      expect(response.consents.count).to eq(2)
+
+      consent = response.consents.first
+      expect(consent).to be_a(Kentaa::Api::Resources::Consent)
+      expect(consent.consent_type).to eq("terms_conditions")
+      expect(consent.consent_status).to eq("granted")
+      expect(consent.url).to eq("https://demo1.kentaa.nl/meedoen/wie-ben-jij")
+      expect(consent.text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
+      expect(consent.terms_conditions_version).to eq("V2 22-06-2018 13:09")
+    end
+  end
+
   describe '#actions' do
     it 'returns the action resources as a List' do
       expect(response.actions).to be_a(Kentaa::Api::Resources::List)

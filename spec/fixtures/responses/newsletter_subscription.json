@@ -13,6 +13,16 @@
       "url": "https://demo1.kentaa.nl",
       "text": "Ja, ik wil de nieuwsbrief ontvangen",
       "version": "V2 22-06-2018 13:09"
-    }
+    },
+    "consents": [
+      {
+        "consent_type": "newsletter_subscription",
+        "consent_status": "granted",
+        "granted_at": "2016-03-07T13:55:43Z",
+        "url": "https://demo1.kentaa.nl",
+        "text": "Ja, ik wil de nieuwsbrief ontvangen",
+        "terms_conditions_version": "V2 22-06-2018 13:09"
+      }
+    ]
   }
 }
