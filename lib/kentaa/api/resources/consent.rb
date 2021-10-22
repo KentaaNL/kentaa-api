@@ -39,12 +39,16 @@ module Kentaa
           Time.parse(data[:revoked_at]) if data[:revoked_at]
         end
 
-        def url
-          data[:url]
+        def consent_text
+          data[:consent_text]
         end
 
         def text
-          data[:text]
+          data[:text] || data[:consent_text]
+        end
+
+        def url
+          data[:url]
         end
 
         def version
@@ -52,7 +56,7 @@ module Kentaa
         end
 
         def terms_conditions_version
-          data[:terms_conditions_version] || data[:version]
+          data[:terms_conditions_version]
         end
       end
     end

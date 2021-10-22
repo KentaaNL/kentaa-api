@@ -176,8 +176,8 @@ RSpec.describe Kentaa::Api::Resources::Project do
       expect(consent).to be_a(Kentaa::Api::Resources::Consent)
       expect(consent.consent_type).to eq("terms_conditions")
       expect(consent.consent_status).to eq("granted")
+      expect(consent.consent_text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
       expect(consent.url).to eq("https://demo1.kentaa.nl/project/projectinformatie")
-      expect(consent.text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
       expect(consent.terms_conditions_version).to eq("V1 30-05-2018 11:53")
     end
   end
