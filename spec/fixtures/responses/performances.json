@@ -6,6 +6,7 @@
       "created_at": "2021-05-03T08:00:00Z",
       "updated_at": "2021-05-03T08:00:00Z",
       "title": "First tour",
+      "description": "The first tour on my new bike.",
       "performance_type": "biking",
       "performance_at": "2021-05-02T09:22:00Z",
       "distance": "65.25",

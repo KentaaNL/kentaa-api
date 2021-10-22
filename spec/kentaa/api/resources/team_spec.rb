@@ -120,9 +120,33 @@ RSpec.describe Kentaa::Api::Resources::Team do
     end
   end
 
+  describe '#target_amount_achieved?' do
+    it 'returns false when target amount not achieved' do
+      expect(response.target_amount_achieved?).to be false
+    end
+  end
+
   describe '#visible?' do
     it 'returns true when visible' do
       expect(response.visible?).to be true
+    end
+  end
+
+  describe '#countable?' do
+    it 'returns true when countable' do
+      expect(response.countable?).to be true
+    end
+  end
+
+  describe '#closed?' do
+    it 'returns false when not closed' do
+      expect(response.closed?).to be false
+    end
+  end
+
+  describe '#ended?' do
+    it 'returns false when not ended' do
+      expect(response.ended?).to be false
     end
   end
 
@@ -164,7 +188,7 @@ RSpec.describe Kentaa::Api::Resources::Team do
 
   describe '#external_reference' do
     it 'returns the external reference' do
-      expect(response.external_reference).to be nil
+      expect(response.external_reference).to eq("Customer Campaign 1021AA1-11")
     end
   end
 end

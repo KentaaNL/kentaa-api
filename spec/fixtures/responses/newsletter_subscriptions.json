@@ -3,8 +3,8 @@
     {
       "id": 1,
       "site_id": 6,
-      "created_at": "2016-03-07T13:55:43+01:00",
-      "updated_at": "2016-03-07T13:55:43+01:00",
+      "created_at": "2016-03-07T13:55:43Z",
+      "updated_at": "2016-03-07T13:55:43Z",
       "email": "john.doe@kentaa.nl",
       "locale": "nl",
       "subscription_url": "https://demo1.kentaa.nl"
@@ -12,22 +12,21 @@
     {
       "id": 2,
       "site_id": 6,
-      "created_at": "2016-03-07T13:55:43+01:00",
-      "updated_at": "2016-03-07T13:55:43+01:00",
-      "email": "foo.bar@kentaa.nl",
+      "created_at": "2016-03-07T13:55:43Z",
+      "updated_at": "2016-03-07T13:55:43Z",
+      "email": "john.doe@kentaa.nl",
       "locale": "nl",
       "subscription_url": "https://demo1.kentaa.nl"
     },
     {
       "id": 3,
       "site_id": 6,
-      "created_at": "2016-03-07T13:55:43+01:00",
-      "updated_at": "2016-03-07T13:55:43+01:00",
-      "email": "quux@kentaa.nl",
+      "created_at": "2016-03-07T13:55:43Z",
+      "updated_at": "2016-03-07T13:55:43Z",
+      "email": "john.doe@kentaa.nl",
       "locale": "nl",
       "subscription_url": "https://demo1.kentaa.nl"
     }
-
   ],
   "total_entries": 3,
   "total_pages": 1,

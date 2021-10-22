@@ -26,6 +26,12 @@ RSpec.describe Kentaa::Api::Resources::Donation do
     end
   end
 
+  describe '#recurring_donor' do
+    it 'returns the recurring donor when present' do
+      expect(response.recurring_donor).to be nil
+    end
+  end
+
   describe '#site' do
     it 'returns the site resource' do
       expect(response.site).to be_a(Kentaa::Api::Resources::Site)
@@ -35,6 +41,42 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   describe '#site_id' do
     it 'returns the site id' do
       expect(response.site_id).to eq(6)
+    end
+  end
+
+  describe '#donation_form_id' do
+    it 'returns the donation form id' do
+      expect(response.donation_form_id).to be nil
+    end
+  end
+
+  describe '#segment_id' do
+    it 'returns the segment id' do
+      expect(response.segment_id).to be nil
+    end
+  end
+
+  describe '#project_id' do
+    it 'returns the project id' do
+      expect(response.project_id).to be nil
+    end
+  end
+
+  describe '#team_id' do
+    it 'returns the team id' do
+      expect(response.team_id).to be nil
+    end
+  end
+
+  describe '#action_id' do
+    it 'returns the action id' do
+      expect(response.action_id).to be nil
+    end
+  end
+
+  describe '#recurring_donor_id' do
+    it 'returns the recurring donor id' do
+      expect(response.recurring_donor_id).to be nil
     end
   end
 
@@ -107,6 +149,12 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   describe '#locale' do
     it 'returns the locale' do
       expect(response.locale).to eq("nl")
+    end
+  end
+
+  describe '#frequency_type' do
+    it 'returns the frequency type' do
+      expect(response.frequency_type).to eq("oneoff")
     end
   end
 
@@ -196,7 +244,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#payment_description' do
     it 'returns the payment description' do
-      expect(response.payment_description).to eq("Donatie demo")
+      expect(response.payment_description).to eq("Donatie Demo")
     end
   end
 
@@ -219,8 +267,10 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   describe '#address' do
     it 'returns the associated address' do
       expect(response.address).to be_a(Kentaa::Api::Resources::Address)
-      expect(response.address.address).to eq("Jansbuitensingel 6")
-      expect(response.address.zipcode).to eq("6811AA")
+      expect(response.address.address).to eq("Jansbuitensingel 29")
+      expect(response.address.street).to eq("Jansbuitensingel")
+      expect(response.address.house_number).to eq("29")
+      expect(response.address.zipcode).to eq("6811AD")
       expect(response.address.city).to eq("Arnhem")
       expect(response.address.country).to eq("NL")
     end

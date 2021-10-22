@@ -27,6 +27,10 @@ module Kentaa
           end
         end
 
+        def recurring_donor
+          Kentaa::Api::Resources::RecurringDonor.new(config, id: recurring_donor_id, options: options) if recurring_donor_id
+        end
+
         def site
           Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
@@ -53,6 +57,10 @@ module Kentaa
 
         def action_id
           data[:action_id]
+        end
+
+        def recurring_donor_id
+          data[:recurring_donor_id]
         end
 
         def first_name
@@ -97,6 +105,10 @@ module Kentaa
 
         def locale
           data[:locale]
+        end
+
+        def frequency_type
+          data[:frequency_type]
         end
 
         def currency

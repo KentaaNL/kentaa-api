@@ -1,12 +1,13 @@
 {
   "team": {
     "id": 1,
-    "site_id": 6,
+    "slug": "asperiores-beatae-voluptate-qui",
     "segment_id": 2,
     "project_id": 3,
-    "slug": "asperiores-beatae-voluptate-qui",
-    "created_at": "2015-08-26T14:51:35+02:00",
-    "updated_at": "2015-10-12T16:27:43+02:00",
+    "site_id": 6,
+    "created_at": "2015-08-26T14:51:35Z",
+    "updated_at": "2015-10-12T16:27:43Z",
+    "external_reference": "Customer Campaign 1021AA1-11",
     "owner": {
       "id": 2,
       "first_name": "John",
@@ -22,6 +23,10 @@
           "last_name": "Klein",
           "email": "thomas.klein@kentaa.nl"
         },
+        "team_captain": false,
+        "first_name": "Thomas",
+        "last_name": "Klein",
+        "email": "thomas.klein@kentaa.nl",
         "url": "https://demo1.kentaa.nl/actie/thomas-klein",
         "donate_url": "https://demo1.kentaa.nl/actie/thomas-klein/doneren"
       },
@@ -33,6 +38,10 @@
           "last_name": "Doe",
           "email": "john.doe@kentaa.nl"
         },
+        "team_captain": true,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@kentaa.nl",
         "url": "https://demo1.kentaa.nl/actie/john-doe",
         "donate_url": "https://demo1.kentaa.nl/actie/john-doe/doneren"
       }
@@ -43,7 +52,11 @@
     "target_amount": 2000,
     "total_amount": "225.0",
     "total_donations": 4,
+    "target_amount_achieved": false,
     "visible": true,
+    "countable": true,
+    "closed": false,
+    "ended": false,
     "url": "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui",
     "donate_url": "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/doneren"
   }

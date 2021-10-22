@@ -272,7 +272,7 @@ project = client.projects.get("project")
 
 project.title  # => "Dignissimos provident rerum enim alias magni asperna..."
 project.target_amount  # => 250000
-project.url  # => "https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna"
+project.url  # => "https://demo1.kentaa.nl/project/dignissimos-provident"
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#projects) and [Kentaa::Api::Resources::Project](lib/kentaa/api/resources/project.rb) for all available properties.
@@ -422,7 +422,7 @@ You can iterate through the pages using the `.next` method and checking the resu
 ```ruby
 actions = client.actions
 
-loop do  
+loop do
   actions.each do |action|
     # Do something with actions
   end
@@ -473,4 +473,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Kentaa
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

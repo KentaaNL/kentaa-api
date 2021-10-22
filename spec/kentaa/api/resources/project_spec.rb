@@ -92,9 +92,33 @@ RSpec.describe Kentaa::Api::Resources::Project do
     end
   end
 
+  describe '#target_amount_achieved?' do
+    it 'returns false when target amount not achieved' do
+      expect(response.target_amount_achieved?).to be false
+    end
+  end
+
   describe '#visible?' do
     it 'returns true when visible' do
       expect(response.visible?).to be true
+    end
+  end
+
+  describe '#countable?' do
+    it 'returns true when countable' do
+      expect(response.countable?).to be true
+    end
+  end
+
+  describe '#closed?' do
+    it 'returns false when not closed' do
+      expect(response.closed?).to be false
+    end
+  end
+
+  describe '#ended?' do
+    it 'returns true when ended' do
+      expect(response.ended?).to be true
     end
   end
 
@@ -106,13 +130,13 @@ RSpec.describe Kentaa::Api::Resources::Project do
 
   describe '#url' do
     it 'returns the page URL' do
-      expect(response.url).to eq("https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna")
+      expect(response.url).to eq("https://demo1.kentaa.nl/project/dignissimos-provident")
     end
   end
 
   describe '#donate_url' do
     it 'returns the donate URL' do
-      expect(response.donate_url).to eq("https://demo1.kentaa.nl/project/dignissimos-provident-rerum-enim-alias-magni-asperna/doneren")
+      expect(response.donate_url).to eq("https://demo1.kentaa.nl/project/dignissimos-provident/doneren")
     end
   end
 
@@ -136,7 +160,7 @@ RSpec.describe Kentaa::Api::Resources::Project do
 
   describe '#consent' do
     it 'returns the associated consent' do
-      expect(response.consent).to be nil
+      expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
     end
   end
 
@@ -160,7 +184,7 @@ RSpec.describe Kentaa::Api::Resources::Project do
 
   describe '#external_reference' do
     it 'returns the external reference' do
-      expect(response.external_reference).to be nil
+      expect(response.external_reference).to eq("Customer Campaign 1021AA1-11")
     end
   end
 

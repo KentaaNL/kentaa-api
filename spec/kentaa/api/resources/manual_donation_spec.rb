@@ -58,7 +58,7 @@ RSpec.describe Kentaa::Api::Resources::ManualDonation do
 
   describe '#infix' do
     it 'returns the infix' do
-      expect(response.infix).to be nil
+      expect(response.infix).to eq("")
     end
   end
 

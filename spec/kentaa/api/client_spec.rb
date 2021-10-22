@@ -344,7 +344,7 @@ RSpec.describe Kentaa::Api::Client do
         projects = client.projects
         expect(projects).to be_a(Kentaa::Api::Resources::List)
         expect(projects.count).to eq(2)
-        expect(projects.total_entries).to eq(6)
+        expect(projects.total_entries).to eq(10)
         expect(projects.first).to be_a(Kentaa::Api::Resources::Project)
       end
     end

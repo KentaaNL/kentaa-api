@@ -119,7 +119,7 @@ RSpec.describe Kentaa::Api::Resources::Segment do
 
   describe '#external_reference' do
     it 'returns the external reference' do
-      expect(response.external_reference).to be nil
+      expect(response.external_reference).to eq("Customer Campaign 1021AA1-11")
     end
   end
 

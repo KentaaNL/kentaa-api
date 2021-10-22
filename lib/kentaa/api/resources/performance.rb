@@ -23,6 +23,10 @@ module Kentaa
           data[:title]
         end
 
+        def description
+          data[:description]
+        end
+
         def performance_type
           data[:performance_type]
         end

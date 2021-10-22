@@ -50,6 +50,12 @@ RSpec.describe Kentaa::Api::Resources::Performance do
     end
   end
 
+  describe '#description' do
+    it 'returns the description' do
+      expect(response.description).to eq("The first tour on my new bike.")
+    end
+  end
+
   describe '#performance_type' do
     it 'returns the performance_type' do
       expect(response.performance_type).to eq("biking")
