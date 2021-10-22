@@ -19,11 +19,6 @@
       "end_date": "2015-10-28T00:00:00Z",
       "url": "https://demo1.kentaa.nl/project/dignissimos-provident",
       "donate_url": "https://demo1.kentaa.nl/project/dignissimos-provident/doneren",
-      "consent": {
-        "url": "https://demo1.kentaa.nl/project/projectinformatie",
-        "text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
-        "version": "V1 30-05-2018 11:53"
-      },
       "contact": {
         "first_name": "John",
         "last_name": "Doe",
@@ -36,6 +31,11 @@
         "country": "NL",
         "phone": "0262616240",
         "gender": "male"
+      },
+      "consent": {
+        "url": "https://demo1.kentaa.nl/project/projectinformatie",
+        "text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
+        "version": "V1 30-05-2018 11:53"
       }
     },
     {
@@ -57,11 +57,6 @@
       "end_date": "2015-10-28T00:00:00Z",
       "url": "https://demo1.kentaa.nl/project/dignissimos-provident-2",
       "donate_url": "https://demo1.kentaa.nl/project/dignissimos-provident-2/doneren",
-      "consent": {
-        "url": "https://demo1.kentaa.nl/project/projectinformatie",
-        "text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
-        "version": "V1 30-05-2018 11:53"
-      },
       "contact": {
         "first_name": "John",
         "last_name": "Doe",
@@ -74,6 +69,11 @@
         "country": "NL",
         "phone": "0262616240",
         "gender": "male"
+      },
+      "consent": {
+        "url": "https://demo1.kentaa.nl/project/projectinformatie",
+        "text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
+        "version": "V1 30-05-2018 11:53"
       }
     }
   ],

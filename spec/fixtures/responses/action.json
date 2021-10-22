@@ -56,6 +56,24 @@
       "url": "https://demo1.kentaa.nl/meedoen/wie-ben-jij",
       "text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
       "version": "V2 22-06-2018 13:09"
-    }
+    },
+    "consents": [
+      {
+        "consent_type": "terms_conditions",
+        "consent_status": "granted",
+        "granted_at": "2015-08-26T14:50:14Z",
+        "url": "https://demo1.kentaa.nl/meedoen/wie-ben-jij",
+        "text": "Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.",
+        "terms_conditions_version": "V2 22-06-2018 13:09"
+      },
+      {
+        "consent_type": "processing_personal_data",
+        "consent_status": "granted",
+        "granted_at": "2015-08-26T14:50:14Z",
+        "url": "https://demo1.kentaa.nl/meedoen/wie-ben-jij",
+        "text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
+        "terms_conditions_version": "V2 22-06-2018 13:09"
+      }
+    ]
   }
 }

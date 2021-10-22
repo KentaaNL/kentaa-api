@@ -190,7 +190,23 @@ module Kentaa
         end
 
         def consent
+          Kentaa::Api::Deprecation.warn("#consent is deprecated. Please use #consents instead.", caller)
+
           @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
+        end
+
+        def consents
+          @consents ||= begin
+            consents = []
+
+            if data[:consents]
+              data[:consents].each do |consent|
+                consents << Kentaa::Api::Resources::Consent.new(consent)
+              end
+            end
+
+            consents
+          end
         end
 
         def external_reference

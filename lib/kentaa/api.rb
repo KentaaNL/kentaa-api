@@ -33,6 +33,7 @@ require_relative "api/resources/video"
 
 require_relative "api/client"
 require_relative "api/config"
+require_relative "api/deprecation"
 require_relative "api/exception"
 require_relative "api/request"
 require_relative "api/response"

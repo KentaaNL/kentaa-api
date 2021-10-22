@@ -88,4 +88,19 @@ RSpec.describe Kentaa::Api::Resources::NewsletterSubscription do
       expect(response.consent.version).to eq("V2 22-06-2018 13:09")
     end
   end
+
+  describe '#consents' do
+    it 'returns the associated consents' do
+      expect(response.consents).not_to be_empty
+      expect(response.consents.count).to eq(1)
+
+      consent = response.consents.first
+      expect(consent).to be_a(Kentaa::Api::Resources::Consent)
+      expect(consent.consent_type).to eq("newsletter_subscription")
+      expect(consent.consent_status).to eq("granted")
+      expect(consent.url).to eq("https://demo1.kentaa.nl")
+      expect(consent.text).to eq("Ja, ik wil de nieuwsbrief ontvangen")
+      expect(consent.terms_conditions_version).to eq("V2 22-06-2018 13:09")
+    end
+  end
 end
