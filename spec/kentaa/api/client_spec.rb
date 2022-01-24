@@ -558,7 +558,7 @@ RSpec.describe Kentaa::Api::Client do
         expect(user.name).to eq("John Doe")
       end
 
-      it 'returns an error when the team was not found' do
+      it 'returns an error when the user was not found' do
         data = File.read("spec/fixtures/responses/404.json")
         stub_request(:get, "https://api.kentaa.nl/v1/users/1").to_return(status: 404, body: data)
 

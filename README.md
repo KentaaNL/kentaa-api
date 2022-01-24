@@ -16,6 +16,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
   - [Manual donations](#manual-donations)
   - [Newsletter subscriptions](#newsletter-subscriptions)
   - [Performances](#performances)
+   - [Photos](#performance-photos)
   - [Projects](#projects)
   - [Recurring donors](#recurring-donors)
   - [Segments](#segments)
@@ -253,6 +254,33 @@ action.performances.delete(1)
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#performances) and [Kentaa::Api::Resources::Performance](lib/kentaa/api/resources/performance.rb) for all available properties.
+
+#### Performance photos
+
+```ruby
+# List Performance photos
+photos = performance.photos       # paginated
+photos = performance.photos.all   # non-paginated
+
+photos.each do |photo|
+  photos.image_url  # => "https://d2a3ux41sjxpco.cloudfront.net/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg"
+end
+
+# Get Performance photo
+donation = performance.photos.get(1)
+
+photo.image_url  # => "https://d2a3ux41sjxpco.cloudfront.net/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg"
+
+# Create a Performance photo
+photo = performance.photos.create(
+  io: File.open("photo.jpeg"),
+  content_type: "image/jpeg"
+)
+
+photo.image_url  # => "https://d2a3ux41sjxpco.cloudfront.net/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg"
+```
+
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#performances-photos) and [Kentaa::Api::Resources::PerformancePhoto](lib/kentaa/api/resources/performance_photo.rb) for all available properties.
 
 ### Projects
 
