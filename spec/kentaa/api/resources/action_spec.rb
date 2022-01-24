@@ -224,8 +224,78 @@ RSpec.describe Kentaa::Api::Resources::Action do
   end
 
   describe '#performances' do
-    it 'returns the performance resources as a List' do
-      expect(response.performances).to be_a(Kentaa::Api::Resources::List)
+    describe '#all' do
+      it 'returns an enumerator for retrieving all performances' do
+        data = File.read("spec/fixtures/responses/performances.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances?page=1").to_return(status: 200, body: data)
+
+        performances = response.performances.all
+        expect(performances).to be_a(Enumerator)
+        expect(performances.count).to eq(1)
+        expect(performances.first).to be_a(Kentaa::Api::Resources::Performance)
+      end
+    end
+
+    describe '#each' do
+      it 'returns a list of performances' do
+        data = File.read("spec/fixtures/responses/performances.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances").to_return(status: 200, body: data)
+
+        performances = response.performances
+        expect(performances).to be_a(Kentaa::Api::Resources::List)
+        expect(performances.count).to eq(1)
+        expect(performances.total_entries).to eq(1)
+        expect(performances.first).to be_a(Kentaa::Api::Resources::Performance)
+      end
+    end
+
+    describe '#get' do
+      it 'returns a single performance' do
+        data = File.read("spec/fixtures/responses/performance.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 200, body: data)
+
+        performance = response.performances.get(1)
+        expect(performance).to be_a(Kentaa::Api::Resources::Performance)
+        expect(performance.title).to eq("First tour")
+      end
+
+      it 'returns an error when the performance was not found' do
+        data = File.read("spec/fixtures/responses/404.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 404, body: data)
+
+        expect { response.performances.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
+      end
+    end
+
+    describe '#create' do
+      it 'creates a performance' do
+        data = File.read("spec/fixtures/responses/performance.json")
+        stub_request(:post, "https://api.kentaa.nl/v1/actions/1/performances").to_return(status: 201, body: data)
+
+        performance = response.performances.create(title: "First tour", performance_type: "biking", distance: BigDecimal("65.25"), performance_at: Time.now)
+        expect(performance).to be_a(Kentaa::Api::Resources::Performance)
+        expect(performance.title).to eq("First tour")
+      end
+    end
+
+    describe '#update' do
+      it 'updates a performance' do
+        data = File.read("spec/fixtures/responses/performance.json")
+        stub_request(:patch, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 200, body: data)
+
+        performance = response.performances.update(1, title: "First tour")
+        expect(performance).to be_a(Kentaa::Api::Resources::Performance)
+        expect(performance.title).to eq("First tour")
+      end
+    end
+
+    describe '#delete' do
+      it 'deletes a performance' do
+        stub_request(:delete, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 204)
+
+        performance = response.performances.delete(1)
+        expect(performance).to be nil
+      end
     end
   end
 end

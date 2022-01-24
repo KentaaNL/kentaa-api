@@ -13,37 +13,48 @@ module Kentaa
         @config = config
       end
 
-      def get(path, params = {})
-        request(:get, path, params)
+      def get(path, params = {}, options = {})
+        request(:get, path, params, nil, options)
       end
 
-      def post(path, params = {}, body = {})
-        request(:post, path, params, body)
+      def post(path, params = {}, body = {}, options = {})
+        request(:post, path, params, body, options)
       end
 
-      def patch(path, params = {}, body = {})
-        request(:patch, path, params, body)
+      def patch(path, params = {}, body = {}, options = {})
+        request(:patch, path, params, body, options)
       end
 
-      def delete(path, params = {})
-        request(:delete, path, params)
+      def delete(path, params = {}, options = {})
+        request(:delete, path, params, nil, options)
       end
 
       private
 
-      def request(http_method, path, params = {}, body = {})
+      def request(http_method, path, params = {}, body = nil, options = {})
         uri = URI.parse(File.join(config.api_url, path))
         uri.query = URI.encode_www_form(params) unless params.empty?
+
+        content_type = options.fetch(:content_type, "application/json")
+
+        # Body can be passed as an IO-like object or an object that can be serialized to JSON.
+        if body
+          if body.respond_to?(:read)
+            body = body.read
+          elsif body.respond_to?(:to_json)
+            body = body.to_json
+          end
+        end
 
         case http_method
         when :get
           request = Net::HTTP::Get.new(uri)
         when :post
           request = Net::HTTP::Post.new(uri)
-          request.body = body.to_json
+          request.body = body
         when :patch
           request = Net::HTTP::Patch.new(uri)
-          request.body = body.to_json
+          request.body = body
         when :delete
           request = Net::HTTP::Delete.new(uri)
         else
@@ -52,8 +63,8 @@ module Kentaa
 
         logger.debug("[Kentaa-API] Request: #{http_method.upcase} #{uri}") if config.debug?
 
-        request["Accept"] = "application/json"
-        request["Content-Type"] = "application/json"
+        request["Accept"] = content_type
+        request["Content-Type"] = content_type
         request["X-Api-Key"] = config.api_key
         request["User-Agent"] = "Ruby kentaa-api/#{Kentaa::Api::VERSION}"
 

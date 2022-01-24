@@ -79,4 +79,59 @@ RSpec.describe Kentaa::Api::Resources::Performance do
       expect(response.unit).to eq("km")
     end
   end
+
+  describe '#photos' do
+    describe '#all' do
+      it 'returns an enumerator for retrieving all performance photos' do
+        data = File.read("spec/fixtures/responses/performance_photos.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances/1/photos?page=1").to_return(status: 200, body: data)
+
+        photos = response.photos.all
+        expect(photos).to be_a(Enumerator)
+        expect(photos.count).to eq(2)
+        expect(photos.first).to be_a(Kentaa::Api::Resources::PerformancePhoto)
+      end
+    end
+
+    describe '#each' do
+      it 'returns a list of performance photos' do
+        data = File.read("spec/fixtures/responses/performance_photos.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances/1/photos").to_return(status: 200, body: data)
+
+        photos = response.photos
+        expect(photos).to be_a(Kentaa::Api::Resources::List)
+        expect(photos.count).to eq(2)
+        expect(photos.total_entries).to eq(2)
+        expect(photos.first).to be_a(Kentaa::Api::Resources::PerformancePhoto)
+      end
+    end
+
+    describe '#get' do
+      it 'returns a single performance photo' do
+        data = File.read("spec/fixtures/responses/performance_photo.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances/1/photos/1").to_return(status: 200, body: data)
+
+        photo = response.photos.get(1)
+        expect(photo).to be_a(Kentaa::Api::Resources::PerformancePhoto)
+        expect(photo.image_url).to eq("https://d2a3ux41sjxpco.cloudfront.net/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg")
+      end
+
+      it 'returns an error when the performance photo was not found' do
+        data = File.read("spec/fixtures/responses/404.json")
+        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances/1/photos/1").to_return(status: 404, body: data)
+
+        expect { response.photos.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
+      end
+    end
+
+    describe '#create' do
+      it 'creates a performance photo' do
+        data = File.read("spec/fixtures/responses/performance_photo.json")
+        stub_request(:post, "https://api.kentaa.nl/v1/actions/1/performances/1/photos").to_return(status: 201, body: data)
+
+        photo = response.photos.create(io: File.open("spec/fixtures/test.jpg"), content_type: "image/jpeg")
+        expect(photo).to be_a(Kentaa::Api::Resources::PerformancePhoto)
+      end
+    end
+  end
 end

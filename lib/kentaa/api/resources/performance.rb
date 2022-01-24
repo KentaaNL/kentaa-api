@@ -43,6 +43,10 @@ module Kentaa
           data[:unit]
         end
 
+        def photos(options = {})
+          @photos ||= Kentaa::Api::Resources::List.new(config, options.merge(resource_class: Kentaa::Api::Resources::PerformancePhoto, endpoint_path: "/actions/#{action_id}/performances/#{id}/photos"))
+        end
+
         private
 
         def load_resource
