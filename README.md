@@ -16,7 +16,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
   - [Manual donations](#manual-donations)
   - [Newsletter subscriptions](#newsletter-subscriptions)
   - [Performances](#performances)
-   - [Photos](#performance-photos)
+    - [Photos](#performance-photos)
   - [Projects](#projects)
   - [Recurring donors](#recurring-donors)
   - [Segments](#segments)
@@ -267,7 +267,7 @@ photos.each do |photo|
 end
 
 # Get Performance photo
-donation = performance.photos.get(1)
+photo = performance.photos.get(1)
 
 photo.image_url  # => "https://d2a3ux41sjxpco.cloudfront.net/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg"
 
