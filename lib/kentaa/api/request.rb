@@ -63,7 +63,7 @@ module Kentaa
 
         logger.debug("[Kentaa-API] Request: #{http_method.upcase} #{uri}") if config.debug?
 
-        request["Accept"] = content_type
+        request["Accept"] = "application/json"
         request["Content-Type"] = content_type
         request["X-Api-Key"] = config.api_key
         request["User-Agent"] = "Ruby kentaa-api/#{Kentaa::Api::VERSION}"
