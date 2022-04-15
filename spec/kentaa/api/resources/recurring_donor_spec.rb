@@ -76,7 +76,7 @@ RSpec.describe Kentaa::Api::Resources::RecurringDonor do
 
   describe '#company' do
     it 'returns the company name' do
-      expect(response.company).to be nil
+      expect(response.company).to be_nil
     end
   end
 
@@ -113,7 +113,7 @@ RSpec.describe Kentaa::Api::Resources::RecurringDonor do
 
   describe '#end_date' do
     it 'returns the end date' do
-      expect(response.end_date).to be nil
+      expect(response.end_date).to be_nil
     end
   end
 

@@ -103,7 +103,7 @@ RSpec.describe Kentaa::Api::Resources::DonationForm do
 
   describe '#external_reference' do
     it 'returns the external reference' do
-      expect(response.external_reference).to be nil
+      expect(response.external_reference).to be_nil
     end
   end
 

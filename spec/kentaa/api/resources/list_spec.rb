@@ -65,7 +65,7 @@ RSpec.describe Kentaa::Api::Resources::List do
 
   describe '#previous_page' do
     it 'returns the previous page' do
-      expect(response.previous_page).to be nil
+      expect(response.previous_page).to be_nil
     end
   end
 

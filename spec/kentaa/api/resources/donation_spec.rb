@@ -28,7 +28,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#recurring_donor' do
     it 'returns the recurring donor when present' do
-      expect(response.recurring_donor).to be nil
+      expect(response.recurring_donor).to be_nil
     end
   end
 
@@ -46,37 +46,37 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#donation_form_id' do
     it 'returns the donation form id' do
-      expect(response.donation_form_id).to be nil
+      expect(response.donation_form_id).to be_nil
     end
   end
 
   describe '#segment_id' do
     it 'returns the segment id' do
-      expect(response.segment_id).to be nil
+      expect(response.segment_id).to be_nil
     end
   end
 
   describe '#project_id' do
     it 'returns the project id' do
-      expect(response.project_id).to be nil
+      expect(response.project_id).to be_nil
     end
   end
 
   describe '#team_id' do
     it 'returns the team id' do
-      expect(response.team_id).to be nil
+      expect(response.team_id).to be_nil
     end
   end
 
   describe '#action_id' do
     it 'returns the action id' do
-      expect(response.action_id).to be nil
+      expect(response.action_id).to be_nil
     end
   end
 
   describe '#recurring_donor_id' do
     it 'returns the recurring donor id' do
-      expect(response.recurring_donor_id).to be nil
+      expect(response.recurring_donor_id).to be_nil
     end
   end
 
@@ -100,7 +100,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#infix' do
     it 'returns the infix' do
-      expect(response.infix).to be nil
+      expect(response.infix).to be_nil
     end
   end
 
@@ -118,7 +118,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#company' do
     it 'returns the company name' do
-      expect(response.company).to be nil
+      expect(response.company).to be_nil
     end
   end
 

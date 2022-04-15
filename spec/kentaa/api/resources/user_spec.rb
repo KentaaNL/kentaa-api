@@ -52,7 +52,7 @@ RSpec.describe Kentaa::Api::Resources::User do
 
   describe '#infix' do
     it 'returns the infix' do
-      expect(response.infix).to be nil
+      expect(response.infix).to be_nil
     end
   end
 
@@ -76,7 +76,7 @@ RSpec.describe Kentaa::Api::Resources::User do
 
   describe '#avatar_url' do
     it 'returns the avatar url' do
-      expect(response.avatar_url).to be nil
+      expect(response.avatar_url).to be_nil
     end
   end
 
@@ -88,7 +88,7 @@ RSpec.describe Kentaa::Api::Resources::User do
 
   describe '#address2' do
     it 'returns the address line 2' do
-      expect(response.address2).to be nil
+      expect(response.address2).to be_nil
     end
   end
 
@@ -106,7 +106,7 @@ RSpec.describe Kentaa::Api::Resources::User do
 
   describe '#house_number_addition' do
     it 'returns the house number addition' do
-      expect(response.house_number_addition).to be nil
+      expect(response.house_number_addition).to be_nil
     end
   end
 
@@ -136,7 +136,7 @@ RSpec.describe Kentaa::Api::Resources::User do
 
   describe '#birthday' do
     it 'returns the birthday' do
-      expect(response.birthday).to be nil
+      expect(response.birthday).to be_nil
     end
   end
 

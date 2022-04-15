@@ -271,7 +271,7 @@ RSpec.describe Kentaa::Api::Client do
         stub_request(:delete, "https://api.kentaa.nl/v1/manual-donations/1").to_return(status: 204)
 
         donation = client.manual_donations.delete(1)
-        expect(donation).to be nil
+        expect(donation).to be_nil
       end
     end
   end
@@ -448,7 +448,7 @@ RSpec.describe Kentaa::Api::Client do
 
         segment = client.segments.get(1)
         expect(segment).to be_a(Kentaa::Api::Resources::Segment)
-        expect(segment.title).not_to be nil
+        expect(segment.title).not_to be_nil
       end
 
       it 'returns an error when the segment was not found' do

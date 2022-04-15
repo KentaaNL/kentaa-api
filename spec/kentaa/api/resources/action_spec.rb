@@ -181,7 +181,7 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
   describe '#end_date' do
     it 'returns the end date' do
-      expect(response.end_date).to be nil
+      expect(response.end_date).to be_nil
     end
   end
 
@@ -330,7 +330,7 @@ RSpec.describe Kentaa::Api::Resources::Action do
         stub_request(:delete, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 204)
 
         performance = response.performances.delete(1)
-        expect(performance).to be nil
+        expect(performance).to be_nil
       end
     end
   end

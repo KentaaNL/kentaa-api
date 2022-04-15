@@ -94,7 +94,7 @@ RSpec.describe Kentaa::Api::Resources::Segment do
 
   describe '#end_date' do
     it 'returns the end date' do
-      expect(response.end_date).to be nil
+      expect(response.end_date).to be_nil
     end
   end
 
