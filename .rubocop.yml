@@ -44,9 +44,6 @@ RSpec/MultipleExpectations:
 Style/Documentation:
   Enabled: false
 
-Style/IfUnlessModifier:
-  Enabled: false
-
 Style/SafeNavigation:
   Enabled: false
 

@@ -83,9 +83,7 @@ module Kentaa
 
         logger.debug("[Kentaa-API] Response: #{response.http_code}, body: #{response.body}") if config.debug?
 
-        if response.error?
-          raise Kentaa::Api::RequestError, response
-        end
+        raise Kentaa::Api::RequestError, response if response.error?
 
         response
       end
