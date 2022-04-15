@@ -54,10 +54,10 @@ GEM
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     unicode-display_width (2.1.0)
-    webmock (2.3.2)
-      addressable (>= 2.3.6)
+    webmock (3.14.0)
+      addressable (>= 2.8.0)
       crack (>= 0.3.2)
-      hashdiff
+      hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
   ruby
@@ -71,7 +71,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.13.2)
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.9.0)
-  webmock (~> 2.3, >= 2.3.2)
+  webmock (~> 3.0)
 
 BUNDLED WITH
    2.2.32
