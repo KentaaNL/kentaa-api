@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::NewsletterSubscription do
-  subject(:response) { Kentaa::Api::Resources::NewsletterSubscription.new(config, data: data[:newsletter_subscription]) }
+  subject(:response) { described_class.new(config, data: data[:newsletter_subscription]) }
 
   let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
   let(:data) { JSON.parse(File.read('spec/fixtures/responses/newsletter_subscription.json'), symbolize_names: true) }

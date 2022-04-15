@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::RecurringDonor do
-  subject(:response) { Kentaa::Api::Resources::RecurringDonor.new(config, data: data[:recurring_donor]) }
+  subject(:response) { described_class.new(config, data: data[:recurring_donor]) }
 
   let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
   let(:data) { JSON.parse(File.read('spec/fixtures/responses/recurring_donor.json'), symbolize_names: true) }

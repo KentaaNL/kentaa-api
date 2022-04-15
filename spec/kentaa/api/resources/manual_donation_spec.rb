@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::ManualDonation do
-  subject(:response) { Kentaa::Api::Resources::ManualDonation.new(config, data: data[:manual_donation]) }
+  subject(:response) { described_class.new(config, data: data[:manual_donation]) }
 
   let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
   let(:data) { JSON.parse(File.read('spec/fixtures/responses/manual_donation.json'), symbolize_names: true) }

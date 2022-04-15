@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Config do
-  subject(:config) { Kentaa::Api::Config.new(options) }
+  subject(:config) { described_class.new(options) }
 
   let(:options) { { api_key: '12345' } }
 

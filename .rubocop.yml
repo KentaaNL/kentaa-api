@@ -35,9 +35,6 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-RSpec/DescribedClass:
-  Enabled: false
-
 RSpec/ExampleLength:
   Enabled: false
 

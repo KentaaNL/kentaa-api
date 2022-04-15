@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::PerformancePhoto do
-  subject(:response) { Kentaa::Api::Resources::PerformancePhoto.new(config, data: data[:photo]) }
+  subject(:response) { described_class.new(config, data: data[:photo]) }
 
   let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
   let(:data) { JSON.parse(File.read('spec/fixtures/responses/performance_photo.json'), symbolize_names: true) }

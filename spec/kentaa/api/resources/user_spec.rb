@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::User do
-  subject(:response) { Kentaa::Api::Resources::User.new(config, data: data[:user]) }
+  subject(:response) { described_class.new(config, data: data[:user]) }
 
   let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
   let(:data) { JSON.parse(File.read('spec/fixtures/responses/user.json'), symbolize_names: true) }
