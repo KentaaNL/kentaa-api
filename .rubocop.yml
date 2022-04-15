@@ -46,6 +46,3 @@ Style/Documentation:
 
 Style/SafeNavigation:
   Enabled: false
-
-Style/SymbolArray:
-  Enabled: false
