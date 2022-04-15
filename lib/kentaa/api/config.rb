@@ -3,9 +3,9 @@
 module Kentaa
   module Api
     class Config
-      LIVE_URL = "https://api.kentaa.nl/v1"
-      TEST_URL = "https://api.kentaa.staatklaar.nu/v1"
-      DEV_URL  = "http://api.lvh.me:3000/v1"
+      LIVE_URL = 'https://api.kentaa.nl/v1'
+      TEST_URL = 'https://api.kentaa.staatklaar.nu/v1'
+      DEV_URL  = 'http://api.lvh.me:3000/v1'
 
       attr_accessor :options
 

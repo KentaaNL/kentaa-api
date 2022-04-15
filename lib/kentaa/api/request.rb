@@ -35,7 +35,7 @@ module Kentaa
         uri = URI.parse(File.join(config.api_url, path))
         uri.query = URI.encode_www_form(params) unless params.empty?
 
-        content_type = options.fetch(:content_type, "application/json")
+        content_type = options.fetch(:content_type, 'application/json')
 
         # Body can be passed as an IO-like object or an object that can be serialized to JSON.
         if body
@@ -63,13 +63,13 @@ module Kentaa
 
         logger.debug("[Kentaa-API] Request: #{http_method.upcase} #{uri}") if config.debug?
 
-        request["Accept"] = "application/json"
-        request["Content-Type"] = content_type
-        request["X-Api-Key"] = config.api_key
-        request["User-Agent"] = "Ruby kentaa-api/#{Kentaa::Api::VERSION}"
+        request['Accept'] = 'application/json'
+        request['Content-Type'] = content_type
+        request['X-Api-Key'] = config.api_key
+        request['User-Agent'] = "Ruby kentaa-api/#{Kentaa::Api::VERSION}"
 
         client = Net::HTTP.new(uri.hostname, uri.port)
-        client.use_ssl = uri.scheme == "https"
+        client.use_ssl = uri.scheme == 'https'
         client.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
         begin

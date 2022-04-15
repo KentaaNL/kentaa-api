@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::Project do
   subject(:response) { Kentaa::Api::Resources::Project.new(config, data: data[:project]) }
 
-  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
-  let(:data) { JSON.parse(File.read("spec/fixtures/responses/project.json"), symbolize_names: true) }
+  let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
+  let(:data) { JSON.parse(File.read('spec/fixtures/responses/project.json'), symbolize_names: true) }
 
   describe '#object_key' do
     it 'returns the object key' do
-      expect(response.object_key).to eq("Project_1")
+      expect(response.object_key).to eq('Project_1')
     end
   end
 
@@ -58,19 +58,19 @@ RSpec.describe Kentaa::Api::Resources::Project do
 
   describe '#slug' do
     it 'returns the slug' do
-      expect(response.slug).to eq("dignissimos-provident")
+      expect(response.slug).to eq('dignissimos-provident')
     end
   end
 
   describe '#title' do
     it 'returns the title' do
-      expect(response.title).to eq("Dignissimos provident rerum enim alias magni asperna...")
+      expect(response.title).to eq('Dignissimos provident rerum enim alias magni asperna...')
     end
   end
 
   describe '#description' do
     it 'returns the description' do
-      expect(response.description).to eq("Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.")
+      expect(response.description).to eq('Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.')
     end
   end
 
@@ -130,13 +130,13 @@ RSpec.describe Kentaa::Api::Resources::Project do
 
   describe '#url' do
     it 'returns the page URL' do
-      expect(response.url).to eq("https://demo1.kentaa.nl/project/dignissimos-provident")
+      expect(response.url).to eq('https://demo1.kentaa.nl/project/dignissimos-provident')
     end
   end
 
   describe '#donate_url' do
     it 'returns the donate URL' do
-      expect(response.donate_url).to eq("https://demo1.kentaa.nl/project/dignissimos-provident/doneren")
+      expect(response.donate_url).to eq('https://demo1.kentaa.nl/project/dignissimos-provident/doneren')
     end
   end
 
@@ -161,9 +161,9 @@ RSpec.describe Kentaa::Api::Resources::Project do
   describe '#consent' do
     it 'returns the associated consent' do
       expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
-      expect(response.consent.url).to eq("https://demo1.kentaa.nl/project/projectinformatie")
-      expect(response.consent.text).to eq("Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.")
-      expect(response.consent.version).to eq("V1 30-05-2018 11:53")
+      expect(response.consent.url).to eq('https://demo1.kentaa.nl/project/projectinformatie')
+      expect(response.consent.text).to eq('Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.')
+      expect(response.consent.version).to eq('V1 30-05-2018 11:53')
     end
   end
 
@@ -174,35 +174,35 @@ RSpec.describe Kentaa::Api::Resources::Project do
 
       consent = response.consents.first
       expect(consent).to be_a(Kentaa::Api::Resources::Consent)
-      expect(consent.consent_type).to eq("terms_conditions")
-      expect(consent.consent_status).to eq("granted")
+      expect(consent.consent_type).to eq('terms_conditions')
+      expect(consent.consent_status).to eq('granted')
       expect(consent.consent_text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
-      expect(consent.url).to eq("https://demo1.kentaa.nl/project/projectinformatie")
-      expect(consent.terms_conditions_version).to eq("V1 30-05-2018 11:53")
+      expect(consent.url).to eq('https://demo1.kentaa.nl/project/projectinformatie')
+      expect(consent.terms_conditions_version).to eq('V1 30-05-2018 11:53')
     end
   end
 
   describe '#contact' do
     it 'returns the associated contact' do
       expect(response.contact).to be_a(Kentaa::Api::Resources::Contact)
-      expect(response.contact.name).to eq("John Doe")
-      expect(response.contact.first_name).to eq("John")
-      expect(response.contact.last_name).to eq("Doe")
-      expect(response.contact.email).to eq("john.doe@kentaa.nl")
-      expect(response.contact.address).to eq("Jansbuitensingel 29")
-      expect(response.contact.street).to eq("Jansbuitensingel")
-      expect(response.contact.house_number).to eq("29")
-      expect(response.contact.zipcode).to eq("6811AD")
-      expect(response.contact.city).to eq("Arnhem")
-      expect(response.contact.country).to eq("NL")
-      expect(response.contact.phone).to eq("0262616240")
-      expect(response.contact.gender).to eq("male")
+      expect(response.contact.name).to eq('John Doe')
+      expect(response.contact.first_name).to eq('John')
+      expect(response.contact.last_name).to eq('Doe')
+      expect(response.contact.email).to eq('john.doe@kentaa.nl')
+      expect(response.contact.address).to eq('Jansbuitensingel 29')
+      expect(response.contact.street).to eq('Jansbuitensingel')
+      expect(response.contact.house_number).to eq('29')
+      expect(response.contact.zipcode).to eq('6811AD')
+      expect(response.contact.city).to eq('Arnhem')
+      expect(response.contact.country).to eq('NL')
+      expect(response.contact.phone).to eq('0262616240')
+      expect(response.contact.gender).to eq('male')
     end
   end
 
   describe '#external_reference' do
     it 'returns the external reference' do
-      expect(response.external_reference).to eq("Customer Campaign 1021AA1-11")
+      expect(response.external_reference).to eq('Customer Campaign 1021AA1-11')
     end
   end
 

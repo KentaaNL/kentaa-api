@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::List do
-  subject(:response) { Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Action, endpoint_path: "/actions") }
+  subject(:response) { Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Action, endpoint_path: '/actions') }
 
-  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
+  let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
 
   before do
-    data = File.read("spec/fixtures/responses/actions.json")
-    stub_request(:get, "https://api.kentaa.nl/v1/actions").to_return(status: 200, body: data)
+    data = File.read('spec/fixtures/responses/actions.json')
+    stub_request(:get, 'https://api.kentaa.nl/v1/actions').to_return(status: 200, body: data)
   end
 
   describe '#links' do

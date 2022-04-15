@@ -86,21 +86,21 @@ module Kentaa
         end
 
         def donations
-          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: "/donations")
+          @donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Donation, endpoint_path: '/donations')
         end
 
         def manual_donations
-          @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/manual-donations")
+          @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: '/manual-donations')
         end
 
         def newsletter_subscriptions
-          @newsletter_subscriptions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::NewsletterSubscription, endpoint_path: "/newsletter-subscriptions")
+          @newsletter_subscriptions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::NewsletterSubscription, endpoint_path: '/newsletter-subscriptions')
         end
 
         private
 
         def load_resource
-          request.get("/sites/current", options)
+          request.get('/sites/current', options)
         end
       end
     end

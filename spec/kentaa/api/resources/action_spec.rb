@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::Action do
   subject(:response) { Kentaa::Api::Resources::Action.new(config, data: data[:action]) }
 
-  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
-  let(:data) { JSON.parse(File.read("spec/fixtures/responses/action.json"), symbolize_names: true) }
+  let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
+  let(:data) { JSON.parse(File.read('spec/fixtures/responses/action.json'), symbolize_names: true) }
 
   describe '#object_key' do
     it 'returns the object key' do
-      expect(response.object_key).to eq("Action_1")
+      expect(response.object_key).to eq('Action_1')
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
   describe '#slug' do
     it 'returns the slug' do
-      expect(response.slug).to eq("john-doe")
+      expect(response.slug).to eq('john-doe')
     end
   end
 
@@ -77,15 +77,15 @@ RSpec.describe Kentaa::Api::Resources::Action do
   describe '#owner' do
     it 'returns the action owner' do
       expect(response.owner).to be_a(Kentaa::Api::Resources::User)
-      expect(response.owner.first_name).to eq("John")
-      expect(response.owner.last_name).to eq("Doe")
-      expect(response.owner.email).to eq("john.doe@kentaa.nl")
+      expect(response.owner.first_name).to eq('John')
+      expect(response.owner.last_name).to eq('Doe')
+      expect(response.owner.email).to eq('john.doe@kentaa.nl')
     end
   end
 
   describe '#who_type' do
     it 'returns the who_type' do
-      expect(response.who_type).to eq("owner")
+      expect(response.who_type).to eq('owner')
     end
   end
 
@@ -103,13 +103,13 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
   describe '#first_name' do
     it 'returns the first name' do
-      expect(response.first_name).to eq("John")
+      expect(response.first_name).to eq('John')
     end
   end
 
   describe '#last_name' do
     it 'returns the last name' do
-      expect(response.last_name).to eq("Doe")
+      expect(response.last_name).to eq('Doe')
     end
   end
 
@@ -121,13 +121,13 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
   describe '#title' do
     it 'returns the title' do
-      expect(response.title).to eq("Lorem ipsum")
+      expect(response.title).to eq('Lorem ipsum')
     end
   end
 
   describe '#description' do
     it 'returns the description' do
-      expect(response.description).to eq("Dolorum animi qui nihil iure dolore velit. Rerum eius et quo.")
+      expect(response.description).to eq('Dolorum animi qui nihil iure dolore velit. Rerum eius et quo.')
     end
   end
 
@@ -187,19 +187,19 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
   describe '#external_reference' do
     it 'returns the external reference' do
-      expect(response.external_reference).to eq("Customer Campaign 1021AA1-11")
+      expect(response.external_reference).to eq('Customer Campaign 1021AA1-11')
     end
   end
 
   describe '#url' do
     it 'returns the page URL' do
-      expect(response.url).to eq("https://demo1.kentaa.nl/actie/john-doe")
+      expect(response.url).to eq('https://demo1.kentaa.nl/actie/john-doe')
     end
   end
 
   describe '#donate_url' do
     it 'returns the donate URL' do
-      expect(response.donate_url).to eq("https://demo1.kentaa.nl/actie/john-doe/doneren")
+      expect(response.donate_url).to eq('https://demo1.kentaa.nl/actie/john-doe/doneren')
     end
   end
 
@@ -226,9 +226,9 @@ RSpec.describe Kentaa::Api::Resources::Action do
   describe '#consent' do
     it 'returns the associated consent' do
       expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
-      expect(response.consent.url).to eq("https://demo1.kentaa.nl/meedoen/wie-ben-jij")
-      expect(response.consent.text).to eq("Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.")
-      expect(response.consent.version).to eq("V2 22-06-2018 13:09")
+      expect(response.consent.url).to eq('https://demo1.kentaa.nl/meedoen/wie-ben-jij')
+      expect(response.consent.text).to eq('Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.')
+      expect(response.consent.version).to eq('V2 22-06-2018 13:09')
     end
   end
 
@@ -239,11 +239,11 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
       consent = response.consents.first
       expect(consent).to be_a(Kentaa::Api::Resources::Consent)
-      expect(consent.consent_type).to eq("terms_conditions")
-      expect(consent.consent_status).to eq("granted")
+      expect(consent.consent_type).to eq('terms_conditions')
+      expect(consent.consent_status).to eq('granted')
       expect(consent.consent_text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
-      expect(consent.url).to eq("https://demo1.kentaa.nl/meedoen/wie-ben-jij")
-      expect(consent.terms_conditions_version).to eq("V2 22-06-2018 13:09")
+      expect(consent.url).to eq('https://demo1.kentaa.nl/meedoen/wie-ben-jij')
+      expect(consent.terms_conditions_version).to eq('V2 22-06-2018 13:09')
     end
   end
 
@@ -262,8 +262,8 @@ RSpec.describe Kentaa::Api::Resources::Action do
   describe '#performances' do
     describe '#all' do
       it 'returns an enumerator for retrieving all performances' do
-        data = File.read("spec/fixtures/responses/performances.json")
-        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances?page=1").to_return(status: 200, body: data)
+        data = File.read('spec/fixtures/responses/performances.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/actions/1/performances?page=1').to_return(status: 200, body: data)
 
         performances = response.performances.all
         expect(performances).to be_a(Enumerator)
@@ -274,8 +274,8 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
     describe '#each' do
       it 'returns a list of performances' do
-        data = File.read("spec/fixtures/responses/performances.json")
-        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances").to_return(status: 200, body: data)
+        data = File.read('spec/fixtures/responses/performances.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/actions/1/performances').to_return(status: 200, body: data)
 
         performances = response.performances
         expect(performances).to be_a(Kentaa::Api::Resources::List)
@@ -287,47 +287,47 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
     describe '#get' do
       it 'returns a single performance' do
-        data = File.read("spec/fixtures/responses/performance.json")
-        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 200, body: data)
+        data = File.read('spec/fixtures/responses/performance.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/actions/1/performances/1').to_return(status: 200, body: data)
 
         performance = response.performances.get(1)
         expect(performance).to be_a(Kentaa::Api::Resources::Performance)
-        expect(performance.title).to eq("First tour")
+        expect(performance.title).to eq('First tour')
       end
 
       it 'returns an error when the performance was not found' do
-        data = File.read("spec/fixtures/responses/404.json")
-        stub_request(:get, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 404, body: data)
+        data = File.read('spec/fixtures/responses/404.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/actions/1/performances/1').to_return(status: 404, body: data)
 
-        expect { response.performances.get(1) }.to raise_error(Kentaa::Api::RequestError, "404: Requested resource was not found.")
+        expect { response.performances.get(1) }.to raise_error(Kentaa::Api::RequestError, '404: Requested resource was not found.')
       end
     end
 
     describe '#create' do
       it 'creates a performance' do
-        data = File.read("spec/fixtures/responses/performance.json")
-        stub_request(:post, "https://api.kentaa.nl/v1/actions/1/performances").to_return(status: 201, body: data)
+        data = File.read('spec/fixtures/responses/performance.json')
+        stub_request(:post, 'https://api.kentaa.nl/v1/actions/1/performances').to_return(status: 201, body: data)
 
-        performance = response.performances.create(title: "First tour", performance_type: "biking", distance: BigDecimal("65.25"), performance_at: Time.now)
+        performance = response.performances.create(title: 'First tour', performance_type: 'biking', distance: BigDecimal('65.25'), performance_at: Time.now)
         expect(performance).to be_a(Kentaa::Api::Resources::Performance)
-        expect(performance.title).to eq("First tour")
+        expect(performance.title).to eq('First tour')
       end
     end
 
     describe '#update' do
       it 'updates a performance' do
-        data = File.read("spec/fixtures/responses/performance.json")
-        stub_request(:patch, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 200, body: data)
+        data = File.read('spec/fixtures/responses/performance.json')
+        stub_request(:patch, 'https://api.kentaa.nl/v1/actions/1/performances/1').to_return(status: 200, body: data)
 
-        performance = response.performances.update(1, title: "First tour")
+        performance = response.performances.update(1, title: 'First tour')
         expect(performance).to be_a(Kentaa::Api::Resources::Performance)
-        expect(performance.title).to eq("First tour")
+        expect(performance.title).to eq('First tour')
       end
     end
 
     describe '#delete' do
       it 'deletes a performance' do
-        stub_request(:delete, "https://api.kentaa.nl/v1/actions/1/performances/1").to_return(status: 204)
+        stub_request(:delete, 'https://api.kentaa.nl/v1/actions/1/performances/1').to_return(status: 204)
 
         performance = response.performances.delete(1)
         expect(performance).to be_nil

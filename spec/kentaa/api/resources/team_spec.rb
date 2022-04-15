@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::Team do
   subject(:response) { Kentaa::Api::Resources::Team.new(config, data: data[:team]) }
 
-  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
-  let(:data) { JSON.parse(File.read("spec/fixtures/responses/team.json"), symbolize_names: true) }
+  let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
+  let(:data) { JSON.parse(File.read('spec/fixtures/responses/team.json'), symbolize_names: true) }
 
   describe '#object_key' do
     it 'returns the object key' do
-      expect(response.object_key).to eq("Team_1")
+      expect(response.object_key).to eq('Team_1')
     end
   end
 
@@ -64,16 +64,16 @@ RSpec.describe Kentaa::Api::Resources::Team do
 
   describe '#slug' do
     it 'returns the slug' do
-      expect(response.slug).to eq("asperiores-beatae-voluptate-qui")
+      expect(response.slug).to eq('asperiores-beatae-voluptate-qui')
     end
   end
 
   describe '#owner' do
     it 'returns the team owner' do
       expect(response.owner).to be_a(Kentaa::Api::Resources::User)
-      expect(response.owner.first_name).to eq("John")
-      expect(response.owner.last_name).to eq("Doe")
-      expect(response.owner.email).to eq("john.doe@kentaa.nl")
+      expect(response.owner.first_name).to eq('John')
+      expect(response.owner.last_name).to eq('Doe')
+      expect(response.owner.email).to eq('john.doe@kentaa.nl')
     end
   end
 
@@ -86,19 +86,19 @@ RSpec.describe Kentaa::Api::Resources::Team do
 
   describe '#name' do
     it 'returns the name' do
-      expect(response.name).to eq("Asperiores beatae voluptate qui.")
+      expect(response.name).to eq('Asperiores beatae voluptate qui.')
     end
   end
 
   describe '#title' do
     it 'returns the title' do
-      expect(response.title).to eq("Vero aspernatur dolores et excepturi.")
+      expect(response.title).to eq('Vero aspernatur dolores et excepturi.')
     end
   end
 
   describe '#description' do
     it 'returns the description' do
-      expect(response.description).to eq("Cum odio est. Consequuntur occaecati sapiente molestiae quam recusandae possimus aut. Ratione cum harum beatae ad repellat minus.")
+      expect(response.description).to eq('Cum odio est. Consequuntur occaecati sapiente molestiae quam recusandae possimus aut. Ratione cum harum beatae ad repellat minus.')
     end
   end
 
@@ -158,13 +158,13 @@ RSpec.describe Kentaa::Api::Resources::Team do
 
   describe '#url' do
     it 'returns the page URL' do
-      expect(response.url).to eq("https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui")
+      expect(response.url).to eq('https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui')
     end
   end
 
   describe '#donate_url' do
     it 'returns the donate URL' do
-      expect(response.donate_url).to eq("https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/doneren")
+      expect(response.donate_url).to eq('https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/doneren')
     end
   end
 
@@ -188,7 +188,7 @@ RSpec.describe Kentaa::Api::Resources::Team do
 
   describe '#external_reference' do
     it 'returns the external reference' do
-      expect(response.external_reference).to eq("Customer Campaign 1021AA1-11")
+      expect(response.external_reference).to eq('Customer Campaign 1021AA1-11')
     end
   end
 end

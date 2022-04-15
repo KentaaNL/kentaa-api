@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Config do
   subject(:config) { Kentaa::Api::Config.new(options) }
 
-  let(:options) { { api_key: "12345" } }
+  let(:options) { { api_key: '12345' } }
 
   describe '#api_key' do
     it 'returns the provided API key' do
-      expect(config.api_key).to eq("12345")
+      expect(config.api_key).to eq('12345')
     end
   end
 
@@ -40,7 +40,7 @@ RSpec.describe Kentaa::Api::Config do
   describe '#api_url' do
     context 'when default' do
       it 'returns the production API URL' do
-        expect(config.api_url).to eq("https://api.kentaa.nl/v1")
+        expect(config.api_url).to eq('https://api.kentaa.nl/v1')
       end
     end
 
@@ -48,7 +48,7 @@ RSpec.describe Kentaa::Api::Config do
       let(:options) { { test: true } }
 
       it 'returns the test API URL' do
-        expect(config.api_url).to eq("https://api.kentaa.staatklaar.nu/v1")
+        expect(config.api_url).to eq('https://api.kentaa.staatklaar.nu/v1')
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe Kentaa::Api::Config do
       let(:options) { { dev: true } }
 
       it 'returns the development API URL' do
-        expect(config.api_url).to eq("http://api.lvh.me:3000/v1")
+        expect(config.api_url).to eq('http://api.lvh.me:3000/v1')
       end
     end
   end

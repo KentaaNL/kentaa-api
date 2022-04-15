@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::DonationForm do
   subject(:response) { Kentaa::Api::Resources::DonationForm.new(config, data: data[:donation_form]) }
 
-  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
-  let(:data) { JSON.parse(File.read("spec/fixtures/responses/donation_form.json"), symbolize_names: true) }
+  let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
+  let(:data) { JSON.parse(File.read('spec/fixtures/responses/donation_form.json'), symbolize_names: true) }
 
   describe '#object_key' do
     it 'returns the object key' do
-      expect(response.object_key).to eq("DonationForm_1")
+      expect(response.object_key).to eq('DonationForm_1')
     end
   end
 
@@ -40,7 +40,7 @@ RSpec.describe Kentaa::Api::Resources::DonationForm do
 
   describe '#slug' do
     it 'returns the slug' do
-      expect(response.slug).to eq("form")
+      expect(response.slug).to eq('form')
     end
   end
 
@@ -59,21 +59,21 @@ RSpec.describe Kentaa::Api::Resources::DonationForm do
   describe '#owner' do
     it 'returns the donation form owner' do
       expect(response.owner).to be_a(Kentaa::Api::Resources::User)
-      expect(response.owner.first_name).to eq("John")
-      expect(response.owner.last_name).to eq("Doe")
-      expect(response.owner.email).to eq("john.doe@kentaa.nl")
+      expect(response.owner.first_name).to eq('John')
+      expect(response.owner.last_name).to eq('Doe')
+      expect(response.owner.email).to eq('john.doe@kentaa.nl')
     end
   end
 
   describe '#title' do
     it 'returns the title' do
-      expect(response.title).to eq("Lorem ipsum dolor sit amet")
+      expect(response.title).to eq('Lorem ipsum dolor sit amet')
     end
   end
 
   describe '#description' do
     it 'returns the description' do
-      expect(response.description).to eq("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+      expect(response.description).to eq('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
     end
   end
 
@@ -109,7 +109,7 @@ RSpec.describe Kentaa::Api::Resources::DonationForm do
 
   describe '#url' do
     it 'returns the page URL' do
-      expect(response.url).to eq("https://demo1.kentaa.nl/form")
+      expect(response.url).to eq('https://demo1.kentaa.nl/form')
     end
   end
 

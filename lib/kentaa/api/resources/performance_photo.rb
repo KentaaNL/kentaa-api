@@ -6,7 +6,7 @@ module Kentaa
       class PerformancePhoto < Resource
         class << self
           def attribute_key
-            "photo"
+            'photo'
           end
         end
 

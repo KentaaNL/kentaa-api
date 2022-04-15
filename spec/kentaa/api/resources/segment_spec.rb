@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::Segment do
   subject(:response) { Kentaa::Api::Resources::Segment.new(config, data: data[:segment]) }
 
-  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
-  let(:data) { JSON.parse(File.read("spec/fixtures/responses/segment.json"), symbolize_names: true) }
+  let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
+  let(:data) { JSON.parse(File.read('spec/fixtures/responses/segment.json'), symbolize_names: true) }
 
   describe '#object_key' do
     it 'returns the object key' do
-      expect(response.object_key).to eq("Segment_12")
+      expect(response.object_key).to eq('Segment_12')
     end
   end
 
@@ -52,25 +52,25 @@ RSpec.describe Kentaa::Api::Resources::Segment do
 
   describe '#subdomain' do
     it 'returns the subdomain' do
-      expect(response.subdomain).to eq("segment-2")
+      expect(response.subdomain).to eq('segment-2')
     end
   end
 
   describe '#name' do
     it 'returns the name' do
-      expect(response.name).to eq("Segment 2")
+      expect(response.name).to eq('Segment 2')
     end
   end
 
   describe '#title' do
     it 'returns the title' do
-      expect(response.title).to eq("Aut est maxime nostrum.")
+      expect(response.title).to eq('Aut est maxime nostrum.')
     end
   end
 
   describe '#description' do
     it 'returns the description' do
-      expect(response.description).to eq("Maiores ut velit fugiat eos. Quae est nostrum rerum aut et nihil. Sequi eveniet occaecati et est corporis et enim.")
+      expect(response.description).to eq('Maiores ut velit fugiat eos. Quae est nostrum rerum aut et nihil. Sequi eveniet occaecati et est corporis et enim.')
     end
   end
 
@@ -100,13 +100,13 @@ RSpec.describe Kentaa::Api::Resources::Segment do
 
   describe '#url' do
     it 'returns the page URL' do
-      expect(response.url).to eq("https://segment-2.demo1.kentaa.nl/")
+      expect(response.url).to eq('https://segment-2.demo1.kentaa.nl/')
     end
   end
 
   describe '#donate_url' do
     it 'returns the donate URL' do
-      expect(response.donate_url).to eq("https://segment-2.demo1.kentaa.nl/doneren")
+      expect(response.donate_url).to eq('https://segment-2.demo1.kentaa.nl/doneren')
     end
   end
 
@@ -119,7 +119,7 @@ RSpec.describe Kentaa::Api::Resources::Segment do
 
   describe '#external_reference' do
     it 'returns the external reference' do
-      expect(response.external_reference).to eq("Customer Campaign 1021AA1-11")
+      expect(response.external_reference).to eq('Customer Campaign 1021AA1-11')
     end
   end
 

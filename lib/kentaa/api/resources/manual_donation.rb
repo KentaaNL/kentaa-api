@@ -68,7 +68,7 @@ module Kentaa
         end
 
         def name
-          [first_name, infix, last_name].reject { |s| s.to_s.empty? }.join(" ")
+          [first_name, infix, last_name].reject { |s| s.to_s.empty? }.join(' ')
         end
 
         def anonymous?
@@ -106,7 +106,7 @@ module Kentaa
         end
 
         def create_resource(attributes)
-          request.post("/manual-donations", options, attributes)
+          request.post('/manual-donations', options, attributes)
         end
 
         def update_resource(attributes)

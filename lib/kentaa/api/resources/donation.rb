@@ -76,7 +76,7 @@ module Kentaa
         end
 
         def name
-          [first_name, infix, last_name].reject { |s| s.to_s.empty? }.join(" ")
+          [first_name, infix, last_name].reject { |s| s.to_s.empty? }.join(' ')
         end
 
         def company
@@ -226,7 +226,7 @@ module Kentaa
         end
 
         def consent
-          Kentaa::Api::Deprecation.warn("#consent is deprecated. Please use #consents instead.", caller)
+          Kentaa::Api::Deprecation.warn('#consent is deprecated. Please use #consents instead.', caller)
 
           @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end

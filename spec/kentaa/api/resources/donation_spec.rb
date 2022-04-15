@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::Donation do
   subject(:response) { Kentaa::Api::Resources::Donation.new(config, data: data[:donation]) }
 
-  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
-  let(:data) { JSON.parse(File.read("spec/fixtures/responses/donation.json"), symbolize_names: true) }
+  let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
+  let(:data) { JSON.parse(File.read('spec/fixtures/responses/donation.json'), symbolize_names: true) }
 
   describe '#object_key' do
     it 'returns the object key' do
-      expect(response.object_key).to eq("Donation_1")
+      expect(response.object_key).to eq('Donation_1')
     end
   end
 
@@ -94,7 +94,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#first_name' do
     it 'returns the first name' do
-      expect(response.first_name).to eq("John")
+      expect(response.first_name).to eq('John')
     end
   end
 
@@ -106,13 +106,13 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#last_name' do
     it 'returns the last name' do
-      expect(response.last_name).to eq("Doe")
+      expect(response.last_name).to eq('Doe')
     end
   end
 
   describe '#name' do
     it 'returns the full name' do
-      expect(response.name).to eq("John Doe")
+      expect(response.name).to eq('John Doe')
     end
   end
 
@@ -130,7 +130,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#email' do
     it 'returns the email address' do
-      expect(response.email).to eq("john.doe@kentaa.nl")
+      expect(response.email).to eq('john.doe@kentaa.nl')
     end
   end
 
@@ -142,25 +142,25 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#device_type' do
     it 'returns the device type' do
-      expect(response.device_type).to eq("desktop")
+      expect(response.device_type).to eq('desktop')
     end
   end
 
   describe '#locale' do
     it 'returns the locale' do
-      expect(response.locale).to eq("nl")
+      expect(response.locale).to eq('nl')
     end
   end
 
   describe '#frequency_type' do
     it 'returns the frequency type' do
-      expect(response.frequency_type).to eq("oneoff")
+      expect(response.frequency_type).to eq('oneoff')
     end
   end
 
   describe '#currency' do
     it 'returns the donation currency' do
-      expect(response.currency).to eq("EUR")
+      expect(response.currency).to eq('EUR')
     end
   end
 
@@ -208,19 +208,19 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#invoicenumber' do
     it 'returns the invoice number' do
-      expect(response.invoicenumber).to eq("T2016.0001.0000001")
+      expect(response.invoicenumber).to eq('T2016.0001.0000001')
     end
   end
 
   describe '#payment_method' do
     it 'returns the payment method' do
-      expect(response.payment_method).to eq("ideal")
+      expect(response.payment_method).to eq('ideal')
     end
   end
 
   describe '#payment_status' do
     it 'returns the payment status' do
-      expect(response.payment_status).to eq("paid")
+      expect(response.payment_status).to eq('paid')
     end
   end
 
@@ -232,34 +232,34 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
   describe '#transaction_id' do
     it 'returns the PSP transaction ID' do
-      expect(response.transaction_id).to eq("B5C7B7BCAF1ADF6E2032C7CF56969876")
+      expect(response.transaction_id).to eq('B5C7B7BCAF1ADF6E2032C7CF56969876')
     end
   end
 
   describe '#payment_id' do
     it 'returns the PSP payment ID' do
-      expect(response.payment_id).to eq("116D10DD544ECD1E2D77762C5C3E6D61")
+      expect(response.payment_id).to eq('116D10DD544ECD1E2D77762C5C3E6D61')
     end
   end
 
   describe '#payment_description' do
     it 'returns the payment description' do
-      expect(response.payment_description).to eq("Donatie Demo")
+      expect(response.payment_description).to eq('Donatie Demo')
     end
   end
 
   describe '#target_url' do
     it 'returns the target URL' do
-      expect(response.target_url).to eq("https://demo1.kentaa.nl/")
+      expect(response.target_url).to eq('https://demo1.kentaa.nl/')
     end
   end
 
   describe '#reward' do
     it 'returns the associated reward' do
       expect(response.reward).to be_a(Kentaa::Api::Resources::Reward)
-      expect(response.reward.type).to eq("SiteReward")
-      expect(response.reward.title).to eq("Awesome reward")
-      expect(response.reward.description).to eq("Lorem ipsum")
+      expect(response.reward.type).to eq('SiteReward')
+      expect(response.reward.title).to eq('Awesome reward')
+      expect(response.reward.description).to eq('Lorem ipsum')
       expect(response.reward.ask_for_address?).to be true
     end
   end
@@ -267,21 +267,21 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   describe '#address' do
     it 'returns the associated address' do
       expect(response.address).to be_a(Kentaa::Api::Resources::Address)
-      expect(response.address.address).to eq("Jansbuitensingel 29")
-      expect(response.address.street).to eq("Jansbuitensingel")
-      expect(response.address.house_number).to eq("29")
-      expect(response.address.zipcode).to eq("6811AD")
-      expect(response.address.city).to eq("Arnhem")
-      expect(response.address.country).to eq("NL")
+      expect(response.address.address).to eq('Jansbuitensingel 29')
+      expect(response.address.street).to eq('Jansbuitensingel')
+      expect(response.address.house_number).to eq('29')
+      expect(response.address.zipcode).to eq('6811AD')
+      expect(response.address.city).to eq('Arnhem')
+      expect(response.address.country).to eq('NL')
     end
   end
 
   describe '#consent' do
     it 'returns the associated consent' do
       expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
-      expect(response.consent.url).to eq("https://demo1.kentaa.nl/doneren")
+      expect(response.consent.url).to eq('https://demo1.kentaa.nl/doneren')
       expect(response.consent.text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
-      expect(response.consent.version).to eq("V2 22-06-2018 13:09")
+      expect(response.consent.version).to eq('V2 22-06-2018 13:09')
     end
   end
 
@@ -292,11 +292,11 @@ RSpec.describe Kentaa::Api::Resources::Donation do
 
       consent = response.consents.first
       expect(consent).to be_a(Kentaa::Api::Resources::Consent)
-      expect(consent.consent_type).to eq("terms_conditions")
-      expect(consent.consent_status).to eq("granted")
+      expect(consent.consent_type).to eq('terms_conditions')
+      expect(consent.consent_status).to eq('granted')
       expect(consent.consent_text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
-      expect(consent.url).to eq("https://demo1.kentaa.nl/doneren")
-      expect(consent.terms_conditions_version).to eq("V2 22-06-2018 13:09")
+      expect(consent.url).to eq('https://demo1.kentaa.nl/doneren')
+      expect(consent.terms_conditions_version).to eq('V2 22-06-2018 13:09')
     end
   end
 end

@@ -5,7 +5,7 @@ module Kentaa
     module Resources
       class Users < List
         def initialize(config, options = {})
-          super(config, options.merge(resource_class: Kentaa::Api::Resources::User, endpoint_path: "/users"))
+          super(config, options.merge(resource_class: Kentaa::Api::Resources::User, endpoint_path: '/users'))
         end
 
         def auth(attributes, options = {})

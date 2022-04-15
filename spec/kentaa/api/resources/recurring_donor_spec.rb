@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Kentaa::Api::Resources::RecurringDonor do
   subject(:response) { Kentaa::Api::Resources::RecurringDonor.new(config, data: data[:recurring_donor]) }
 
-  let(:config) { Kentaa::Api::Config.new(api_key: "12345") }
-  let(:data) { JSON.parse(File.read("spec/fixtures/responses/recurring_donor.json"), symbolize_names: true) }
+  let(:config) { Kentaa::Api::Config.new(api_key: '12345') }
+  let(:data) { JSON.parse(File.read('spec/fixtures/responses/recurring_donor.json'), symbolize_names: true) }
 
   describe '#object_key' do
     it 'returns the object key' do
-      expect(response.object_key).to eq("RecurringDonor_1")
+      expect(response.object_key).to eq('RecurringDonor_1')
     end
   end
 
@@ -52,25 +52,25 @@ RSpec.describe Kentaa::Api::Resources::RecurringDonor do
 
   describe '#first_name' do
     it 'returns the first name' do
-      expect(response.first_name).to eq("John")
+      expect(response.first_name).to eq('John')
     end
   end
 
   describe '#infix' do
     it 'returns the infix' do
-      expect(response.infix).to eq("")
+      expect(response.infix).to eq('')
     end
   end
 
   describe '#last_name' do
     it 'returns the last name' do
-      expect(response.last_name).to eq("Doe")
+      expect(response.last_name).to eq('Doe')
     end
   end
 
   describe '#name' do
     it 'returns the full name' do
-      expect(response.name).to eq("John Doe")
+      expect(response.name).to eq('John Doe')
     end
   end
 
@@ -88,26 +88,26 @@ RSpec.describe Kentaa::Api::Resources::RecurringDonor do
 
   describe '#email' do
     it 'returns the email address' do
-      expect(response.email).to eq("john.doe@kentaa.nl")
+      expect(response.email).to eq('john.doe@kentaa.nl')
     end
   end
 
   describe '#locale' do
     it 'returns the locale' do
-      expect(response.locale).to eq("nl")
+      expect(response.locale).to eq('nl')
     end
   end
 
   describe '#frequency_type' do
     it 'returns the frequency type' do
-      expect(response.frequency_type).to eq("monthly")
+      expect(response.frequency_type).to eq('monthly')
     end
   end
 
   describe '#start_date' do
     it 'returns the start date' do
       expect(response.start_date).to be_a(Date)
-      expect(response.start_date.iso8601).to eq("2020-10-01")
+      expect(response.start_date.iso8601).to eq('2020-10-01')
     end
   end
 
@@ -125,7 +125,7 @@ RSpec.describe Kentaa::Api::Resources::RecurringDonor do
 
   describe '#currency' do
     it 'returns the donation currency' do
-      expect(response.currency).to eq("EUR")
+      expect(response.currency).to eq('EUR')
     end
   end
 

@@ -134,7 +134,7 @@ module Kentaa
         end
 
         def consent
-          Kentaa::Api::Deprecation.warn("#consent is deprecated. Please use #consents instead.", caller)
+          Kentaa::Api::Deprecation.warn('#consent is deprecated. Please use #consents instead.', caller)
 
           @consent ||= Kentaa::Api::Resources::Consent.new(data[:consent]) if data[:consent]
         end
