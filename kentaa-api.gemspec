@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.name          = "kentaa-api"
   spec.version       = Kentaa::Api::VERSION
   spec.authors       = ["Kentaa"]
-  spec.email         = ["support@kentaa.nl"]
+  spec.email         = ["developers@kentaa.nl"]
 
   spec.summary       = "Ruby library for communicating with the Kentaa API"
   spec.homepage      = "https://github.com/KentaaNL/kentaa-api"
