@@ -83,6 +83,42 @@ RSpec.describe Kentaa::Api::Resources::Action do
     end
   end
 
+  describe '#who_type' do
+    it 'returns the who_type' do
+      expect(response.who_type).to eq("owner")
+    end
+  end
+
+  describe '#owner?' do
+    it 'returns true when who_type is owner' do
+      expect(response.owner?).to be true
+    end
+  end
+
+  describe '#other?' do
+    it 'returns false when who_type is not other' do
+      expect(response.other?).to be false
+    end
+  end
+
+  describe '#first_name' do
+    it 'returns the first name' do
+      expect(response.first_name).to eq("John")
+    end
+  end
+
+  describe '#last_name' do
+    it 'returns the last name' do
+      expect(response.last_name).to eq("Doe")
+    end
+  end
+
+  describe '#fundraiser_page' do
+    it 'returns the fundraiser_page' do
+      expect(response.fundraiser_page?).to be true
+    end
+  end
+
   describe '#title' do
     it 'returns the title' do
       expect(response.title).to eq("Lorem ipsum")

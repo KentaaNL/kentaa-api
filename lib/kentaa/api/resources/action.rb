@@ -7,6 +7,9 @@ module Kentaa
   module Api
     module Resources
       class Action < Resource
+        WHO_TYPE_OWNER = 'owner'
+        WHO_TYPE_OTHER = 'other'
+
         def object_key
           "Action_#{id}"
         end
@@ -53,6 +56,18 @@ module Kentaa
 
         def team_captain?
           data.fetch(:team_captain, false)
+        end
+
+        def who_type
+          data[:who_type]
+        end
+
+        def owner?
+          who_type == WHO_TYPE_OWNER
+        end
+
+        def other?
+          who_type == WHO_TYPE_OTHER
         end
 
         def first_name

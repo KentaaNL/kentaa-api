@@ -15,6 +15,7 @@
       "last_name": "Doe",
       "email": "john.doe@kentaa.nl"
     },
+    "who_type": "owner",
     "first_name": "John",
     "last_name": "Doe",
     "fundraiser_page": true,
