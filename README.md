@@ -111,15 +111,15 @@ companies = client.companies.all   # non-paginated
 
 companies.each do |company|
   company.title  # => "Lorem ipsum"
-  company.url  # => "https://demo1.kentaa.nl/bedrijven/john-doe"
+  company.url  # => "https://demo1.kentaa.nl/bedrijven/kentaa-bv"
 end
 
 # Get Company by ID or slug
 company = client.companies.get(1)
-company = client.companies.get("john-doe")
+company = client.companies.get("kentaa-bv")
 
 company.title  # => "Lorem ipsum"
-company.url  # => "https://demo1.kentaa.nl/bedrijven/john-doe"
+company.url  # => "https://demo1.kentaa.nl/bedrijven/kentaa-bv"
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#companies) and [Kentaa::Api::Resources::Company](lib/kentaa/api/resources/company.rb) for all available properties.

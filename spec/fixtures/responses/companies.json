@@ -42,7 +42,7 @@
       "name": "Asperiores beatae voluptate qui.",
       "title": "Vero aspernatur dolores et excepturi.",
       "description": "Cum odio est. Consequuntur occaecati sapiente molestiae quam recusandae possimus aut. Ratione cum harum beatae ad repellat minus.",
-      "kvk": "12345678",
+      "commerce_number": "12345678",
       "target_amount": 2000,
       "total_amount": "225.0",
       "total_donations": 4,
@@ -106,12 +106,9 @@
           "answer": "42"
         }
       ],
-      "company_package": {
+      "package": {
         "id": 1,
         "amount": 10,
-        "reservation_limit": 3,
-        "reservation_type": "custom_reservation_limit",
-        "count_as_donation": true,
         "title": "Package title",
         "description": "Package description",
         "created_at": "2015-08-26T14:50:16Z",

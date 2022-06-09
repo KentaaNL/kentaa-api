@@ -26,18 +26,6 @@ module Kentaa
           data[:amount]
         end
 
-        def reservation_limit
-          data[:reservation_limit]
-        end
-
-        def reservation_type
-          data[:reservation_type]
-        end
-
-        def count_as_donation
-          data[:count_as_donation]
-        end
-
         def title
           data[:title]
         end

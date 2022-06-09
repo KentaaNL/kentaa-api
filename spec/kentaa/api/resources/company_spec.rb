@@ -62,6 +62,12 @@ RSpec.describe Kentaa::Api::Resources::Company do
     end
   end
 
+  describe '#commerce_number' do
+    it 'returns the commerce number' do
+      expect(response.commerce_number).to eq('12345678')
+    end
+  end
+
   describe '#slug' do
     it 'returns the slug' do
       expect(response.slug).to eq('asperiores-beatae-voluptate-qui')
@@ -204,9 +210,6 @@ RSpec.describe Kentaa::Api::Resources::Company do
       expect(package).to be_a(Kentaa::Api::Resources::CompanyPackage)
       expect(package.id).to eq(1)
       expect(package.amount).to eq(10)
-      expect(package.reservation_limit).to eq(3)
-      expect(package.reservation_type).to eq('custom_reservation_limit')
-      expect(package.count_as_donation).to be(true)
       expect(package.title).to eq('Package title')
       expect(package.description).to eq('Package description')
     end
