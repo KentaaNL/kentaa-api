@@ -165,6 +165,12 @@ RSpec.describe Kentaa::Api::Resources::Company do
     end
   end
 
+  describe '#member_sign_up_url' do
+    it 'returns the sign-up URL' do
+      expect(response.member_sign_up_url).to eq('https://demo1.kentaa.nl/participate/companies/c9ddaa602de6b76138c4cc31534c9a14ce5404e2')
+    end
+  end
+
   describe '#photos' do
     it 'returns the associated photos' do
       expect(response.photos).not_to be_empty
