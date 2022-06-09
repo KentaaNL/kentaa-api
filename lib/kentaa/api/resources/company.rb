@@ -158,7 +158,7 @@ module Kentaa
         end
 
         def company_package
-          @company_package ||= Kentaa::Api::Resources::CompanyPackage.new(data[:company_package]) if data[:company_package]
+          @company_package ||= Kentaa::Api::Resources::CompanyPackage.new(data[:package]) if data[:package]
         end
 
         def activity
@@ -171,6 +171,10 @@ module Kentaa
 
         def external_reference
           data[:external_reference]
+        end
+
+        def commerce_number
+          data[:commerce_number]
         end
 
         def consents
