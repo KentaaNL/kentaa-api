@@ -6,7 +6,11 @@ module Kentaa
       module_function
 
       def pluralize(string)
-        "#{string}s"
+        if string[-1] == 'y'
+          "#{string.chop}ies"
+        else
+          "#{string}s"
+        end
       end
     end
   end

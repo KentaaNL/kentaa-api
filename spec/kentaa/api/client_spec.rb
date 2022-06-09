@@ -105,6 +105,53 @@ RSpec.describe Kentaa::Api::Client do
     end
   end
 
+  describe '#companies' do
+    describe '#all' do
+      it 'returns an enumerator for retrieving all companies' do
+        data = File.read('spec/fixtures/responses/companies.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/companies?page=1').to_return(status: 200, body: data)
+        data = File.read('spec/fixtures/responses/empty.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/companies?page=2').to_return(status: 200, body: data)
+
+        companies = client.companies.all
+        expect(companies).to be_a(Enumerator)
+        expect(companies.count).to eq(1)
+        expect(companies.first).to be_a(Kentaa::Api::Resources::Company)
+      end
+    end
+
+    describe '#each' do
+      it 'returns a list of companies' do
+        data = File.read('spec/fixtures/responses/companies.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/companies').to_return(status: 200, body: data)
+
+        companies = client.companies
+        expect(companies).to be_a(Kentaa::Api::Resources::List)
+        expect(companies.count).to eq(1)
+        expect(companies.total_entries).to eq(34)
+        expect(companies.first).to be_a(Kentaa::Api::Resources::Company)
+      end
+    end
+
+    describe '#get' do
+      it 'returns a single company' do
+        data = File.read('spec/fixtures/responses/company.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/companies/1').to_return(status: 200, body: data)
+
+        company = client.companies.get(1)
+        expect(company).to be_a(Kentaa::Api::Resources::Company)
+        expect(company.title).to eq('Vero aspernatur dolores et excepturi.')
+      end
+
+      it 'returns an error when the company was not found' do
+        data = File.read('spec/fixtures/responses/404.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/companies/1').to_return(status: 404, body: data)
+
+        expect { client.companies.get(1) }.to raise_error(Kentaa::Api::RequestError, '404: Requested resource was not found.')
+      end
+    end
+  end
+
   describe '#donation_forms' do
     describe '#all' do
       it 'returns an enumerator for retrieving all donation forms' do
