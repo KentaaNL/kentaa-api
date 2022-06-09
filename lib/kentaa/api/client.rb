@@ -11,6 +11,10 @@ module Kentaa
         Kentaa::Api::Resources::List.new(@config, options.merge(resource_class: Kentaa::Api::Resources::Action, endpoint_path: '/actions'))
       end
 
+      def companies(options = {})
+        Kentaa::Api::Resources::List.new(@config, options.merge(resource_class: Kentaa::Api::Resources::Company, endpoint_path: '/companies'))
+      end
+
       def donations(options = {})
         Kentaa::Api::Resources::List.new(@config, options.merge(resource_class: Kentaa::Api::Resources::Donation, endpoint_path: '/donations'))
       end

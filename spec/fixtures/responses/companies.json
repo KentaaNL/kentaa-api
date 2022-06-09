@@ -1,0 +1,150 @@
+{
+  "companies": [
+    {
+      "id": 1,
+      "slug": "asperiores-beatae-voluptate-qui",
+      "segment_id": 2,
+      "project_id": 3,
+      "site_id": 6,
+      "created_at": "2015-08-26T14:51:35Z",
+      "updated_at": "2015-10-12T16:27:43Z",
+      "external_reference": "Customer Campaign 1021AA1-11",
+      "members": [
+        {
+          "id": 9,
+          "owner": {
+            "id": 8,
+            "first_name": "Thomas",
+            "last_name": "Klein",
+            "email": "thomas.klein@kentaa.nl"
+          },
+          "first_name": "Thomas",
+          "last_name": "Klein",
+          "email": "thomas.klein@kentaa.nl",
+          "url": "https://demo1.kentaa.nl/actie/thomas-klein",
+          "donate_url": "https://demo1.kentaa.nl/actie/thomas-klein/donate"
+        },
+        {
+          "id": 3,
+          "owner": {
+            "id": 2,
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@kentaa.nl"
+          },
+          "first_name": "John",
+          "last_name": "Doe",
+          "email": "john.doe@kentaa.nl",
+          "url": "https://demo1.kentaa.nl/actie/john-doe",
+          "donate_url": "https://demo1.kentaa.nl/actie/john-doe/donate"
+        }
+      ],
+      "name": "Asperiores beatae voluptate qui.",
+      "title": "Vero aspernatur dolores et excepturi.",
+      "description": "Cum odio est. Consequuntur occaecati sapiente molestiae quam recusandae possimus aut. Ratione cum harum beatae ad repellat minus.",
+      "kvk": "12345678",
+      "target_amount": 2000,
+      "total_amount": "225.0",
+      "total_donations": 4,
+      "target_amount_achieved": false,
+      "visible": true,
+      "countable": true,
+      "closed": false,
+      "ended": false,
+      "activity": {
+        "id": 12,
+        "name": "Activity name"
+      },
+      "url": "https://demo1.kentaa.nl/company/asperiores-beatae-voluptate-qui",
+      "donate_url": "https://demo1.kentaa.nl/company/asperiores-beatae-voluptate-qui/donate",
+      "billing": {
+        "attn": "Example text",
+        "street": "Jansbuitensingel",
+        "house_number": "29",
+        "house_number_addition": "",
+        "address": "Jansbuitensingel 29",
+        "address2": "",
+        "zipcode": "6811AD",
+        "city": "Arnhem",
+        "country": "NL"
+      },
+      "contact": {
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@kentaa.nl",
+        "address": "Jansbuitensingel 29",
+        "street": "Jansbuitensingel",
+        "house_number": "29",
+        "zipcode": "6811AD",
+        "city": "Arnhem",
+        "country": "NL",
+        "phone": "0262616240",
+        "gender": "male"
+      },
+      "photos": [
+        {
+          "id": 2,
+          "created_at": "2015-08-26T14:50:16Z",
+          "updated_at": "2015-08-26T14:50:20Z",
+          "url": "https://d2a3ux41sjxpco.cloudfront.net/carousel/file/company_photo/64/normal_53ca327debf5667a5efa03f3e87ba1c5b9f806a1.JPG"
+        }
+      ],
+      "videos": [
+        {
+          "id": 2,
+          "created_at": "2015-08-26T14:50:16Z",
+          "updated_at": "2015-08-26T14:50:20Z",
+          "url": "https://d2a3ux41sjxpco.cloudfront.net/carousel/file/company_video/64/normal_53ca327debf5667a5efa03f3e87ba1c5b9f806a1.JPG"
+        }
+      ],
+      "questions": [
+        {
+          "id": 2,
+          "created_at": "2015-08-26T14:50:16Z",
+          "updated_at": "2015-08-26T14:50:20Z",
+          "question": "What is your age?",
+          "answer": "42"
+        }
+      ],
+      "company_package": {
+        "id": 1,
+        "amount": 10,
+        "reservation_limit": 3,
+        "reservation_type": "custom_reservation_limit",
+        "count_as_donation": true,
+        "title": "Package title",
+        "description": "Package description",
+        "created_at": "2015-08-26T14:50:16Z",
+        "updated_at": "2015-08-26T14:50:20Z"
+      },
+      "consents": [
+        {
+          "consent_type": "terms_conditions",
+          "consent_status": "granted",
+          "granted_at": "2015-08-26T14:49:36Z",
+          "consent_text": "Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.",
+          "url": "https://demo1.kentaa.nl/project/projectinformatie",
+          "terms_conditions_version": "V1 30-05-2018 11:53"
+        },
+        {
+          "consent_type": "processing_personal_data",
+          "consent_status": "granted",
+          "granted_at": "2015-08-26T14:49:36Z",
+          "consent_text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
+          "url": "https://demo1.kentaa.nl/project/projectinformatie",
+          "terms_conditions_version": "V1 30-05-2018 11:53"
+        }
+      ]
+    }
+  ],
+  "links": {
+    "pages": {
+      "last": "https://api.kentaa.nl/v1/companies?page=34&per_page=2",
+      "next": "https://api.kentaa.nl/v1/companies?page=2&per_page=2"
+    }
+  },
+  "total_entries": 34,
+  "total_pages": 17,
+  "per_page": 2,
+  "current_page": 1
+}
