@@ -115,6 +115,10 @@ module Kentaa
           data[:donate_url]
         end
 
+        def member_sign_up_url
+          data[:member_sign_up_url]
+        end
+
         def photos
           @photos ||= begin
             photos = []
