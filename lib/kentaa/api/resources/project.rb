@@ -71,6 +71,10 @@ module Kentaa
           data[:closed]
         end
 
+        def closed_at
+          Time.parse(data[:closed_at]) if data[:closed_at]
+        end
+
         def ended?
           data[:ended]
         end
