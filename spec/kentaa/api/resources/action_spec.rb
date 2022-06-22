@@ -185,6 +185,12 @@ RSpec.describe Kentaa::Api::Resources::Action do
     end
   end
 
+  describe '#activity' do
+    it 'returns the associated activity' do
+      expect(response.activity).to be_nil
+    end
+  end
+
   describe '#external_reference' do
     it 'returns the external reference' do
       expect(response.external_reference).to eq('Customer Campaign 1021AA1-11')
