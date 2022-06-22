@@ -166,7 +166,7 @@ module Kentaa
         end
 
         def activity
-          @activity ||= Kentaa::Api::Resources::Activity.new(data[:activity])
+          @activity ||= Kentaa::Api::Resources::Activity.new(data[:activity]) if data[:activity]
         end
 
         def contact

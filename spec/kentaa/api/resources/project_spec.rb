@@ -116,12 +116,6 @@ RSpec.describe Kentaa::Api::Resources::Project do
     end
   end
 
-  describe '#closed_at' do
-    it 'returns closed-at' do
-      expect(response.closed_at).to be_a(Time)
-    end
-  end
-
   describe '#ended?' do
     it 'returns true when ended' do
       expect(response.ended?).to be true

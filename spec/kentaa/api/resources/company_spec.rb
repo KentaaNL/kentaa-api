@@ -272,7 +272,7 @@ RSpec.describe Kentaa::Api::Resources::Company do
   end
 
   describe '#activity' do
-    it 'returns the associated activiy' do
+    it 'returns the associated activity' do
       expect(response.activity).to be_a(Kentaa::Api::Resources::Activity)
       expect(response.activity.id).to eq(12)
       expect(response.activity.name).to eq('Activity name')
