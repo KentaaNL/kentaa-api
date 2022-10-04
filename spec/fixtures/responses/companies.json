@@ -122,7 +122,8 @@
           "granted_at": "2015-08-26T14:49:36Z",
           "consent_text": "Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.",
           "url": "https://demo1.kentaa.nl/project/projectinformatie",
-          "terms_conditions_version": "V1 30-05-2018 11:53"
+          "terms_conditions_version": "V1 30-05-2018 11:53",
+          "privacy_version": "V1 30-05-2018 11:53"
         },
         {
           "consent_type": "processing_personal_data",
@@ -130,7 +131,8 @@
           "granted_at": "2015-08-26T14:49:36Z",
           "consent_text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
           "url": "https://demo1.kentaa.nl/project/projectinformatie",
-          "terms_conditions_version": "V1 30-05-2018 11:53"
+          "terms_conditions_version": "V1 30-05-2018 11:53",
+          "privacy_version": "V1 30-05-2018 11:53"
         }
       ]
     }

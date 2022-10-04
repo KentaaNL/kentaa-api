@@ -173,6 +173,7 @@ RSpec.describe Kentaa::Api::Resources::User do
       expect(consent.consent_text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
       expect(consent.url).to eq('https://demo1.kentaa.nl/meedoen/wie-ben-jij')
       expect(consent.terms_conditions_version).to eq('V2 22-06-2018 13:09')
+      expect(consent.privacy_version).to eq('V1 10-06-2018 11:42')
     end
   end
 

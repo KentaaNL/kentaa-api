@@ -100,7 +100,7 @@ RSpec.describe Kentaa::Api::Resources::NewsletterSubscription do
       expect(consent.consent_status).to eq('granted')
       expect(consent.consent_text).to eq('Ja, ik wil de nieuwsbrief ontvangen')
       expect(consent.url).to eq('https://demo1.kentaa.nl')
-      expect(consent.terms_conditions_version).to eq('V2 22-06-2018 13:09')
+      expect(consent.privacy_version).to eq('V1 10-06-2018 11:42')
     end
   end
 end

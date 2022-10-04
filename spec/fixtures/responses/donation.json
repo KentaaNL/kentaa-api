@@ -65,7 +65,8 @@
         "granted_at": "2016-03-30T14:41:48Z",
         "consent_text": "Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.",
         "url": "https://demo1.kentaa.nl/doneren",
-        "terms_conditions_version": "V2 22-06-2018 13:09"
+        "terms_conditions_version": "V2 22-06-2018 13:09",
+        "privacy_version": "V1 10-06-2018 11:42"
       }
     ]
   }

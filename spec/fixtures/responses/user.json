@@ -28,7 +28,8 @@
         "granted_at": "2018-07-18T13:58:11Z",
         "consent_text": "Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.",
         "url": "https://demo1.kentaa.nl/meedoen/wie-ben-jij",
-        "terms_conditions_version": "V2 22-06-2018 13:09"
+        "terms_conditions_version": "V2 22-06-2018 13:09",
+        "privacy_version": "V1 10-06-2018 11:42"
       },
       {
         "consent_type": "processing_personal_data",
@@ -36,7 +37,8 @@
         "granted_at": "2018-07-18T13:58:11Z",
         "consent_text": "Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.",
         "url": "https://demo1.kentaa.nl/meedoen/wie-ben-jij",
-        "terms_conditions_version": "V2 22-06-2018 13:09"
+        "terms_conditions_version": "V2 22-06-2018 13:09",
+        "privacy_version": "V1 10-06-2018 11:42"
       }
     ]
   }

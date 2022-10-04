@@ -94,6 +94,10 @@ module Kentaa
         def terms_conditions_version
           data[:terms_conditions_version]
         end
+
+        def privacy_version
+          data[:privacy_version]
+        end
       end
     end
   end
