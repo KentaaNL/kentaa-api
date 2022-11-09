@@ -431,7 +431,7 @@ user = client.users.get(1)
 user.first_name  # => "John"
 user.last_name  # => "Doe"
 
-# Create an User
+# Create a User
 user = client.users.create(
   first_name: "John",
   last_name: "Doe"
@@ -441,12 +441,12 @@ user.id  # => 1
 user.first_name  # => "John"
 user.last_name  # => "Doe"
 
-# Update an User
+# Update a User
 user = client.users.update(1, first_name: "Jane")
 
 user.first_name  # => "Jane"
 
-# Authenticate an User
+# Authenticate a User
 user = client.users.auth(email: "john.doe@kentaa.nl", password: "secret")
 
 user.id  # => 1

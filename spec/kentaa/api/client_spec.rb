@@ -614,7 +614,7 @@ RSpec.describe Kentaa::Api::Client do
     end
 
     describe '#create' do
-      it 'creates an user' do
+      it 'creates a user' do
         data = File.read('spec/fixtures/responses/user.json')
         stub_request(:post, 'https://api.kentaa.nl/v1/users').to_return(status: 201, body: data)
 
@@ -626,7 +626,7 @@ RSpec.describe Kentaa::Api::Client do
     end
 
     describe '#update' do
-      it 'updates an user' do
+      it 'updates a user' do
         data = File.read('spec/fixtures/responses/user.json')
         stub_request(:patch, 'https://api.kentaa.nl/v1/users/1').to_return(status: 200, body: data)
 
@@ -638,7 +638,7 @@ RSpec.describe Kentaa::Api::Client do
     end
 
     describe '#auth' do
-      it 'authenticates an user succesfully' do
+      it 'authenticates a user succesfully' do
         data = File.read('spec/fixtures/responses/user.json')
         stub_request(:post, 'https://api.kentaa.nl/v1/users/auth').to_return(status: 200, body: data)
 
