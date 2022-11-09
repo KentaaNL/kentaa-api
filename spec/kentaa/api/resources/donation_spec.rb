@@ -62,6 +62,12 @@ RSpec.describe Kentaa::Api::Resources::Donation do
     end
   end
 
+  describe '#company_id' do
+    it 'returns the company id' do
+      expect(response.company_id).to be_nil
+    end
+  end
+
   describe '#team_id' do
     it 'returns the team id' do
       expect(response.team_id).to be_nil
@@ -125,6 +131,12 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   describe '#anonymous?' do
     it 'returns true when anonymous' do
       expect(response.anonymous?).to be false
+    end
+  end
+
+  describe '#contact_details_type' do
+    it 'returns the contact details type' do
+      expect(response.contact_details_type).to eq('visible')
     end
   end
 
