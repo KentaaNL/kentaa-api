@@ -17,6 +17,8 @@ module Kentaa
         def parent
           if team_id
             Kentaa::Api::Resources::Team.new(config, id: team_id, options: options)
+          elsif company_id
+            Kentaa::Api::Resources::Company.new(config, id: company_id, options: options)
           elsif project_id
             Kentaa::Api::Resources::Project.new(config, id: project_id, options: options)
           elsif segment_id
@@ -44,6 +46,10 @@ module Kentaa
 
         def project_id
           data[:project_id]
+        end
+
+        def company_id
+          data[:company_id]
         end
 
         def team_id
