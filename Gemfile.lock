@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kentaa-api (0.7.1)
+    kentaa-api (0.7.2)
 
 GEM
   remote: https://rubygems.org/
