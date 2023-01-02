@@ -74,6 +74,12 @@ RSpec.describe Kentaa::Api::Resources::Action do
     end
   end
 
+  describe '#company_id' do
+    it 'returns the company id' do
+      expect(response.company_id).to eq(1)
+    end
+  end
+
   describe '#owner' do
     it 'returns the action owner' do
       expect(response.owner).to be_a(Kentaa::Api::Resources::User)
