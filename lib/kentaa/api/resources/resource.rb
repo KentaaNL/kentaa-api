@@ -53,11 +53,11 @@ module Kentaa
 
         private
 
-        def create_resource
+        def create_resource(_attributes)
           raise NotImplementedError
         end
 
-        def update_resource
+        def update_resource(_attributes)
           raise NotImplementedError
         end
 

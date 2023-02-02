@@ -242,6 +242,10 @@ module Kentaa
           @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/actions/#{id}/manual-donations")
         end
 
+        def orders
+          @orders ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Order, endpoint_path: "/actions/#{id}/orders")
+        end
+
         def performances(options = {})
           @performances ||= Kentaa::Api::Resources::List.new(config, options.merge(resource_class: Kentaa::Api::Resources::Performance, endpoint_path: "/actions/#{id}/performances"))
         end
