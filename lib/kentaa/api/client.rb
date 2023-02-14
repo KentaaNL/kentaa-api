@@ -31,6 +31,10 @@ module Kentaa
         Kentaa::Api::Resources::List.new(@config, options.merge(resource_class: Kentaa::Api::Resources::NewsletterSubscription, endpoint_path: '/newsletter-subscriptions'))
       end
 
+      def orders(options = {})
+        Kentaa::Api::Resources::List.new(@config, options.merge(resource_class: Kentaa::Api::Resources::Order, endpoint_path: '/orders'))
+      end
+
       def projects(options = {})
         Kentaa::Api::Resources::List.new(@config, options.merge(resource_class: Kentaa::Api::Resources::Project, endpoint_path: '/projects'))
       end

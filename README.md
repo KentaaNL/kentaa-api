@@ -16,6 +16,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
   - [Donations](#donations)
   - [Manual donations](#manual-donations)
   - [Newsletter subscriptions](#newsletter-subscriptions)
+  - [Orders](#orders)
   - [Performances](#performances)
     - [Photos](#performance-photos)
   - [Projects](#projects)
@@ -154,7 +155,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#donation-
 donations = client.donations       # paginated
 donations = client.donations.all   # non-paginated
 
-donations.each do |donations|
+donations.each do |donation|
   donation.first_name  # => "John"
   donation.last_name  # => "Doe"
 end
@@ -177,7 +178,7 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#donations
 donations = client.manual_donations       # paginated
 donations = client.manual_donations.all   # non-paginated
 
-donations.each do |donations|
+donations.each do |donation|
   donation.first_name  # => "John"
   donation.last_name  # => "Doe"
 end
@@ -234,6 +235,28 @@ subscription.subscription_url  # => "https://demo1.kentaa.nl"
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#newsletter-subscriptions) and [Kentaa::Api::Resources::NewsletterSubscription](lib/kentaa/api/resources/newsletter_subscription.rb) for all available properties.
+
+### Orders
+
+```ruby
+# List Orders
+orders = client.orders       # paginated
+orders = client.orders.all   # non-paginated
+
+orders.each do |order|
+  order.first_name  # => "John"
+  order.last_name  # => "Doe"
+end
+
+# Get Order
+order = client.orders.get(1)
+
+order.name  # => "John Doe"
+order.total_amount # => BigDecimal("15.0")
+order.site  # => Kentaa::Api::Resources::Site
+```
+
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#orders) and [Kentaa::Api::Resources::Order](lib/kentaa/api/resources/order.rb) for all available properties.
 
 ### Performances
 

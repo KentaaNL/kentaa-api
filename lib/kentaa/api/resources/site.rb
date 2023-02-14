@@ -97,6 +97,10 @@ module Kentaa
           @newsletter_subscriptions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::NewsletterSubscription, endpoint_path: '/newsletter-subscriptions')
         end
 
+        def orders
+          @orders ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Order, endpoint_path: '/orders')
+        end
+
         private
 
         def load_resource
