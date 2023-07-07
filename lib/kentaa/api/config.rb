@@ -18,23 +18,14 @@ module Kentaa
       end
 
       def api_url
-        case environment
-        when :test
+        if options[:api_url]
+          options[:api_url]
+        elsif options[:test]
           TEST_URL
-        when :development
-          DEV_URL
-        when :live
-          LIVE_URL
-        end
-      end
-
-      def environment
-        if options[:test]
-          :test
         elsif options[:dev]
-          :development
+          DEV_URL
         else
-          :live
+          LIVE_URL
         end
       end
 
