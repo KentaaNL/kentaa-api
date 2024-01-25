@@ -483,12 +483,12 @@ See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#users) an
 #### User avatar
 
 ```ruby
-# Get User avatar
+# Get the User avatar
 avatar = user.avatar
 
 avatar.avatar_url  # => "https://cdn.kentaa.nl/avatars/avatar/1/thumb_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg"
 
-# Create a User avatar
+# Create / update the User avatar
 avatar = user.avatar.create(
   io: File.open("photo.jpeg"),
   content_type: "image/jpeg"
@@ -496,7 +496,7 @@ avatar = user.avatar.create(
 
 avatar.avatar_url  # => "https://cdn.kentaa.nl/avatars/avatar/1/thumb_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg"
 
-# Delete a User avatar
+# Delete the User avatar
 user.avatar.delete
 ```
 
