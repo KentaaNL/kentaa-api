@@ -25,6 +25,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
   - [Sites](#sites)
   - [Teams](#teams)
   - [Users](#users)
+    - [Avatar](#user-avatar)
   - [Pagination](#pagination)
 - [Error handling](#error-handling)
 - [Development](#development)
@@ -478,6 +479,28 @@ user.last_name  # => "Doe"
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#users) and [Kentaa::Api::Resources::User](lib/kentaa/api/resources/user.rb) for all available properties.
+
+#### User avatar
+
+```ruby
+# Get User avatar
+avatar = user.avatar
+
+avatar.avatar_url  # => "https://cdn.kentaa.nl/avatars/avatar/1/thumb_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg"
+
+# Create a User avatar
+avatar = user.avatar.create(
+  io: File.open("photo.jpeg"),
+  content_type: "image/jpeg"
+)
+
+avatar.avatar_url  # => "https://cdn.kentaa.nl/avatars/avatar/1/thumb_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg"
+
+# Delete a User avatar
+user.avatar.delete
+```
+
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#user-avatars) and [Kentaa::Api::Resources::Avatar](lib/kentaa/api/resources/avatar.rb) for all available properties.
 
 ### Pagination
 
