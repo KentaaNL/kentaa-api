@@ -26,6 +26,10 @@ module Kentaa
           self
         end
 
+        def create(attributes)
+          save(attributes)
+        end
+
         def save(attributes)
           if id
             @response = update_resource(attributes)

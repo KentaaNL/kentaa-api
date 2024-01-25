@@ -182,4 +182,53 @@ RSpec.describe Kentaa::Api::Resources::User do
       expect(response.actions).to be_a(Kentaa::Api::Resources::List)
     end
   end
+
+  describe '#avatar' do
+    describe '#load' do
+      context 'when the avatar is present' do
+        before do
+          data = File.read('spec/fixtures/responses/avatar.json')
+          stub_request(:get, 'https://api.kentaa.nl/v1/users/2/avatar').to_return(status: 200, body: data)
+        end
+
+        it 'returns the associated avatar' do
+          expect(response.avatar).to be_a(Kentaa::Api::Resources::Avatar)
+          expect(response.avatar.avatar_url).to eq('https://cdn.kentaa.nl/avatars/avatar/1/thumb_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg')
+        end
+      end
+
+      context 'when the avatar is absent' do
+        before do
+          data = File.read('spec/fixtures/responses/404.json')
+          stub_request(:get, 'https://api.kentaa.nl/v1/users/2/avatar').to_return(status: 404, body: data)
+        end
+
+        it 'returns an error' do
+          expect { response.avatar.load }.to raise_error(Kentaa::Api::RequestError, '404: Requested resource was not found.')
+        end
+      end
+    end
+
+    describe '#create' do
+      it 'creates an avatar' do
+        data = File.read('spec/fixtures/responses/avatar.json')
+        stub_request(:post, 'https://api.kentaa.nl/v1/users/2/avatar').to_return(status: 201, body: data)
+
+        avatar = response.avatar.create(io: File.open('spec/fixtures/test.jpg'), content_type: 'image/jpeg')
+        expect(avatar).to be_a(Kentaa::Api::Resources::Avatar)
+        expect(avatar.avatar_url).to eq('https://cdn.kentaa.nl/avatars/avatar/1/thumb_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg')
+      end
+    end
+
+    describe '#delete' do
+      it 'deletes a performance' do
+        request = stub_request(:delete, 'https://api.kentaa.nl/v1/users/2/avatar').to_return(status: 204)
+
+        avatar = response.avatar.delete
+        expect(avatar).to be_nil
+
+        expect(request).to have_been_requested
+      end
+    end
+  end
 end

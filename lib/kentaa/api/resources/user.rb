@@ -114,6 +114,10 @@ module Kentaa
           @actions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Action, endpoint_path: "/users/#{id}/actions")
         end
 
+        def avatar
+          @avatar ||= Kentaa::Api::Resources::Avatar.new(config, options: options.merge(endpoint_path: "/users/#{id}"))
+        end
+
         private
 
         def load_resource
