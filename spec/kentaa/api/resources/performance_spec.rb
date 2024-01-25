@@ -113,7 +113,7 @@ RSpec.describe Kentaa::Api::Resources::Performance do
 
         photo = response.photos.get(1)
         expect(photo).to be_a(Kentaa::Api::Resources::PerformancePhoto)
-        expect(photo.image_url).to eq('https://d2a3ux41sjxpco.cloudfront.net/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg')
+        expect(photo.image_url).to eq('https://cdn.kentaa.nl/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg')
       end
 
       it 'returns an error when the performance photo was not found' do

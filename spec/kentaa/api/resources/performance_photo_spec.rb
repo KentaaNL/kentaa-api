@@ -34,7 +34,7 @@ RSpec.describe Kentaa::Api::Resources::PerformancePhoto do
 
   describe '#image_url' do
     it 'returns the image URL' do
-      expect(response.image_url).to eq('https://d2a3ux41sjxpco.cloudfront.net/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg')
+      expect(response.image_url).to eq('https://cdn.kentaa.nl/action_performance_photos/file/1/normal_8ce42aeb3bbb1b4964e621b42691f13d4dfa3f21.jpg')
     end
   end
 end
