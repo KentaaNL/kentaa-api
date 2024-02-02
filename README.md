@@ -260,7 +260,7 @@ order.site  # => Kentaa::Api::Resources::Site
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#orders) and [Kentaa::Api::Resources::Order](lib/kentaa/api/resources/order.rb) for all available properties.
 
-## Payments
+### Payments
 
 ```ruby
 # Get Payment
