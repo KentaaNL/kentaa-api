@@ -17,6 +17,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
   - [Manual donations](#manual-donations)
   - [Newsletter subscriptions](#newsletter-subscriptions)
   - [Orders](#orders)
+  - [Payments](#payments)
   - [Performances](#performances)
     - [Photos](#performance-photos)
   - [Projects](#projects)
@@ -258,6 +259,19 @@ order.site  # => Kentaa::Api::Resources::Site
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#orders) and [Kentaa::Api::Resources::Order](lib/kentaa/api/resources/order.rb) for all available properties.
+
+## Payments
+
+```ruby
+# Get Payment
+payment = client.payments.get(1)
+
+payment.total_amount  # => BigDecimal("95.0")
+payment.donations  # => Array[Kentaa::Api::Resources::Donation]
+payment.orders  # => Array[Kentaa::Api::Resources::Order]
+```
+
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#payments) and [Kentaa::Api::Resources::Payment](lib/kentaa/api/resources/payment.rb) for all available properties.
 
 ### Performances
 
