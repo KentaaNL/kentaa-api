@@ -1,0 +1,104 @@
+{
+  "payment": {
+    "id": 1,
+    "site_id": 4,
+    "created_at": "2021-03-30T14:41:48Z",
+    "updated_at": "2021-03-30T14:46:25Z",
+    "currency": "EUR",
+    "amount": "90.4",
+    "invoicenumber": "T2021.0004.0000001",
+    "payment_method": "ideal",
+    "payment_status": "paid",
+    "transaction_id": "B5C7B7BCAF1ADF6E2032C7CF56969876",
+    "payment_id": "116D10DD544ECD1E2D77762C5C3E6D61",
+    "account_iban": "NL44RABO0123456789",
+    "account_bic": "RABONL2U",
+    "account_name": "J. de Tester",
+    "description": "Example payment",
+    "donations": [
+      {
+        "id": 1,
+        "site_id": 4,
+        "created_at": "2021-03-30T14:41:48Z",
+        "updated_at": "2021-03-30T14:46:25Z",
+        "first_name": "John",
+        "last_name": "Doe",
+        "anonymous": false,
+        "contact_details_type": "visible",
+        "email": "john.doe@kentaa.nl",
+        "newsletter": false,
+        "device_type": "desktop",
+        "locale": "nl",
+        "frequency_type": "oneoff",
+        "currency": "EUR",
+        "amount": "15.0",
+        "transaction_costs": "0.4",
+        "start_donation": false,
+        "registration_fee": true,
+        "registration_fee_amount": "10.0",
+        "total_amount": "25.4",
+        "receivable_amount": "24.0",
+        "countable": true,
+        "invoicenumber": "T2021.0004.0000001",
+        "payment_method": "ideal",
+        "payment_status": "paid",
+        "payment_status_at": "2016-03-30T14:46:25Z",
+        "transaction_id": "B5C7B7BCAF1ADF6E2032C7CF56969876",
+        "payment_id": "116D10DD544ECD1E2D77762C5C3E6D61",
+        "payment_description": "Example payment",
+        "target_url": "https://demo1.kentaa.nl/"
+      }
+    ],
+    "orders": [
+      {
+        "id": 21059,
+        "site_id": 4,
+        "action_id": 8755,
+        "created_at": "2021-03-30T14:41:48Z",
+        "updated_at": "2021-03-30T14:46:25Z",
+        "invoicenumber": "T2021.0004.0000001",
+        "total_amount": "65.0",
+        "currency": "EUR",
+        "payment_status": "paid",
+        "first_name": "John",
+        "last_name": "Doe",
+        "address": {
+          "address": "Jansbuitensingel 29",
+          "street": "Jansbuitensingel",
+          "house_number": "29",
+          "zipcode": "6811AD",
+          "city": "Arnhem",
+          "country": "NL"
+        },
+        "items": [
+          {
+            "product": {
+              "id": 26,
+              "variant_id": 3,
+              "title": "Sweater",
+              "variant_title": "XL",
+              "price": "25.0",
+              "currency": "EUR"
+            },
+            "quantity": 2,
+            "amount": "50.0",
+            "currency": "EUR"
+          },
+          {
+            "product": {
+              "id": 25,
+              "variant_id": 2,
+              "title": "T-shirt",
+              "variant_title": "L",
+              "price": "15.0",
+              "currency": "EUR"
+            },
+            "quantity": 1,
+            "amount": "15.0",
+            "currency": "EUR"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -368,6 +368,26 @@ RSpec.describe Kentaa::Api::Client do
     end
   end
 
+  describe '#payments' do
+    describe '#get' do
+      it 'returns a single payment' do
+        data = File.read('spec/fixtures/responses/payment.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/payments/1').to_return(status: 200, body: data)
+
+        payment = client.payments.get(1)
+        expect(payment).to be_a(Kentaa::Api::Resources::Payment)
+        expect(payment.invoicenumber).to eq('T2021.0004.0000001')
+      end
+
+      it 'returns an error when the donapaymenttion was not found' do
+        data = File.read('spec/fixtures/responses/404.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/payments/1').to_return(status: 404, body: data)
+
+        expect { client.payments.get(1) }.to raise_error(Kentaa::Api::RequestError, '404: Requested resource was not found.')
+      end
+    end
+  end
+
   describe '#projects' do
     describe '#all' do
       it 'returns an enumerator for retrieving all projects' do
