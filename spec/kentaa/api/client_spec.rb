@@ -105,6 +105,38 @@ RSpec.describe Kentaa::Api::Client do
     end
   end
 
+  describe '#activities' do
+    describe '#each' do
+      it 'returns a list of activities' do
+        data = File.read('spec/fixtures/responses/activities.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/activities').to_return(status: 200, body: data)
+
+        activities = client.activities
+        expect(activities).to be_a(Kentaa::Api::Resources::List)
+        expect(activities.count).to eq(2)
+        expect(activities.first).to be_a(Kentaa::Api::Resources::Activity)
+      end
+    end
+
+    describe '#get' do
+      it 'returns a single activity' do
+        data = File.read('spec/fixtures/responses/activity.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/activities/1').to_return(status: 200, body: data)
+
+        activity = client.activities.get(1)
+        expect(activity).to be_a(Kentaa::Api::Resources::Activity)
+        expect(activity.name).to eq('Walking')
+      end
+
+      it 'returns an error when the activity was not found' do
+        data = File.read('spec/fixtures/responses/404.json')
+        stub_request(:get, 'https://api.kentaa.nl/v1/activities/1').to_return(status: 404, body: data)
+
+        expect { client.activities.get(1) }.to raise_error(Kentaa::Api::RequestError, '404: Requested resource was not found.')
+      end
+    end
+  end
+
   describe '#companies' do
     describe '#all' do
       it 'returns an enumerator for retrieving all companies' do

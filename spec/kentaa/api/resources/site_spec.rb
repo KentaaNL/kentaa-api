@@ -146,4 +146,10 @@ RSpec.describe Kentaa::Api::Resources::Site do
       expect(response.newsletter_subscriptions).to be_a(Kentaa::Api::Resources::List)
     end
   end
+
+  describe '#activities' do
+    it 'returns the activity resources as a List' do
+      expect(response.activities).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
 end

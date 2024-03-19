@@ -101,6 +101,10 @@ module Kentaa
           @orders ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Order, endpoint_path: '/orders')
         end
 
+        def activities
+          @activities ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Activity, endpoint_path: '/activities')
+        end
+
         private
 
         def load_resource
