@@ -11,6 +11,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
 - [Installation](#installation)
 - [Usage](#usage)
   - [Actions](#actions)
+  - [Activities](#activities)
   - [Companies](#companies)
   - [Donation forms](#donation-forms)
   - [Donations](#donations)
@@ -103,6 +104,25 @@ action.title  # => "Foobar"
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#actions) and [Kentaa::Api::Resources::Action](lib/kentaa/api/resources/action.rb) for all available properties.
+
+
+### Activities
+
+```ruby
+# List Activities
+activities = client.activities
+
+activities.each do |activity|
+  activity.name  # => "Walking"
+end
+
+# Get Activity by ID
+activity = client.activities.get(1)
+
+activity.name  # => "Walking"
+```
+
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#activities) and [Kentaa::Api::Resources::Activity](lib/kentaa/api/resources/activity.rb) for all available properties.
 
 
 ### Companies
