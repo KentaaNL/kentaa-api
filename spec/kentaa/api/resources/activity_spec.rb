@@ -32,6 +32,18 @@ RSpec.describe Kentaa::Api::Resources::Activity do
     end
   end
 
+  describe '#site' do
+    it 'returns the site resource' do
+      expect(response.site).to be_a(Kentaa::Api::Resources::Site)
+    end
+  end
+
+  describe '#site_id' do
+    it 'returns the site id' do
+      expect(response.site_id).to eq(1)
+    end
+  end
+
   describe '#name' do
     it 'returns the name' do
       expect(response.name).to eq('Walking')

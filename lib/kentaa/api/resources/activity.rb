@@ -8,6 +8,14 @@ module Kentaa
           "Activity_#{id}"
         end
 
+        def site
+          Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
+        end
+
+        def site_id
+          data[:site_id]
+        end
+
         def name
           data[:name]
         end
