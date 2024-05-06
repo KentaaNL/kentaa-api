@@ -16,7 +16,7 @@
     "owner_email": "johndoe@example.com",
     "default_currency": "EUR",
     "url": "https://demo1.kentaa.nl/",
-    "donate_url": "https://demo1.kentaa.nl/doneren",
+    "donate_url": "https://demo1.kentaa.nl/donate",
     "banners": [
       {
         "id": 14,
@@ -27,6 +27,23 @@
         "link": "http://www.example.com/",
         "locale": "nl"
       }
-    ]
+    ],
+    "logos": [
+        {
+          "locale": "nl",
+          "url": "https://cdn.kentaa.nl/header_logos/logo/site_logo/2528/116c9a3acc4a88f9e14bb0b6319045f987f4c160.jpeg"
+
+        },
+        {
+          "locale": "en",
+          "url": "https://cdn.kentaa.nl/header_logos/logo/site_logo/2529/2fe74604b1554b6a3f1fb0fc0f0b80efaab9437a.png"
+        }
+    ],
+    "background_image_url": "https://cdn.kentaa.nl/background_images/site_theme/background_image/2238/c84048633c78cd54cf3000a244738d8005d265c1.jpg",
+    "sign_up_flow_background_image_url": "https://cdn.kentaa.nl/background_images/site_setting/sign_up_flow_background_image/3804/0afc0d7f0932b5f8f4ed49b06e768a6eb36e31b3.jpg",
+    "theme": {
+        "primary_color": "#6b0a0a",
+        "contrast_color": "#400b0b"
+    }
   }
 }

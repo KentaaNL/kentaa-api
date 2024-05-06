@@ -291,7 +291,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   describe '#consent' do
     it 'returns the associated consent' do
       expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
-      expect(response.consent.url).to eq('https://demo1.kentaa.nl/doneren')
+      expect(response.consent.url).to eq('https://demo1.kentaa.nl/donate')
       expect(response.consent.text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
       expect(response.consent.version).to eq('V2 22-06-2018 13:09')
     end
@@ -307,7 +307,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
       expect(consent.consent_type).to eq('terms_conditions')
       expect(consent.consent_status).to eq('granted')
       expect(consent.consent_text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
-      expect(consent.url).to eq('https://demo1.kentaa.nl/doneren')
+      expect(consent.url).to eq('https://demo1.kentaa.nl/donate')
       expect(consent.terms_conditions_version).to eq('V2 22-06-2018 13:09')
       expect(consent.privacy_version).to eq('V1 10-06-2018 11:42')
     end

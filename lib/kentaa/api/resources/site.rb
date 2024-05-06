@@ -81,8 +81,34 @@ module Kentaa
           end
         end
 
+        def logos
+          @logos ||= begin
+            logos = []
+
+            if data[:logos]
+              data[:logos].map do |logo|
+                logos << Kentaa::Api::Resources::Logo.new(logo)
+              end
+            end
+
+            logos
+          end
+        end
+
         def external_reference
           data[:external_reference]
+        end
+
+        def background_image_url
+          data[:background_image_url]
+        end
+
+        def sign_up_flow_background_image_url
+          data[:sign_up_flow_background_image_url]
+        end
+
+        def theme
+          @theme ||= Kentaa::Api::Resources::Theme.new(data[:theme])
         end
 
         def donations

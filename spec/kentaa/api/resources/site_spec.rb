@@ -94,7 +94,7 @@ RSpec.describe Kentaa::Api::Resources::Site do
 
   describe '#donate_url' do
     it 'returns the donate URL' do
-      expect(response.donate_url).to eq('https://demo1.kentaa.nl/doneren')
+      expect(response.donate_url).to eq('https://demo1.kentaa.nl/donate')
     end
   end
 
@@ -120,12 +120,41 @@ RSpec.describe Kentaa::Api::Resources::Site do
     it 'returns the associated banners' do
       expect(response.banners).not_to be_empty
       expect(response.banners.count).to eq(1)
+      expect(response.banners.first).to be_a(Kentaa::Api::Resources::Banner)
+    end
+  end
+
+  describe '#logos' do
+    it 'returns the associated logos' do
+      expect(response.logos).not_to be_empty
+      expect(response.logos.count).to eq(2)
+      expect(response.logos.first).to be_a(Kentaa::Api::Resources::Logo)
     end
   end
 
   describe '#external_reference' do
     it 'returns the external reference' do
       expect(response.external_reference).to eq('Customer Campaign 1021AA1-11')
+    end
+  end
+
+  describe '#background_image_url' do
+    it 'returns the background image URL' do
+      expect(response.background_image_url).to eq('https://cdn.kentaa.nl/background_images/site_theme/background_image/2238/c84048633c78cd54cf3000a244738d8005d265c1.jpg')
+    end
+  end
+
+  describe '#sign_up_flow_background_image_url' do
+    it 'returns the background image URL' do
+      expect(response.sign_up_flow_background_image_url).to eq('https://cdn.kentaa.nl/background_images/site_setting/sign_up_flow_background_image/3804/0afc0d7f0932b5f8f4ed49b06e768a6eb36e31b3.jpg')
+    end
+  end
+
+  describe '#theme' do
+    it 'returns the theme settings' do
+      expect(response.theme).to be_a(Kentaa::Api::Resources::Theme)
+      expect(response.theme.primary_color).to eq('#6b0a0a')
+      expect(response.theme.contrast_color).to eq('#400b0b')
     end
   end
 
