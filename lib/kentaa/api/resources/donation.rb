@@ -126,7 +126,21 @@ module Kentaa
         end
 
         def amount
+          Kentaa::Api::Deprecation.warn('#amount is deprecated. Please use #donation_amount instead.', caller)
+
           BigDecimal(data[:amount])
+        end
+
+        def donation_amount
+          BigDecimal(data[:donation_amount])
+        end
+
+        def company_registration_fee?
+          data[:company_registration_fee]
+        end
+
+        def company_registration_fee_amount
+          BigDecimal(data[:company_registration_fee_amount]) if data[:company_registration_fee_amount]
         end
 
         def transaction_costs

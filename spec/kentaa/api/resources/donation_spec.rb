@@ -179,6 +179,25 @@ RSpec.describe Kentaa::Api::Resources::Donation do
   describe '#amount' do
     it 'returns the donation amount' do
       expect(response.amount).to eq(15.0)
+      expect { response.amount }.to output(/DEPRECATION WARNING: #amount is deprecated. Please use #donation_amount instead./).to_stderr
+    end
+  end
+
+  describe '#donation_amount' do
+    it 'returns the donation amount' do
+      expect(response.donation_amount).to eq(15.0)
+    end
+  end
+
+  describe '#company_registration_fee?' do
+    it 'returns false when this is not a company registration fee' do
+      expect(response.company_registration_fee?).to be false
+    end
+  end
+
+  describe '#company_registration_fee_amount' do
+    it 'returns the company registration fee amount' do
+      expect(response.company_registration_fee_amount).to eq(19.0)
     end
   end
 
@@ -294,6 +313,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
       expect(response.consent.url).to eq('https://demo1.kentaa.nl/donate')
       expect(response.consent.text).to eq("Ik accepteer de <a href='/algemene-voorwaarden' class='theme-text-color' target='_blank'>Algemene voorwaarden</a>.")
       expect(response.consent.version).to eq('V2 22-06-2018 13:09')
+      expect { response.consent }.to output(/DEPRECATION WARNING: #consent is deprecated. Please use #consents instead/).to_stderr
     end
   end
 
