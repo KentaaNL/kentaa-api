@@ -4,8 +4,14 @@ module Kentaa
   module Api
     module Resources
       class RegistrationFee
+        attr_reader :data
+
+        def initialize(data)
+          @data = data
+        end
+
         def amount
-          data[:amount]
+          BigDecimal(data[:amount])
         end
 
         def title

@@ -161,11 +161,15 @@ module Kentaa
         end
 
         def registration_fee
-          @registration_fee ||= Kentaa::Api::Resources::RegistrationFee.new(data[:registration_fee])
+          @registration_fee ||= Kentaa::Api::Resources::RegistrationFee.new(data[:registration_fee]) if data[:registration_fee]
+        end
+
+        def ticket
+          @location ||= Kentaa::Api::Resources::Ticket.new(data[:ticket]) if data[:ticket]
         end
 
         def location
-          @location ||= Kentaa::Api::Resources::Location.new(data[:location])
+          @location ||= Kentaa::Api::Resources::Location.new(data[:location]) if data[:location]
         end
 
         def photos

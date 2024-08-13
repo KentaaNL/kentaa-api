@@ -215,6 +215,26 @@ RSpec.describe Kentaa::Api::Resources::Action do
     end
   end
 
+  describe '#registration_fee' do
+    it 'returns the related registration fee' do
+      expect(response.registration_fee).to be_a(Kentaa::Api::Resources::RegistrationFee)
+      expect(response.registration_fee.amount).to eq(BigDecimal('25.0'))
+      expect(response.registration_fee.title).to eq('Sign up fee')
+    end
+  end
+
+  describe '#ticket' do
+    it 'returns the related ticket' do
+      expect(response.ticket).to be_nil
+    end
+  end
+
+  describe '#location' do
+    it 'returns the related location' do
+      expect(response.location).to be_nil
+    end
+  end
+
   describe '#photos' do
     it 'returns the associated photos' do
       expect(response.photos).not_to be_empty

@@ -3,7 +3,7 @@
 module Kentaa
   module Api
     module Resources
-      class CompanyPackage
+      class Ticket
         attr_reader :data
 
         def initialize(data)
@@ -22,16 +22,12 @@ module Kentaa
           Time.parse(data[:updated_at]) if data[:updated_at]
         end
 
-        def amount
-          BigDecimal(data[:amount])
+        def ticket_number
+          data[:ticket_number]
         end
 
-        def title
-          data[:title]
-        end
-
-        def description
-          data[:description]
+        def ticket_url
+          data[:ticket_url]
         end
       end
     end
