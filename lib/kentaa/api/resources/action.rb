@@ -165,7 +165,7 @@ module Kentaa
         end
 
         def ticket
-          @location ||= Kentaa::Api::Resources::Ticket.new(data[:ticket]) if data[:ticket]
+          @ticket ||= Kentaa::Api::Resources::Ticket.new(data[:ticket]) if data[:ticket]
         end
 
         def location

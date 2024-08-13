@@ -217,15 +217,19 @@ RSpec.describe Kentaa::Api::Resources::Action do
 
   describe '#registration_fee' do
     it 'returns the related registration fee' do
-      expect(response.registration_fee).to be_a(Kentaa::Api::Resources::RegistrationFee)
-      expect(response.registration_fee.amount).to eq(BigDecimal('25.0'))
-      expect(response.registration_fee.title).to eq('Sign up fee')
+      registration_fee = response.registration_fee
+      expect(registration_fee).to be_a(Kentaa::Api::Resources::RegistrationFee)
+      expect(registration_fee.amount).to eq(BigDecimal('25.0'))
+      expect(registration_fee.title).to eq('Sign up fee')
     end
   end
 
   describe '#ticket' do
     it 'returns the related ticket' do
-      expect(response.ticket).to be_nil
+      ticket = response.ticket
+      expect(ticket).to be_a(Kentaa::Api::Resources::Ticket)
+      expect(ticket.ticket_number).to eq('3OJHY9RU5D')
+      expect(ticket.ticket_url).to eq('https://demo1.kentaa.nl/admin/acties/1/download-ticket.pdf')
     end
   end
 
