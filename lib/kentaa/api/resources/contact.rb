@@ -77,6 +77,10 @@ module Kentaa
         def gender
           data[:gender]
         end
+
+        def locale
+          data[:locale]
+        end
       end
     end
   end

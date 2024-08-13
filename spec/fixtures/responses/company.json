@@ -81,7 +81,8 @@
       "city": "Arnhem",
       "country": "NL",
       "phone": "0262616240",
-      "gender": "male"
+      "gender": "male",
+      "locale": "nl"
     },
     "photos": [
       {

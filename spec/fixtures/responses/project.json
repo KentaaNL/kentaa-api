@@ -31,7 +31,8 @@
       "city": "Arnhem",
       "country": "NL",
       "phone": "0262616240",
-      "gender": "male"
+      "gender": "male",
+      "locale": "nl"
     },
     "consent": {
       "url": "https://demo1.kentaa.nl/project/projectinformatie",

@@ -185,19 +185,21 @@ RSpec.describe Kentaa::Api::Resources::Project do
 
   describe '#contact' do
     it 'returns the associated contact' do
-      expect(response.contact).to be_a(Kentaa::Api::Resources::Contact)
-      expect(response.contact.name).to eq('John Doe')
-      expect(response.contact.first_name).to eq('John')
-      expect(response.contact.last_name).to eq('Doe')
-      expect(response.contact.email).to eq('john.doe@kentaa.nl')
-      expect(response.contact.address).to eq('Jansbuitensingel 29')
-      expect(response.contact.street).to eq('Jansbuitensingel')
-      expect(response.contact.house_number).to eq('29')
-      expect(response.contact.zipcode).to eq('6811AD')
-      expect(response.contact.city).to eq('Arnhem')
-      expect(response.contact.country).to eq('NL')
-      expect(response.contact.phone).to eq('0262616240')
-      expect(response.contact.gender).to eq('male')
+      contact = response.contact
+      expect(contact).to be_a(Kentaa::Api::Resources::Contact)
+      expect(contact.name).to eq('John Doe')
+      expect(contact.first_name).to eq('John')
+      expect(contact.last_name).to eq('Doe')
+      expect(contact.email).to eq('john.doe@kentaa.nl')
+      expect(contact.address).to eq('Jansbuitensingel 29')
+      expect(contact.street).to eq('Jansbuitensingel')
+      expect(contact.house_number).to eq('29')
+      expect(contact.zipcode).to eq('6811AD')
+      expect(contact.city).to eq('Arnhem')
+      expect(contact.country).to eq('NL')
+      expect(contact.phone).to eq('0262616240')
+      expect(contact.gender).to eq('male')
+      expect(contact.locale).to eq('nl')
     end
   end
 

@@ -251,6 +251,7 @@ RSpec.describe Kentaa::Api::Resources::Company do
       expect(contact.country).to eq('NL')
       expect(contact.phone).to eq('0262616240')
       expect(contact.gender).to eq('male')
+      expect(contact.locale).to eq('nl')
     end
   end
 
