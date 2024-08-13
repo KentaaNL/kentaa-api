@@ -83,6 +83,10 @@ module Kentaa
           data[:total_donations]
         end
 
+        def reserved_spots
+          data[:reserved_spots]
+        end
+
         def target_amount_achieved?
           data[:target_amount_achieved]
         end
@@ -178,7 +182,13 @@ module Kentaa
         end
 
         def commerce_number
+          Kentaa::Api::Deprecation.warn('#commerce_number is deprecated.', caller)
+
           data[:commerce_number]
+        end
+
+        def total_company_members
+          data[:total_company_members]
         end
 
         def consents

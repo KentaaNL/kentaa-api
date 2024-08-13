@@ -68,6 +68,12 @@ RSpec.describe Kentaa::Api::Resources::Company do
     end
   end
 
+  describe '#total_company_members' do
+    it 'returns the total number of company members' do
+      expect(response.total_company_members).to eq(2)
+    end
+  end
+
   describe '#slug' do
     it 'returns the slug' do
       expect(response.slug).to eq('asperiores-beatae-voluptate-qui')
@@ -114,6 +120,12 @@ RSpec.describe Kentaa::Api::Resources::Company do
   describe '#total_donations' do
     it 'returns the total donations' do
       expect(response.total_donations).to eq(4)
+    end
+  end
+
+  describe '#reserved_spots' do
+    it 'returns the number of reserved spots' do
+      expect(response.reserved_spots).to eq(10)
     end
   end
 
@@ -218,6 +230,8 @@ RSpec.describe Kentaa::Api::Resources::Company do
       expect(package.amount).to eq(10)
       expect(package.title).to eq('Package title')
       expect(package.description).to eq('Package description')
+      expect(package.reservation_type).to eq('specific')
+      expect(package.reservation_limit).to eq(10)
     end
   end
 

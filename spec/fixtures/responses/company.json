@@ -42,9 +42,11 @@
     "title": "Vero aspernatur dolores et excepturi.",
     "description": "Cum odio est. Consequuntur occaecati sapiente molestiae quam recusandae possimus aut. Ratione cum harum beatae ad repellat minus.",
     "commerce_number": "12345678",
+    "total_company_members": 2,
     "target_amount": 2000,
     "total_amount": "225.0",
     "total_donations": 4,
+    "reserved_spots": 10,
     "target_amount_achieved": false,
     "visible": true,
     "countable": true,
@@ -108,12 +110,14 @@
     ],
     "package": {
       "id": 1,
-      "amount": 10,
+      "amount": "10.0",
       "title": "Package title",
       "description": "Package description",
       "created_at": "2015-08-26T14:50:16Z",
-      "updated_at": "2015-08-26T14:50:20Z"
-    },
+      "updated_at": "2015-08-26T14:50:20Z",
+      "reservation_type": "specific",
+      "reservation_limit": 10
+  },
     "consents": [
       {
         "consent_type": "terms_conditions",

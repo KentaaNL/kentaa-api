@@ -33,6 +33,14 @@ module Kentaa
         def description
           data[:description]
         end
+
+        def reservation_type
+          data[:reservation_type]
+        end
+
+        def reservation_limit
+          data[:reservation_limit]
+        end
       end
     end
   end
