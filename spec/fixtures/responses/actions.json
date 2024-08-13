@@ -31,7 +31,7 @@
       "ended": false,
       "previous_participations": 1,
       "url": "https://demo1.kentaa.nl/actie/john-doe",
-      "donate_url": "https://demo1.kentaa.nl/actie/john-doe/doneren",
+      "donate_url": "https://demo1.kentaa.nl/actie/john-doe/donate",
       "photos": [
         {
           "id": 2,
@@ -73,7 +73,7 @@
       "total_donations": 2,
       "visible": true,
       "url": "https://demo1.kentaa.nl/actie/john-doe-2",
-      "donate_url": "https://demo1.kentaa.nl/actie/john-doe-2/doneren",
+      "donate_url": "https://demo1.kentaa.nl/actie/john-doe-2/donate",
       "photos": [
         {
           "id": 2,

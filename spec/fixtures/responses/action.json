@@ -32,7 +32,7 @@
     "ended": false,
     "previous_participations": 1,
     "url": "https://demo1.kentaa.nl/actie/john-doe",
-    "donate_url": "https://demo1.kentaa.nl/actie/john-doe/doneren",
+    "donate_url": "https://demo1.kentaa.nl/actie/john-doe/donate",
     "registration_fee": {
       "amount": "25.0",
       "title": "Sign up fee"

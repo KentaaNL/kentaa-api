@@ -102,6 +102,12 @@ RSpec.describe Kentaa::Api::Resources::Team do
     end
   end
 
+  describe '#total_team_members' do
+    it 'returns the total number of team members' do
+      expect(response.total_team_members).to eq(2)
+    end
+  end
+
   describe '#target_amount' do
     it 'returns the target amount' do
       expect(response.target_amount).to eq(2000)
@@ -164,7 +170,7 @@ RSpec.describe Kentaa::Api::Resources::Team do
 
   describe '#donate_url' do
     it 'returns the donate URL' do
-      expect(response.donate_url).to eq('https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/doneren')
+      expect(response.donate_url).to eq('https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/donate')
     end
   end
 

@@ -28,7 +28,7 @@
         "last_name": "Klein",
         "email": "thomas.klein@kentaa.nl",
         "url": "https://demo1.kentaa.nl/actie/thomas-klein",
-        "donate_url": "https://demo1.kentaa.nl/actie/thomas-klein/doneren"
+        "donate_url": "https://demo1.kentaa.nl/actie/thomas-klein/donate"
       },
       {
         "id": 3,
@@ -43,12 +43,13 @@
         "last_name": "Doe",
         "email": "john.doe@kentaa.nl",
         "url": "https://demo1.kentaa.nl/actie/john-doe",
-        "donate_url": "https://demo1.kentaa.nl/actie/john-doe/doneren"
+        "donate_url": "https://demo1.kentaa.nl/actie/john-doe/donate"
       }
     ],
     "name": "Asperiores beatae voluptate qui.",
     "title": "Vero aspernatur dolores et excepturi.",
     "description": "Cum odio est. Consequuntur occaecati sapiente molestiae quam recusandae possimus aut. Ratione cum harum beatae ad repellat minus.",
+    "total_team_members": 2,
     "target_amount": 2000,
     "total_amount": "225.0",
     "total_donations": 4,
@@ -58,6 +59,6 @@
     "closed": false,
     "ended": false,
     "url": "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui",
-    "donate_url": "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/doneren"
+    "donate_url": "https://demo1.kentaa.nl/team/asperiores-beatae-voluptate-qui/donate"
   }
 }

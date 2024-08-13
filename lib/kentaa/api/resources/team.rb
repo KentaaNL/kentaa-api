@@ -71,6 +71,10 @@ module Kentaa
           data[:description]
         end
 
+        def total_team_members
+          data[:total_team_members]
+        end
+
         def target_amount
           data[:target_amount]
         end

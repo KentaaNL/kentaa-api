@@ -106,7 +106,7 @@ RSpec.describe Kentaa::Api::Resources::Segment do
 
   describe '#donate_url' do
     it 'returns the donate URL' do
-      expect(response.donate_url).to eq('https://segment-2.demo1.kentaa.nl/doneren')
+      expect(response.donate_url).to eq('https://segment-2.demo1.kentaa.nl/donate')
     end
   end
 
