@@ -45,6 +45,7 @@
     "reward": {
       "id": 1,
       "type": "SiteReward",
+      "amount": "10.0",
       "title": "Awesome reward",
       "description": "Lorem ipsum",
       "ask_for_address": true

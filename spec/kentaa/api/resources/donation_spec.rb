@@ -289,6 +289,7 @@ RSpec.describe Kentaa::Api::Resources::Donation do
     it 'returns the associated reward' do
       expect(response.reward).to be_a(Kentaa::Api::Resources::Reward)
       expect(response.reward.type).to eq('SiteReward')
+      expect(response.reward.amount).to eq(10)
       expect(response.reward.title).to eq('Awesome reward')
       expect(response.reward.description).to eq('Lorem ipsum')
       expect(response.reward.ask_for_address?).to be true

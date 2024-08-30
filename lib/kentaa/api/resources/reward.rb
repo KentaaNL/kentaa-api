@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'bigdecimal'
+
 module Kentaa
   module Api
     module Resources
@@ -16,6 +18,10 @@ module Kentaa
 
         def type
           data[:type]
+        end
+
+        def amount
+          BigDecimal(data[:amount])
         end
 
         def title
