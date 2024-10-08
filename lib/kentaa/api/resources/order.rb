@@ -71,6 +71,10 @@ module Kentaa
           data[:phone]
         end
 
+        def locale
+          data[:locale]
+        end
+
         def items
           @items ||= begin
             items = []

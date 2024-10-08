@@ -110,6 +110,12 @@ RSpec.describe Kentaa::Api::Resources::Order do
     end
   end
 
+  describe '#locale' do
+    it 'returns the locale' do
+      expect(response.locale).to eq('nl')
+    end
+  end
+
   describe '#items' do
     it 'returns the associated items' do
       expect(response.items).not_to be_empty
