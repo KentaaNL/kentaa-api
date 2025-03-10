@@ -5,6 +5,8 @@ require 'json'
 module Kentaa
   module Api
     class Response
+      SUCCESS_CODES = [200, 201, 204].freeze
+
       attr_reader :response, :body
 
       def initialize(response)
@@ -13,7 +15,7 @@ module Kentaa
       end
 
       def success?
-        (http_code == 200 || http_code == 201 || http_code == 204) && !message
+        SUCCESS_CODES.include?(http_code) && !message
       end
 
       def error?
