@@ -29,6 +29,14 @@ module Kentaa
         def longitude
           data[:longitude]
         end
+
+        def house_number
+          data[:house_number]
+        end
+
+        def country
+          data[:country]
+        end
       end
     end
   end
