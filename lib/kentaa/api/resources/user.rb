@@ -14,6 +14,10 @@ module Kentaa
           Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
+        def public_id
+          data[:public_id]
+        end
+
         def site_id
           data[:site_id]
         end
@@ -90,6 +94,10 @@ module Kentaa
           data[:locale]
         end
 
+        def security_activity
+          @security_activity ||= Kentaa::Api::Resources::SecurityActivity.new(data[:security_activity]) if data[:security_activity]
+        end
+
         def consent
           Kentaa::Api::Deprecation.warn('#consent is deprecated. Please use #consents instead.', caller)
 
@@ -116,6 +124,10 @@ module Kentaa
 
         def avatar
           @avatar ||= Kentaa::Api::Resources::Avatar.new(config, options: options.merge(endpoint_path: "/users/#{id}"))
+        end
+
+        def reset_password
+          request.post("/users/#{id}/reset-password")
         end
 
         private

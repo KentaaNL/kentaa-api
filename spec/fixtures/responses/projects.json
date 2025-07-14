@@ -2,12 +2,14 @@
   "projects": [
     {
       "id": 1,
+      "public_id": "rpDXzYoVm2xf",
       "slug": "dignissimos-provident",
       "site_id": 6,
       "created_at": "2015-08-26T14:49:36Z",
       "updated_at": "2015-10-12T16:27:43Z",
       "title": "Dignissimos provident rerum enim alias magni asperna...",
       "description": "Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.",
+      "has_target_amount": true,
       "target_amount": 250000,
       "total_amount": "1250.0",
       "total_donations": 18,
@@ -47,6 +49,7 @@
       "updated_at": "2015-10-12T16:27:43Z",
       "title": "Dignissimos provident rerum enim alias magni asperna...",
       "description": "Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.",
+      "has_target_amount": true,
       "target_amount": 250000,
       "total_amount": "1250.0",
       "total_donations": 18,

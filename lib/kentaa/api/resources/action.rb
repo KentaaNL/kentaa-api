@@ -32,6 +32,10 @@ module Kentaa
           Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
+        def public_id
+          data[:public_id]
+        end
+
         def slug
           data[:slug]
         end
@@ -164,8 +168,28 @@ module Kentaa
           @registration_fee ||= Kentaa::Api::Resources::RegistrationFee.new(data[:registration_fee]) if data[:registration_fee]
         end
 
+        def has_target_amount?
+          data[:has_target_amount]
+        end
+
         def ticket
+          Kentaa::Api::Deprecation.warn('#ticket is deprecated. Please use #tickets instead.', caller)
+
           @ticket ||= Kentaa::Api::Resources::Ticket.new(data[:ticket]) if data[:ticket]
+        end
+
+        def tickets
+          @tickets ||= begin
+            tickets = []
+
+            if data[:tickets]
+              data[:tickets].each do |ticket|
+                tickets << Kentaa::Api::Resources::Ticket.new(ticket)
+              end
+            end
+
+            tickets
+          end
         end
 
         def location
@@ -244,6 +268,10 @@ module Kentaa
 
         def manual_donations
           @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/actions/#{id}/manual-donations")
+        end
+
+        def news
+          @news ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::News, endpoint_path: "/actions/#{id}/news")
         end
 
         def orders

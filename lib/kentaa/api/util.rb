@@ -5,12 +5,11 @@ module Kentaa
     module Util
       module_function
 
+      require 'dry/inflector'
+
       def pluralize(string)
-        if string[-1] == 'y'
-          "#{string.chop}ies"
-        else
-          "#{string}s"
-        end
+        inflector = Dry::Inflector.new
+        inflector.pluralize(string)
       end
     end
   end

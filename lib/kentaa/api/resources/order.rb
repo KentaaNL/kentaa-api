@@ -19,8 +19,20 @@ module Kentaa
           Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
+        def public_id
+          data[:public_id]
+        end
+
         def site_id
           data[:site_id]
+        end
+
+        def segment_id
+          data[:segment_id]
+        end
+
+        def project_id
+          data[:project_id]
         end
 
         def action_id

@@ -20,6 +20,12 @@ RSpec.describe Kentaa::Api::Resources::Project do
     end
   end
 
+  describe '#public_id' do
+    it 'returns the public id' do
+      expect(response.public_id).to eq('rpDXzYoVm2xf')
+    end
+  end
+
   describe '#parent' do
     it 'returns the parent resource' do
       expect(response.parent).to be_a(Kentaa::Api::Resources::Segment)
@@ -137,6 +143,12 @@ RSpec.describe Kentaa::Api::Resources::Project do
   describe '#donate_url' do
     it 'returns the donate URL' do
       expect(response.donate_url).to eq('https://demo1.kentaa.nl/project/dignissimos-provident/donate')
+    end
+  end
+
+  describe '#has_target_amount?' do
+    it 'returns true when has target amount' do
+      expect(response.has_target_amount?).to be true
     end
   end
 

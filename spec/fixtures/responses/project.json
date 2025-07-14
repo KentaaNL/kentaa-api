@@ -1,6 +1,7 @@
 {
   "project": {
     "id": 1,
+    "public_id": "rpDXzYoVm2xf",
     "slug": "dignissimos-provident",
     "segment_id": 2,
     "site_id": 6,
@@ -9,6 +10,7 @@
     "external_reference": "Customer Campaign 1021AA1-11",
     "title": "Dignissimos provident rerum enim alias magni asperna...",
     "description": "Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.",
+    "has_target_amount": true,
     "target_amount": 250000,
     "total_amount": "1250.0",
     "total_donations": 18,

@@ -23,6 +23,10 @@ module Kentaa
           Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
+        def public_id
+          data[:public_id]
+        end
+
         def slug
           data[:slug]
         end
@@ -85,6 +89,10 @@ module Kentaa
 
         def donate_url
           data[:donate_url]
+        end
+
+        def has_target_amount?
+          data[:has_target_amount]
         end
 
         def location
@@ -183,6 +191,10 @@ module Kentaa
 
         def activities
           @activities ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Activity, endpoint_path: "/projects/#{id}/activities")
+        end
+
+        def news
+          @news ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::News, endpoint_path: "/projects/#{id}/news")
         end
 
         private

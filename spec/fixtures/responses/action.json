@@ -1,6 +1,7 @@
 {
   "action": {
     "id": 1,
+    "public_id": "a6UjVfRwNo5f",
     "slug": "john-doe",
     "site_id": 6,
     "segment_id": 2,
@@ -33,6 +34,7 @@
     "previous_participations": 1,
     "url": "https://demo1.kentaa.nl/actie/john-doe",
     "donate_url": "https://demo1.kentaa.nl/actie/john-doe/donate",
+    "has_target_amount": true,
     "registration_fee": {
       "amount": "25.0",
       "title": "Sign up fee"
@@ -44,6 +46,24 @@
       "ticket_number": "3OJHY9RU5D",
       "ticket_url": "https://demo1.kentaa.nl/admin/acties/1/download-ticket.pdf"
     },
+    "tickets": [
+      {
+        "id": 1,
+        "created_at": "2024-07-17T21:14:11Z",
+        "updated_at": "2024-07-17T21:14:11Z",
+        "ticket_type": "registration",
+        "ticket_number": "3OJHY9RU5D",
+        "ticket_url": "https://demo1.community-fundraising.com/admin/acties/1/download-ticket.pdf"
+      },
+      {
+        "id": 2,
+        "created_at": "2025-04-17T21:14:12Z",
+        "updated_at": "2025-04-17T21:14:12Z",
+        "ticket_type": "product",
+        "ticket_number": "LLE77GDLD7",
+        "ticket_url": "https://demo1.community-fundraising.com/admin/product-tickets/1/download.pdf"
+      }
+    ],
     "photos": [
       {
         "id": 2,

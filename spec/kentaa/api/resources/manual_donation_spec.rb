@@ -20,6 +20,12 @@ RSpec.describe Kentaa::Api::Resources::ManualDonation do
     end
   end
 
+  describe '#public_id' do
+    it 'returns the public id' do
+      expect(response.public_id).to eq('ejA4d4sQ1MJK')
+    end
+  end
+
   describe '#entity' do
     it 'returns the entity resource' do
       expect(response.entity).to be_a(Kentaa::Api::Resources::Site)
