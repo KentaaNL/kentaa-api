@@ -1,7 +1,10 @@
 {
   "order": {
     "id": 1,
+    "public_id": "DHdAU7u5NBeb",
     "site_id": 6,
+    "segment_id": 2,
+    "project_id": 3,
     "action_id": 1,
     "created_at": "2021-03-30T14:41:48Z",
     "updated_at": "2021-03-30T14:46:25Z",

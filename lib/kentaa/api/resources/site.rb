@@ -11,6 +11,10 @@ module Kentaa
           "Site_#{id}"
         end
 
+        def public_id
+          data[:public_id]
+        end
+
         def host
           data[:host]
         end

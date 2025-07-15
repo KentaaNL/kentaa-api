@@ -55,6 +55,10 @@ module Kentaa
         Kentaa::Api::Resources::List.new(@config, options.merge(resource_class: Kentaa::Api::Resources::Segment, endpoint_path: '/segments'))
       end
 
+      def news(options = {})
+        Kentaa::Api::Resources::List.new(@config, options.merge(resource_class: Kentaa::Api::Resources::News, endpoint_path: '/news'))
+      end
+
       def sites(options = {})
         Kentaa::Api::Resources::Sites.new(@config, options)
       end

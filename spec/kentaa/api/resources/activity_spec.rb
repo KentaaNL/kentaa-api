@@ -20,6 +20,12 @@ RSpec.describe Kentaa::Api::Resources::Activity do
     end
   end
 
+  describe '#public_id' do
+    it 'returns the public id' do
+      expect(response.public_id).to eq('ts9hjBiYQELF')
+    end
+  end
+
   describe '#created_at' do
     it 'returns the created_at timestamp' do
       expect(response.created_at).to be_a(Time)

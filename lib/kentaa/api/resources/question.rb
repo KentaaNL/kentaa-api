@@ -29,6 +29,10 @@ module Kentaa
         def answer
           data[:answer]
         end
+
+        def external_reference
+          data[:external_reference]
+        end
       end
     end
   end

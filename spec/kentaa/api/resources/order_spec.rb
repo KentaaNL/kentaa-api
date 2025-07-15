@@ -14,6 +14,12 @@ RSpec.describe Kentaa::Api::Resources::Order do
     end
   end
 
+  describe '#public_id' do
+    it 'returns the public id' do
+      expect(response.public_id).to eq('DHdAU7u5NBeb')
+    end
+  end
+
   describe '#site' do
     it 'returns the site resource' do
       expect(response.site).to be_a(Kentaa::Api::Resources::Site)
@@ -23,6 +29,18 @@ RSpec.describe Kentaa::Api::Resources::Order do
   describe '#site_id' do
     it 'returns the site id' do
       expect(response.site_id).to eq(6)
+    end
+  end
+
+  describe '#segment_id' do
+    it 'returns the segment id' do
+      expect(response.segment_id).to eq(2)
+    end
+  end
+
+  describe '#project_id' do
+    it 'returns the site id' do
+      expect(response.project_id).to eq(3)
     end
   end
 

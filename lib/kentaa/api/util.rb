@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
+require 'dry/inflector'
+
 module Kentaa
   module Api
     module Util
       module_function
 
       def pluralize(string)
-        if string[-1] == 'y'
-          "#{string.chop}ies"
-        else
-          "#{string}s"
-        end
+        inflector = Dry::Inflector.new
+        inflector.pluralize(string)
       end
     end
   end

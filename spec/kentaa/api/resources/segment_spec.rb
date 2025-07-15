@@ -20,6 +20,12 @@ RSpec.describe Kentaa::Api::Resources::Segment do
     end
   end
 
+  describe '#public_id' do
+    it 'returns the public id' do
+      expect(response.public_id).to eq('ooEHne3FD5FT')
+    end
+  end
+
   describe '#parent' do
     it 'returns the parent resource' do
       expect(response.parent).to be_a(Kentaa::Api::Resources::Site)

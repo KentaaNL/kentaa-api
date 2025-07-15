@@ -19,6 +19,10 @@ module Kentaa
           Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
+        def public_id
+          data[:public_id]
+        end
+
         def site_id
           data[:site_id]
         end
@@ -107,6 +111,10 @@ module Kentaa
 
         def activities
           @activities ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Activity, endpoint_path: "/segments/#{id}/activities")
+        end
+
+        def news
+          @news ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::News, endpoint_path: "/segments/#{id}/news")
         end
 
         private

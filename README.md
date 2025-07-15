@@ -16,6 +16,7 @@ This gem provides a Ruby library for communicating with the [Kentaa API](https:/
   - [Donation forms](#donation-forms)
   - [Donations](#donations)
   - [Manual donations](#manual-donations)
+  - [News](#news)
   - [Newsletter subscriptions](#newsletter-subscriptions)
   - [Orders](#orders)
   - [Payments](#payments)
@@ -236,6 +237,26 @@ client.manual_donations.delete(1)
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#manual-donations) and [Kentaa::Api::Resources::ManualDonation](lib/kentaa/api/resources/manual_donation.rb) for all available properties.
+
+### News
+
+```ruby
+# List News
+news = client.news       # paginated
+news = client.news.all   # non-paginated
+
+news.each do |news_item|
+  news_item.title   # => "Lorem ipsum"
+  news_item.content  # => "<p>"Dolorum animi qui nihil iure dolore velit."</p>"
+end
+
+# Get News
+news_item = client.news.get(1)
+
+news_item.title    # => "Lorem ipsum"
+news_item.content  # => "<p>"Dolorum animi qui nihil iure dolore velit."</p>"
+```
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#news) and [Kentaa::Api::Resources::News](lib/kentaa/api/resources/news.rb) for all available properties.
 
 ### Newsletter subscriptions
 

@@ -152,8 +152,15 @@ RSpec.describe Kentaa::Api::Resources::User do
     end
   end
 
+  describe '#public_id' do
+    it 'returns the public id' do
+      expect(response.public_id).to eq('48TDvgTbPAh1')
+    end
+  end
+
   describe '#consent' do
     it 'returns the associated consent' do
+      expect { response.consent }.to output(/DEPRECATION WARNING: #consent is deprecated. Please use #consents instead./).to_stderr
       expect(response.consent).to be_a(Kentaa::Api::Resources::Consent)
       expect(response.consent.url).to eq('https://demo1.kentaa.nl/project/deelnames/meedoen/wie-ben-jij')
       expect(response.consent.text).to eq('Ja, ik geef uitdrukkelijk toestemming voor de verwerking van mijn persoonsgegevens.')
@@ -180,6 +187,16 @@ RSpec.describe Kentaa::Api::Resources::User do
   describe '#actions' do
     it 'returns the action resources as a List' do
       expect(response.actions).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
+
+  describe '#security_activity' do
+    it 'returns the security activity' do
+      activity = response.security_activity
+      expect(activity).to be_a(Kentaa::Api::Resources::SecurityActivity)
+      expect(activity.last_login_at).to be_a(Time)
+      expect(activity.reset_password_email_sent_at).to be_a(Time)
+      expect(activity.last_password_reset_at).to be_a(Time)
     end
   end
 

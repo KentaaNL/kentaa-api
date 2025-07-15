@@ -25,6 +25,10 @@ module Kentaa
           Kentaa::Api::Resources::Site.new(config, id: site_id, options: options)
         end
 
+        def public_id
+          data[:public_id]
+        end
+
         def slug
           data[:slug]
         end
@@ -171,6 +175,10 @@ module Kentaa
 
         def manual_donations
           @manual_donations ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ManualDonation, endpoint_path: "/teams/#{id}/manual-donations")
+        end
+
+        def news
+          @news ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::News, endpoint_path: "/teams/#{id}/news")
         end
 
         private

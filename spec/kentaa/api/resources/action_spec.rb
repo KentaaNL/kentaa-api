@@ -224,12 +224,37 @@ RSpec.describe Kentaa::Api::Resources::Action do
     end
   end
 
+  describe '#has_target_amount?' do
+    it 'returns true when target amount is set' do
+      expect(response.has_target_amount?).to be true
+    end
+  end
+
+  describe '#public_id' do
+    it 'returns the public id' do
+      expect(response.public_id).to eq('a6UjVfRwNo5f')
+    end
+  end
+
   describe '#ticket' do
     it 'returns the related ticket' do
+      expect { response.ticket }.to output(/DEPRECATION WARNING: #ticket is deprecated. Please use #tickets instead./).to_stderr
       ticket = response.ticket
       expect(ticket).to be_a(Kentaa::Api::Resources::Ticket)
       expect(ticket.ticket_number).to eq('3OJHY9RU5D')
       expect(ticket.ticket_url).to eq('https://demo1.kentaa.nl/admin/acties/1/download-ticket.pdf')
+    end
+  end
+
+  describe '#tickets' do
+    it 'returns the associated tickets' do
+      expect(response.tickets).not_to be_empty
+      expect(response.tickets.count).to eq(2)
+
+      ticket = response.tickets.first
+      expect(ticket).to be_a(Kentaa::Api::Resources::Ticket)
+      expect(ticket.ticket_number).to eq('3OJHY9RU5D')
+      expect(ticket.ticket_url).to eq('https://demo1.community-fundraising.com/admin/acties/1/download-ticket.pdf')
     end
   end
 
