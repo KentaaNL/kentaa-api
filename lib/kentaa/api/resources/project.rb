@@ -197,6 +197,10 @@ module Kentaa
           @news ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::News, endpoint_path: "/projects/#{id}/news")
         end
 
+        def orders
+          @orders ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Order, endpoint_path: "/projects/#{id}/orders")
+        end
+
         private
 
         def load_resource
