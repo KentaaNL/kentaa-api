@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
+require 'dry/inflector'
+
 module Kentaa
   module Api
     module Util
       module_function
-
-      require 'dry/inflector'
 
       def pluralize(string)
         inflector = Dry::Inflector.new
