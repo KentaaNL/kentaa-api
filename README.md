@@ -246,7 +246,7 @@ news = client.news       # paginated
 news = client.news.all   # non-paginated
 
 news.each do |news_item|
-  news_item.title.   # => "Lorem ipsum"
+  news_item.title   # => "Lorem ipsum"
   news_item.content  # => "<p>"Dolorum animi qui nihil iure dolore velit."</p>"
 end
 
