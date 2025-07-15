@@ -203,4 +203,10 @@ RSpec.describe Kentaa::Api::Resources::Team do
       expect(response.external_reference).to eq('Customer Campaign 1021AA1-11')
     end
   end
+
+  describe '#news' do
+    it 'returns the news resources as a List' do
+      expect(response.news).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
 end

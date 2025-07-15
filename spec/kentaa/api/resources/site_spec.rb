@@ -187,4 +187,10 @@ RSpec.describe Kentaa::Api::Resources::Site do
       expect(response.activities).to be_a(Kentaa::Api::Resources::List)
     end
   end
+
+  describe '#orders' do
+    it 'returns the order resources as a List' do
+      expect(response.orders).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
 end

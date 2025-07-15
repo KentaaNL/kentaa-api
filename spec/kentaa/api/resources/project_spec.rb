@@ -256,4 +256,16 @@ RSpec.describe Kentaa::Api::Resources::Project do
       expect(response.activities).to be_a(Kentaa::Api::Resources::List)
     end
   end
+
+  describe '#orders' do
+    it 'returns the order resources as a List' do
+      expect(response.orders).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
+
+  describe '#news' do
+    it 'returns the news resources as a List' do
+      expect(response.news).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
 end

@@ -321,6 +321,18 @@ RSpec.describe Kentaa::Api::Resources::Action do
     end
   end
 
+  describe '#orders' do
+    it 'returns the order resources as a List' do
+      expect(response.orders).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
+
+  describe '#news' do
+    it 'returns the news resources as a List' do
+      expect(response.news).to be_a(Kentaa::Api::Resources::List)
+    end
+  end
+
   describe '#performances' do
     describe '#all' do
       it 'returns an enumerator for retrieving all performances' do
