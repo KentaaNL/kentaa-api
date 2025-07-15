@@ -39,7 +39,7 @@ RSpec.describe Kentaa::Api::Resources::Order do
   end
 
   describe '#project_id' do
-    it 'returns the site id' do
+    it 'returns the project id' do
       expect(response.project_id).to eq(3)
     end
   end
