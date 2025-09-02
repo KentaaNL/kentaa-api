@@ -152,6 +152,18 @@ RSpec.describe Kentaa::Api::Resources::Project do
     end
   end
 
+  describe '#publishable?' do
+    it 'returns false when the project is already published' do
+      expect(response.publishable?).to be false
+    end
+  end
+
+  describe '#published_at' do
+    it 'returns the published-at date' do
+      expect(response.published_at).to be_a(Time)
+    end
+  end
+
   describe '#photos' do
     it 'returns the associated photos' do
       expect(response.photos).to be_empty

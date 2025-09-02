@@ -67,6 +67,14 @@ module Kentaa
           data[:visible]
         end
 
+        def publishable?
+          data[:publishable]
+        end
+
+        def published_at
+          Time.parse(data[:published_at]) if data[:published_at]
+        end
+
         def countable?
           data[:countable]
         end
@@ -199,6 +207,18 @@ module Kentaa
 
         def orders
           @orders ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Order, endpoint_path: "/projects/#{id}/orders")
+        end
+
+        def publish
+          request.post("/projects/#{id}/publish")
+        end
+
+        def hide
+          request.post("/projects/#{id}/hide")
+        end
+
+        def show
+          request.post("/projects/#{id}/show")
         end
 
         private
