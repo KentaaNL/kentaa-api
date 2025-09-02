@@ -16,6 +16,8 @@
     "total_donations": 18,
     "target_amount_achieved": false,
     "visible": true,
+    "publishable": false,
+    "published_at": "2015-10-12T16:27:43Z",
     "countable": true,
     "closed": false,
     "ended": true,
