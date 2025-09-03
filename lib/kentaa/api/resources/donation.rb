@@ -278,6 +278,10 @@ module Kentaa
         def load_resource
           request.get("/donations/#{id}", options)
         end
+
+        def update_resource(attributes)
+          request.patch("/donations/#{id}", options, attributes)
+        end
       end
     end
   end
