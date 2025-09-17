@@ -465,6 +465,38 @@ RSpec.describe Kentaa::Api::Client do
         expect { client.projects.get(1) }.to raise_error(Kentaa::Api::RequestError, '404: Requested resource was not found.')
       end
     end
+
+    describe '#create' do
+      it 'creates a project' do
+        data = File.read('spec/fixtures/responses/project.json')
+        stub_request(:post, 'https://api.kentaa.nl/v1/projects').to_return(status: 201, body: data)
+
+        project = client.projects.create(title: 'Dignissimos provident rerum enim alias magni asperna...', description: 'Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.', user_first_name: 'John', user_last_name: 'Doe', user_email: 'john.doe@iraiser.eu')
+        expect(project).to be_a(Kentaa::Api::Resources::Project)
+        expect(project.title).to eq('Dignissimos provident rerum enim alias magni asperna...')
+        expect(project.description).to eq('Fugiat et nulla mollitia. Ut omnis adipisci et. Consequatur voluptatibus est dicta rem.')
+      end
+    end
+  end
+
+  describe '#project_users' do
+    it 'creates a project user' do
+      data_user = File.read('spec/fixtures/responses/user.json')
+      data_project = File.read('spec/fixtures/responses/project.json')
+      data_project_user = File.read('spec/fixtures/responses/project_user.json')
+
+      stub_request(:get, 'https://api.kentaa.nl/v1/users/1').to_return(status: 200, body: data_user)
+      stub_request(:get, 'https://api.kentaa.nl/v1/projects/1').to_return(status: 200, body: data_project)
+      stub_request(:post, 'https://api.kentaa.nl/v1/projects/1/users').to_return(status: 200, body: data_project_user)
+
+      user = client.users.get(1)
+      project = client.projects.get(1)
+      project_user = project.users.create(user_id: user.id, role: 'manager')
+      expect(project_user).to be_a(Kentaa::Api::Resources::ProjectUser)
+      expect(project_user.project_id).to eq(1)
+      expect(project_user.user_id).to eq(1)
+      expect(project_user.role).to eq('scanner')
+    end
   end
 
   describe '#recurring_donors' do
