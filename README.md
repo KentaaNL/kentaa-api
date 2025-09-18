@@ -404,6 +404,33 @@ project = client.projects.get("project")
 project.title  # => "Dignissimos provident rerum enim alias magni asperna..."
 project.target_amount  # => 250000
 project.url  # => "https://demo1.kentaa.nl/project/dignissimos-provident"
+
+# Create a Project
+project = client.projects.create(
+  title: "My title",
+  description: "My description",
+  user_first_name: "John",
+  user_last_name: "Doe",
+  user_email: 'john.doe@iraiser.eu'
+)
+
+project.id  # => 1
+project.title  # => "My title"
+project.description  # => "My description"
+project.user_first_name  # => "John"
+project.user_last_name  # => "Doe"
+project.user_email  # => "john.doe@iraiser.eu"
+
+# Create a Project user
+project_user = client.projects.get(1).users.create(
+  user_id: 5,
+  role: "scanner"
+)
+
+project_user.id  # => 1
+project_user.user_id # => 5
+project_user.project_id # => 1
+project_user.role # => "scanner"
 ```
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#projects) and [Kentaa::Api::Resources::Project](lib/kentaa/api/resources/project.rb) for all available properties.
