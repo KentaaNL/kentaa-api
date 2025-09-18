@@ -27,6 +27,10 @@ module Kentaa
           data[:public_id]
         end
 
+        def logo_url
+          data[:logo_url]
+        end
+
         def slug
           data[:slug]
         end
@@ -203,6 +207,10 @@ module Kentaa
 
         def news
           @news ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::News, endpoint_path: "/projects/#{id}/news")
+        end
+
+        def logo
+          @logo ||= Kentaa::Api::Resources::ProjectLogo.new(config, options: options.merge(endpoint_path: "/projects/#{id}"))
         end
 
         def orders
