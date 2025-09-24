@@ -408,6 +408,31 @@ project.url  # => "https://demo1.kentaa.nl/project/dignissimos-provident"
 
 See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#projects) and [Kentaa::Api::Resources::Project](lib/kentaa/api/resources/project.rb) for all available properties.
 
+### Project logo
+
+```ruby
+# Get the project logo
+project = client.projects.get(1)
+
+project.logo.logo_url  # => "https://cdn.kentaa.nl/project_logos/logo/project_logo/1/ad28ec6c324df46cf5b3435133d4aed6362c1c22.png"
+
+# Create the Project logo
+project = client.projects.get(1)
+
+logo = project.create(
+  io: File.open("photo.jpeg"),
+  content_type: "image/jpeg"
+)
+
+logo.logo_url  # => "https://cdn.kentaa.nl/project_logos/logo/project_logo/1/ad28ec6c324df46cf5b3435133d4aed6362c1c22.png"
+
+# Delete the Project logo
+project = client.projects.get(1)
+project.logo.delete
+```
+
+See also the [Kentaa API docs](https://developer.kentaa.nl/kentaa-api/#project-logo) and [Kentaa::Api::Resources::ProjectLogo](lib/kentaa/api/resources/project_logo.rb) for all available properties.
+
 ### Recurring donors
 
 ```ruby
