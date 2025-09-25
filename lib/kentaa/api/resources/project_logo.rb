@@ -4,6 +4,12 @@ module Kentaa
   module Api
     module Resources
       class ProjectLogo < Resource
+        class << self
+          def attribute_key
+            'logo'
+          end
+        end
+
         def logo_url
           data[:logo_url]
         end
