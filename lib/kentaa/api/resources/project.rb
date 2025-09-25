@@ -181,6 +181,10 @@ module Kentaa
           @actions ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Action, endpoint_path: "/projects/#{id}/actions")
         end
 
+        def users
+          @users ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::ProjectUser, endpoint_path: "/projects/#{id}/users")
+        end
+
         def teams
           @teams ||= Kentaa::Api::Resources::List.new(config, resource_class: Kentaa::Api::Resources::Team, endpoint_path: "/projects/#{id}/teams")
         end
@@ -226,6 +230,10 @@ module Kentaa
         end
 
         private
+
+        def create_resource(attributes)
+          request.post('/projects', options, attributes)
+        end
 
         def load_resource
           request.get("/projects/#{id}", options)
