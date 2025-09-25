@@ -419,7 +419,7 @@ project.logo.logo_url  # => "https://cdn.kentaa.nl/project_logos/logo/project_lo
 # Create the Project logo
 project = client.projects.get(1)
 
-logo = project.create(
+logo = project.logo.create(
   io: File.open("photo.jpeg"),
   content_type: "image/jpeg"
 )

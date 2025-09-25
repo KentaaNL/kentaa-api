@@ -27,10 +27,6 @@ module Kentaa
           data[:public_id]
         end
 
-        def logo_url
-          data[:logo_url]
-        end
-
         def slug
           data[:slug]
         end
