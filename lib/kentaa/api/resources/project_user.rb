@@ -23,7 +23,7 @@ module Kentaa
         end
 
         def delete_resource
-          request.delete(endpoint_path, options)
+          request.delete("#{endpoint_path}/#{id}", options)
         end
       end
     end
