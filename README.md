@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/kentaa-api.svg)](https://badge.fury.io/rb/kentaa-api)
 [![Build Status](https://github.com/KentaaNL/kentaa-api/actions/workflows/test.yml/badge.svg)](https://github.com/KentaaNL/kentaa-api/actions)
-[![Code Climate](https://codeclimate.com/github/KentaaNL/kentaa-api/badges/gpa.svg)](https://codeclimate.com/github/KentaaNL/kentaa-api)
+[![CodeQL](https://github.com/KentaaNL/kentaa-api/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/KentaaNL/kentaa-api/actions/workflows/github-code-scanning/codeql)
 
 This gem provides a Ruby library for communicating with the [Kentaa API](https://developer.kentaa.nl/kentaa-api/).
 
