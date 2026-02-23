@@ -14,8 +14,8 @@ module Kentaa
           resources.size
         end
 
-        def each(&block)
-          resources.each(&block)
+        def each(&)
+          resources.each(&)
         end
 
         def links
