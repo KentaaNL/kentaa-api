@@ -7,8 +7,8 @@ require 'kentaa/api/version'
 Gem::Specification.new do |spec|
   spec.name          = 'kentaa-api'
   spec.version       = Kentaa::Api::VERSION
-  spec.authors       = ['Kentaa']
-  spec.email         = ['developers@kentaa.nl']
+  spec.authors       = %w[Kentaa iRaiser]
+  spec.email         = ['tech-arnhem@iraiser.eu']
 
   spec.summary       = 'Ruby library for communicating with the Kentaa API'
   spec.homepage      = 'https://github.com/KentaaNL/kentaa-api'
